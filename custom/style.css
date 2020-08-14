@@ -1,0 +1,925 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto+Slab:wght@700&display=swap");
+* {
+  word-break: break-word;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden !important;
+}
+
+/*=============================================
+=            header Area Code            =
+=============================================*/
+header {
+  /*=============================================
+=            Media  Querie s Area            =
+=============================================*/
+}
+
+header .top-header {
+  color: white;
+  background-color: #074582;
+  font-weight: 300;
+  line-height: 40px;
+}
+
+header .top-header span {
+  margin-right: 20px;
+}
+
+header .top-header .fa {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+header .top-header a {
+  text-decoration: none;
+  color: white;
+}
+
+header .logo {
+  margin: 10px 0;
+  width: 65%;
+}
+
+header .dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+header .dropdown > .dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+  pointer-events: none;
+}
+
+header .dropdown-menu {
+  border-top: 2px #074582 solid;
+  padding: 4px;
+}
+
+header .dropdown-item:hover {
+  background-color: #074582;
+  color: white !important;
+  margin-left: 4px;
+}
+
+header nav {
+  margin-top: 5%;
+  -webkit-transition: 200ms ease;
+  transition: 200ms ease;
+}
+
+header nav a {
+  color: #323232 !important;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+header nav li {
+  margin-right: 50px;
+  -webkit-transition: 200ms ease;
+  transition: 200ms ease;
+}
+
+header nav li .nav-link:hover {
+  padding-top: 25px;
+  border-top: 3px solid #074582;
+  margin-top: -20px;
+  -webkit-transition: height 200ms ease-in;
+  transition: height 200ms ease-in;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.slider-section {
+  border-bottom: 4px #074582 solid;
+  border-top: 4px #074582 solid;
+}
+
+.slider-section .carousel-inner img {
+  width: 100%;
+  height: auto;
+}
+
+.slider-section .carousel-caption span {
+  font-size: 24px;
+  background-color: #cbcccd;
+  opacity: 0.9;
+  padding: 0 20px;
+  color: black;
+  font-weight: bold;
+}
+
+.slider-section .carousel-caption .sub-h {
+  font-size: 18px;
+  background-color: black;
+  opacity: 0.7;
+  padding: 1px 70px;
+  color: white;
+  font-weight: bold;
+}
+
+/*=============================================
+=            About US Box           =
+=============================================*/
+.about-box .row .col-md-3 {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+.about-box .row .col-md-3 .part {
+  background-color: #1a315d;
+  height: 330px;
+  color: white;
+  margin: 0;
+  padding: 30px;
+  padding-top: 15%;
+}
+
+.about-box .row .col-md-3 .part i {
+  font-size: 55px;
+}
+
+.about-box .row .col-md-3 .part i:hover {
+  font-size: 65px;
+  margin-top: -10px;
+}
+
+.about-box .row .col-md-3 .part p {
+  font-size: 13px;
+  text-align: center;
+}
+
+.underline-green {
+  display: inline-block;
+  position: relative;
+  font-weight: bold;
+}
+
+.underline-green::before {
+  content: "";
+  height: 7px;
+  width: 40px;
+  background-color: #074582;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+}
+
+.underline-green::after {
+  content: "";
+  height: 3px;
+  width: 30px;
+  background-color: #cccccc;
+  position: absolute;
+  left: 40px;
+  bottom: -2px;
+}
+
+/*=============================================
+=            messege area Code            =
+=============================================*/
+.messege {
+  padding: 40px 0;
+}
+
+.messege .pgc {
+  -webkit-box-shadow: 2px 2px #c2c2c2;
+          box-shadow: 2px 2px #c2c2c2;
+  border-radius: 5px;
+  background-color: #074582;
+  padding: 2%;
+}
+
+.messege .pgc .pp {
+  text-align: center;
+  margin: auto 0;
+}
+
+.messege .pgc .pp img {
+  width: 60%;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.messege .pgc .pp img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.messege .row .Chairman {
+  margin-top: 50px;
+  color: white;
+  font-size: 14px;
+}
+
+.messege .row .Chairman h3 {
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+}
+
+.messege .row .Chairman a {
+  float: right;
+}
+
+.messege .quotation {
+  font-size: 13px;
+  quotes: "“" "”" "‘" "’";
+  padding: 0 12px;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.messege .quotation:before {
+  content: open-quote;
+  display: inline;
+  line-height: 0;
+  left: -10px;
+  position: relative;
+  top: 15px;
+  color: #ccc;
+  font-size: 3em;
+}
+
+.messege .quotation::after {
+  content: close-quote;
+  display: inline;
+  line-height: 0;
+  left: 10px;
+  position: relative;
+  top: 25px;
+  color: #ccc;
+  font-size: 3em;
+}
+
+.messege .row .Chairman a {
+  color: white;
+  font-size: 12px;
+}
+
+.messege .col-md-9 .Read {
+  float: right;
+}
+
+/*=============================================
+=            About Adler         =
+=============================================*/
+.adler {
+  margin: 20px 0;
+}
+
+.adler .hor-line {
+  border: 2px solid blue;
+  border-top: 2px;
+  margin-left: 50px;
+  margin-right: 20px;
+}
+
+.adler a {
+  color: black;
+  text-decoration: none;
+}
+
+.adler a:hover {
+  color: #074582;
+}
+
+.adler p {
+  color: #000;
+  font-family: arial;
+  line-height: 24px !important;
+  padding-left: 0;
+  text-align: justify;
+}
+
+.adler .vision-row i {
+  color: #5d3273;
+}
+
+.adler .col-md-4 i {
+  color: #bf2171;
+}
+
+.adler .col-md-4 img {
+  margin-top: 10%;
+}
+
+.adler .mission-row {
+  margin-top: -12%;
+}
+
+.adler .underline-green {
+  display: inline-block;
+  position: relative;
+  font-weight: bold;
+}
+
+.adler .underline-green::before {
+  content: "";
+  height: 7px;
+  width: 40px;
+  background-color: #074582;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+}
+
+.adler .underline-green::after {
+  content: "";
+  height: 3px;
+  width: 30px;
+  background-color: #cccccc;
+  position: absolute;
+  left: 40px;
+  bottom: -2px;
+}
+
+/*=============================================
+=            courses         =
+=============================================*/
+.course {
+  background-color: #f7fbff;
+  padding: 30px 0;
+}
+
+.course .box {
+  text-align: center;
+  -webkit-box-shadow: 0 0 10px #f2f2f2;
+  box-shadow: 0 0 10px #f2f2f2;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.course .box img {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  height: 130px;
+  width: 100%;
+}
+
+.course .box a {
+  margin: 0;
+  text-decoration: none;
+  border-top: 10px solid #f7fbff;
+  padding: 5px 0;
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #074582;
+  cursor: pointer;
+}
+
+.course .box a:hover {
+  opacity: 0.8;
+}
+
+.course .box:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+/*=============================================
+=            Certificate         =
+=============================================*/
+.certificate {
+  padding: 30px;
+}
+
+.certificate .img-box {
+  -webkit-box-shadow: 0 0 10px #dad8d8;
+  box-shadow: 0 0 10px #dad8d8;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 15px;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.certificate .img-box:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+.certificate .view-btn {
+  border-radius: 10px;
+  background-color: #074582;
+  margin: 20px 0;
+}
+
+.certificate .view-btn a {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+/*=============================================
+=            About US            =
+=============================================*/
+.about-us {
+  margin-top: 4%;
+  margin-bottom: 3%;
+  background-color: white;
+}
+
+.about-us h1 {
+  font-weight: 900;
+}
+
+.about-us p {
+  text-align: justify;
+  color: #1a1818;
+  font-size: 13px;
+  line-height: 25px;
+}
+
+/*=============================================
+=            Register page design            =
+=============================================*/
+.register {
+  background-color: #f7fbff;
+  padding: 30px 0;
+}
+
+.register .container {
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 10px #f2f2f2;
+  box-shadow: 0 0 10px #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.register .container .fill-row {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 4px solid #074582;
+}
+
+/*=============================================
+=            Chairman message Code            =
+=============================================*/
+.bg-future {
+  background-color: #424242;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.bg-future .future-handing h1 {
+  text-align: center;
+  margin-bottom: 7%;
+  color: white;
+  text-align: center;
+  font-size: 55px;
+  font-weight: bolder;
+  font-family: "Roboto Slab", serif;
+}
+
+@-webkit-keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .future-handing h1 {
+    font-size: 25px;
+    margin-bottom: 15%;
+  }
+}
+
+.Chairman’s-Message {
+  margin-top: 1%;
+  margin-bottom: 7%;
+  line-height: 32px;
+}
+
+.Chairman’s-Message .chairman h3 {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 34px;
+  font-family: "Roboto Slab", serif;
+}
+
+.Chairman’s-Message .mt-4 {
+  font-weight: bold;
+  font-size: 14px !important;
+  margin-top: -4px !important;
+  color: black !important;
+}
+
+.Chairman’s-Message .chairman p {
+  text-align: justify;
+  color: #828ba1;
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
+}
+
+.Chairman’s-Message .chairman h6 {
+  line-height: 25px;
+  border-bottom: 1px dotted #999;
+  font-size: 25px;
+  padding-bottom: 10px;
+  margin-top: -14px !important;
+}
+
+.Chairman’s-Message h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 6%;
+}
+
+.Chairman’s-Message h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #6f6f6f;
+}
+
+.Chairman’s-Message .mainTitle {
+  background-color: #074582;
+  display: inline;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 5px 0 5px 10px;
+  padding-right: 10px;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+  color: #fff;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.Chairman’s-Message hr {
+  margin-top: 0;
+}
+
+.Chairman’s-Message .img-thumbnail:hover {
+  padding: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .Chairman’s-Message .chairman h3 {
+    font-size: 20px;
+  }
+}
+
+/*=============================================
+=           Rules and Regulations        =
+=============================================*/
+.Chairman’s-Message .whole-para {
+  text-align: justify;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  font-size: 14px !important;
+  color: black;
+}
+
+/*=============================================
+=            ComPuter Lab         =
+=============================================*/
+.Computer-lab {
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
+.Computer-lab .lab h3 {
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: 0px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 33.088px;
+}
+
+.Computer-lab .lab p {
+  font-family: "Open Sans", sans-serif;
+  text-align: justify;
+  font-weight: bold;
+  line-height: 27px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-style: normal;
+  color: #242525;
+}
+
+/*=============================================
+=            About us Code            =
+=============================================*/
+.bg {
+  background-image: url(../img/aboutus.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.bg h3 {
+  color: white;
+  text-align: center;
+  padding: 3.5% 0;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/*=============================================
+=                      Why us                 =
+=============================================*/
+.why-us {
+  background-image: url("./../img/why-us-back.png");
+  background-position: center center;
+  background-size: 100% 100%;
+}
+
+.why-us h1 {
+  font-weight: 800;
+  color: white;
+}
+
+/*=============================================
+=            fi-logo Code            =
+=============================================*/
+.fi-logo .circle {
+  font-size: 35px;
+  color: #074582;
+  border: 4px solid #074582;
+  border-radius: 50%;
+  padding: 13px 17px;
+  margin: 20px 3px;
+}
+
+/*=============================================
+=            footer area Code            =
+=============================================*/
+.footer-section {
+  color: silver;
+  background-color: #1f1f1f;
+  border-top: 5px solid #e87c34;
+  padding-bottom: 20px;
+}
+
+.footer-section .fb-page {
+  margin: 15px;
+  margin-top: 30px;
+}
+
+.footer-section .row .col-md-3 h6 {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  padding: 25px 0 20px 20px;
+}
+
+.footer-section .row .col-md-3 p {
+  font-size: 12px;
+  text-align: justify;
+}
+
+.footer-section .row .col-md-3 ul {
+  list-style: none;
+  margin-left: -15px;
+}
+
+.footer-section .row .col-md-3 ul li a {
+  text-decoration: none;
+  color: silver;
+  font-size: 12px;
+}
+
+.footer-section .value li {
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: white;
+  line-height: 30px;
+  padding: 15px 0;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+}
+
+/*=============================================
+=            media Query Code            =
+=============================================*/
+@media only screen and (max-width: 650px) {
+  .hide {
+    display: none;
+  }
+  nav {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .logo {
+    width: 50% !important;
+  }
+  nav li a:hover {
+    border-top: none !important;
+  }
+  .navbar-toggler {
+    position: absolute;
+    right: 0px;
+    top: -70px;
+  }
+  .c-logo {
+    margin-top: -10% !important;
+    margin-bottom: 5%;
+  }
+  .mission-row {
+    margin-top: 2% !important;
+  }
+  .footer-section {
+    text-align: center;
+  }
+}
+
+/*=============================================
+=                contact us area            =
+=============================================*/
+.contact-page {
+  margin: 50px 0;
+}
+
+.contact-page .contact-detail {
+  background-color: #f7f7f7;
+  padding-bottom: 30px;
+}
+
+.contact-page .contact-detail .fa {
+  font-size: 30px;
+  padding: 10px;
+  margin-top: 27px;
+}
+
+.contact-page .contact-detail .fa-at {
+  margin-top: 20px;
+  font-size: 25px;
+}
+
+.contact-page .contact-detail .heading1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.contact-page .contact-form h1 {
+  font-weight: bold;
+}
+
+.contact-page .contact-form input {
+  border: 1px solid #01bafd;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  min-width: 300px;
+  width: 100%;
+}
+
+.contact-page .contact-form textarea {
+  border: 1px solid #01bafd;
+  width: 100%;
+}
+
+.contact-page .contact-form .btnn {
+  font-family: "montserratregular", "Times New Roman", Times, serif;
+  text-transform: uppercase;
+  background-color: #01bafd;
+  border-radius: 0;
+  border: 0;
+  color: #fff;
+  outline: 0;
+  padding: 9px 15px;
+}
+
+.contact-page .contact-form :hover {
+  color: black;
+}
+
+/*=============================================
+=            academic Course Area            =
+=============================================*/
+.left_side {
+  background-color: #074582;
+  color: white;
+  margin-top: 63px;
+}
+
+.left_side_title {
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  border-bottom: 1px silver dotted;
+  font-weight: bold;
+}
+
+.left_side_list {
+  list-style: none;
+  margin-left: 10px;
+  font-size: 14px;
+  padding: 10px;
+  height: 150px;
+}
+
+.left_side_list a:hover {
+  color: #007bff;
+}
+
+.left_side_list a {
+  color: white;
+  text-decoration: none;
+}
+
+.main_title {
+  color: #26437c;
+  font-weight: bolder;
+  text-align: left;
+  border-bottom: 1px dotted #999;
+  padding-bottom: 12px;
+  padding-top: 13px;
+  margin: 0 0 10px 0;
+  font-size: 25px;
+}
+
+.coursetitle {
+  background-color: #cccccc;
+  color: #26437c;
+  padding: 10px 0px 10px 10px;
+  width: 99%;
+  font-size: 14px;
+}
+
+.courseheading {
+  font-size: 15px;
+  padding: 10px 14px;
+  padding-top: 15px;
+}
+
+.courseheadingdetail {
+  font-size: 14px;
+  color: black;
+  padding: 12px 0px;
+  margin-left: 20px;
+}
+
+.courserow {
+  font-size: 14px;
+  padding: 4px 0px;
+  margin-left: 20px;
+}
+
+/*=============================================
+=            scholarships            =
+=============================================*/
+.scholarships {
+  margin-top: 60px;
+  margin-bottom: 300px;
+}
+
+.scholarships .scholarships-detail {
+  background-color: #074582;
+  color: white;
+  padding-top: 60px;
+  padding-bottom: 70px;
+}
+
+.scholarships .scholarships-detail .fa {
+  color: white;
+  background-color: #323232;
+  padding: 20px;
+  border-radius: 50%;
+  position: absolute;
+  font-size: 40px;
+  top: -100px;
+  left: 250px;
+}
+
+.scholarships .scholarships-detail h2 {
+  font-size: 22px;
+}
+
+.scholarships .scholarships-detail p {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.scholarships .scholarships-detail a:hover {
+  color: #f09a3e;
+}
+
+.scholarships .scholarships-detail a:hover .fa {
+  background-color: #f09a3e;
+}
+/*# sourceMappingURL=style.css.map */
