@@ -66,7 +66,7 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a
@@ -89,13 +89,13 @@
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact-us.html">Contact Us</a>
+                    <a class="nav-link" href="contact-us.php">Contact Us</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="register.html">Register</a>
+                    <a class="nav-link" href="register.php">Register</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="login.html" data-toggle="modal" data-target="#elegantModalForm">Login</a>
+                    <a class="nav-link" data-toggle="modal" data-target="#elegantModalForm">Login</a>
                   </li>
                 </ul>
               </div>
