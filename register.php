@@ -1,5 +1,10 @@
 <?php include("includes/header.php"); ?>
-
+<?php 
+  if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $fname = $_POST['fname'];
+  }
+?>
 <br>
     <section class="bg">
       <div class="container">
