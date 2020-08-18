@@ -1,3 +1,7 @@
+<?php
+include_once "classes/session.php";
+Session::checkSession();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -120,8 +124,14 @@
                     <ul class="dropdown-user">
                       <li role="separator" class="divider"></li>
                       <li>
-                        <a href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        <a href="?action=logout"><i class="fa fa-power-off"></i> Logout</a>
                       </li>
+                            <?php
+                            if (isset($_GET['action']) && $_GET['action']=="logout") {
+                                session::destroy();
+
+                            }
+                            ?>
                     </ul>
                   </div>
                 </li>
