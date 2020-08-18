@@ -1,16 +1,22 @@
 <?php include("includes/header.php"); ?>
 <?php 
+include_once 'classes/StudentManagement.php';
+  $st=new StudentManagement();
+
   if(isset($_POST['submit'])){
     $name = $_POST['name'];
     $fname = $_POST['fname'];
     $cnic = $_POST['cnic'];
-    $expdate = $_POST['expdate'];
+    $exp_date = $_POST['expdate'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $contact = $_POST['contact'];
     $address = $_POST['address'];
     $qualif = $_POST['qualif'];
-    $from = $_POST['from'];
+    $q_from = $_POST['from'];
+
+    $check = $st->register($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from);
+    }
   }
 ?>
 <br>
@@ -33,6 +39,14 @@
                 </div>
               </div>
             <form method="post">
+              <div class="row">
+                   <div style="color:red; text-align: center; font-size:16px;"><?php
+                       if (isset($_POST['submit'])) {
+                           echo "$check";
+                       }
+                       ?>
+                </div>
+               </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

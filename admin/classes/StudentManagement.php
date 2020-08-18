@@ -12,27 +12,28 @@ class StudentManagement
 		$this->fm=new Format();
 	}
 
-    public function addStudent($name,$fname,$badge,$rollNo,$cnic,$mobile,$section,$program,$semester,$address)
+    public function register($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from)
     {
-        $query4="select * from student_badge where id='$badge'";
-        $result4=$this->db->select($query4);
-        $badge4=$result4->fetch_assoc();
-        $rollNo=$badge4['badge'].'-'.$rollNo;
+        $name=$this->fm->validation($name);
+        $fname=$this->fm->validation($fname);
+        $cnic=$this->fm->validation($cnic);
+        $exp_date=$this->fm->validation($exp_date);
+        $email=$this->fm->validation($email);
+        $password=$this->fm->validation($password);
+        $contact=$this->fm->validation($contact);
+        $address=$this->fm->validation($address);
+        $qualif=$this->fm->validation($qualif);
+        $q_from=$this->fm->validation($q_from);
 
-        $query1="select * from student where rollNo='$rollNo'";
+        $query1="select * from students where cnic='$cnic'";
         $result1=$this->db->select($query1);
-        $query2="select * from student where cnic='$cnic'";
-        $result2=$this->db->select($query2);
-        if($result1) {
-            $msg = "Data Not Insert Roll No Already Exist...";
-            return $msg;
-        }else if($result2)
+        if($result1)
         {
             $msg = "Data Not Insert CNIC Already Exist...";
             return $msg;
         }else
         {
-            $query = "INSERT INTO student(name,fatherName,rollNo,badgeId,cnic,phone,address,program,section,semester) VALUES('$name','$fname','$rollNo','$badge','$cnic','$mobile','$address','$program','$section','$semester')";
+            $query = "INSERT INTO students(name,fname,cnic,exp_date,email,password,contact,address,qualif,q_from,status) VALUES('$name','$fname','$cnic','$exp_date','$email','$password','$contact','$address','$qualif','$q_from','0')";
             $result = $this->db->insert($query);
             if ($result) {
                 $msg = "Data Inserted";
