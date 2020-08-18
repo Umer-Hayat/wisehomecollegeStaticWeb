@@ -62,7 +62,7 @@
         Communication Level, either planning to study or settle abroad. We aim to provide the quality education 
         with a variety of levels, ranging from Beginner to Advanced. It is a centre dedicated to the enhancement
          of learning, recognising potential and above all to achieve excellence....</p>
-      <a class="Read" href="director-message.html">Read More...</a>
+      <a class="Read" href="director-message.php">Read More...</a>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 <?php include("includes/header.php"); ?>
 
-    <br>
     <section class="bg">
       <div class="container">
         <div class="row">

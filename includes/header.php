@@ -96,7 +96,7 @@
                     <a class="nav-link" href="register.php">Register</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#elegantModalForm">Login</a>
+                    <a class="nav-link" href="" data-toggle="modal" data-target="#elegantModalForm">Login</a>
                   </li>
                 </ul>
               </div>

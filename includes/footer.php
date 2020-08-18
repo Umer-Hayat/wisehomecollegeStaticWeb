@@ -14,14 +14,14 @@
             <h6>Quik Links</h6>
             <ul class="value">
               <li>
-                <a href="#">Home</a>
+                <a href="index.php">Home</a>
               </li>
-              <li>
+              <!-- <li>
                 <a href="#">Time Table</a>
-              </li>
-                <li><a href="#">Contact Us</a></li>
+              </li> -->
+                <li><a href="contact-us.php">Contact Us</a></li>
                 <li>
-                  <a href="#">About Us</a>
+                  <a href="about-us.php">About Us</a>
                 </li>
               </li>
             </ul>
@@ -32,7 +32,7 @@
           <div class="col-md-3">
             <h6>Contact Us</h6>
             <ul class="value">
-              <li><a href="#"> <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <li><a> <i class="fa fa-map-marker" aria-hidden="true"></i>
                 1st Floor Shoukat Plaza
                 G.T Road Kharian</a>
               </li>
