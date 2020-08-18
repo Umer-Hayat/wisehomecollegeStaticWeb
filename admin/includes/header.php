@@ -64,7 +64,7 @@
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-header">
-              <a class="navbar-brand" href="index.html">
+              <a class="navbar-brand" href="index.php">
                 <!-- Logo icon --><b>
                   Admin
                 </b>
@@ -145,7 +145,7 @@
                   <a
                     style="background-color: transparent;"
                     class="waves-effect waves-dark"
-                    href="index.html"
+                    href="dashboard.php"
                     aria-expanded="false"
                     ><i class="fa fa-dashboard"></i
                     ><span class="hide-menu">Dashboard</span></a
@@ -155,7 +155,7 @@
                   <a
                     style="background-color: transparent;"
                     class="waves-effect waves-dark"
-                    href="students.html"
+                    href="students.php"
                     aria-expanded="false"
                     ><i class="fa fa-users"></i
                     ><span class="hide-menu">Students</span></a
@@ -178,7 +178,7 @@
                     href="images.php"
                     aria-expanded="false"
                     ><i class="fa fa-image"></i
-                    ><span class="hide-menu">mages</span></a
+                    ><span class="hide-menu">Images</span></a
                   >
                 </li>
               </ul>

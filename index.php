@@ -66,27 +66,9 @@
         </div>
       </div>
     </div>
-    <!-- <div class="col-md-6">
-      <div class="row">
-        <div class="col-md-3">
-          <img src="img/principal.jpeg" class="img-fluid rounded-circle mt-5" alt="Capture2.png">
-        </div>
-        <div class="col-md-9 Chairman">
-          <h3>Principal</h3>
-      <p class="quotation">BS College for Girl's breathes life into contemporary learning, motivates girls to strive to accomplish their goals and celebrates their many talents. The College provides a high quality academic education with extensive co-curricular opportunities... </p>
-      <a class="Read" href="principal-message.html">Read More...</a>
-        </div>
-      </div>
-    </div> -->
   </div>
 </div>
 </section>
-
-
-
- 
-
-
 <!-- Courses -->
    <section class="course">
      <div class="container">

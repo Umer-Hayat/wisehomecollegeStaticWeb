@@ -1,4 +1,13 @@
-<script src="assets/plugins/jquery/jquery.min.js"></script>
+</div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -10,12 +19,18 @@
     <script src="assets/js/sidebarmenu.js"></script>
     <!--stickey kit -->
     <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
     <script src="assets/js/custom.min.js"></script>
-    <!-- jQuery peity -->
-    <script src="assets/plugins/peity/jquery.peity.min.js"></script>
-    <script src="assets/plugins/peity/jquery.peity.init.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--sparkline JavaScript -->
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--morris JavaScript -->
+    <script src="assets/plugins/raphael/raphael-min.js"></script>
+    <script src="assets/plugins/morrisjs/morris.min.js"></script>
+    <!-- Chart JS -->
+    <script src="assets/js/dashboard1.js"></script>
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
