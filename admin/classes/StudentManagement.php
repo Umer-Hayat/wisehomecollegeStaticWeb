@@ -154,20 +154,11 @@ class StudentManagement
     }
 
 
-    public function deleteStudent($id,$table)
+    public function deleteStudent($id)
     {
-        $querych = "select *  from student where id='$id' AND status='1'";
-        $resultch = $this->db->select($querych);
-        if($resultch)
-        {
-            return false;
-        }
-        else
-        {
-            $query="delete from $table where id='$id'";
-            $result=$this->db->delete($query);
-            return $result;
-        }
+        $query="delete from students where id='$id'";
+        $result=$this->db->delete($query);
+        return $result;
     }
     public function addSubjects($subjects,$badge,$section)
     {

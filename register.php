@@ -1,6 +1,6 @@
 <?php include("includes/header.php"); ?>
 <?php 
-include_once 'classes/StudentManagement.php';
+include_once 'admin/classes/StudentManagement.php';
   $st=new StudentManagement();
 
   if(isset($_POST['submit'])){
@@ -17,7 +17,6 @@ include_once 'classes/StudentManagement.php';
 
     $check = $st->register($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from);
     }
-  }
 ?>
 <br>
     <section class="bg">
@@ -38,9 +37,9 @@ include_once 'classes/StudentManagement.php';
                   <h3 class="underline-green">Fill The Form</h3>
                 </div>
               </div>
-            <form method="post">
-              <div class="row">
-                   <div style="color:red; text-align: center; font-size:16px;"><?php
+            <form method="post" action="register.php">
+              <div class="row text-center">
+                   <div style="color:red; font-size:16px;"><?php
                        if (isset($_POST['submit'])) {
                            echo "$check";
                        }
@@ -105,12 +104,12 @@ include_once 'classes/StudentManagement.php';
                   <div class="col-md-6">
                       <div class="form-group">
                           <label for="from" class="col-form-label">From:</label>
-                          <input type="text" class="form-control" id="from">
+                          <input type="text" name="from" class="form-control" id="from">
                         </div>
                   </div>
                   <div class="col-md-12 text-center">
                     <div class="form-group">
-                        <input type="submit"  class="btn btn-primary" style="background-color: #074582; border-radius:10px; margin:20px 0;">
+                        <input type="submit" name="submit"  class="btn btn-primary" style="background-color: #074582; border-radius:10px; margin:20px 0;">
                       </div>
                 </div>
               </div>
