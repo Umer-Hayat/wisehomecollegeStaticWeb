@@ -3,6 +3,14 @@
   if(isset($_POST['submit'])){
     $name = $_POST['name'];
     $fname = $_POST['fname'];
+    $cnic = $_POST['cnic'];
+    $expdate = $_POST['expdate'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+    $qualif = $_POST['qualif'];
+    $from = $_POST['from'];
   }
 ?>
 <br>
@@ -24,7 +32,7 @@
                   <h3 class="underline-green">Fill The Form</h3>
                 </div>
               </div>
-            <form>
+            <form method="post">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -47,7 +55,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="exp" class="col-form-label">CNIC Expire Date:</label>
-                            <input type="date" class="form-control" id="exp">
+                            <input type="date" class="form-control" name="expdate" id="exp">
                           </div>
                     </div>
                     <div class="col-md-6">
@@ -59,7 +67,7 @@
                   <div class="col-md-6">
                       <div class="form-group">
                           <label for="password" class="col-form-label">Password:</label>
-                          <input type="password" class="form-control" id="password">
+                          <input type="password" class="form-control" name="password" id="password">
                         </div>
                   </div>
                   <div class="col-md-6">

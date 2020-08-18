@@ -11,6 +11,8 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+    <link rel="stylesheet" href="custom/cards-gallery.css">
     <link rel="stylesheet" href="custom/style.css" />
     <link rel="icon" href="img/logo.jpg" type="image/gif" sizes="16x16">
     <meta name="description" content="BS College For Girls kharian campus - Bright Stars College is a Project of Bright Stars educational network that is a welfare organization and aims to promote learning. This society has allocated generously millions of scholarships to educational projects ">
@@ -83,9 +85,8 @@
                       class="dropdown-menu"
                       aria-labelledby="navbarDropdownMenuLink"
                     >
-                      <a class="dropdown-item" href="about-us.html">About Us</a>
-                      <a class="dropdown-item" href="director-message.html">Director Message</a>
-                      <a class="dropdown-item" href="principal-message.html">Principal Message</a>
+                      <a class="dropdown-item" href="about-us.php">About Us</a>
+                      <a class="dropdown-item" href="director-message.php">Director Message</a>
                     </div>
                   </li>
                   <li class="nav-item">

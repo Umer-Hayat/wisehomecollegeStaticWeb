@@ -183,7 +183,7 @@
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
-            <button class="btn btn-primary view-btn"><a href="certificates.html">View More Certificates >></a></button>
+            <button class="btn btn-primary view-btn"><a href="certificates.php">View More Certificates >></a></button>
           </div>
         </div>
       </div>
