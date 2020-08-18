@@ -194,7 +194,7 @@ if(isset($_GET['del']))
     $('#example23').DataTable({
         dom: 'Bfrtip',
         buttons: [
-            'excel', 'pdf', 'print'
+            'print','excel'
         ]
     });
     </script>
