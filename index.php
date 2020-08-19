@@ -1,28 +1,64 @@
 <?php include("includes/header.php"); ?>
 
+<?php 
+include_once 'admin/classes/SlideManagement.php';
+  $slide=new SlideManagement(); 
+
+  $query = "select * from homepagedata";
+  $data=$slide->getAllRecordByQuery($query);
+  $getdata=$data->fetch_assoc();
+?>
     <!-- Slider area -->
 
     <section class="slider-section">
       <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
           <li data-target="#demo" data-slide-to="0" class="active"></li>
-          <li data-target="#demo" data-slide-to="1"></li>
-          <li data-target="#demo" data-slide-to="2"></li>
+          <?php
+            $query = "select * from slider";
+            $slides=$slide->getAllRecordByQuery($query);
+            $count = mysqli_num_rows($slides);
+            for ($i=1; $i < $count; $i++) {
+           ?>
+          <li data-target="#demo" data-slide-to="<?php echo $i; ?>"></li>
+          <?php
+          }
+           ?>
+          <!-- <li data-target="#demo" data-slide-to="2"></li> -->
         </ul>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/s11.jpg" alt="Los Angeles" />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="img/s21.jpg"
-              alt="Chicago"
-            />
-          </div>
-          <div class="carousel-item">
-            <img src="img/s31.jpg" alt="New York"/>
-          </div>
-        </div>
+          
+          <?php
+
+            $query = "select * from slider LIMIT 0,1";
+            $slides=$slide->getAllRecordByQuery($query);
+            if($slides)
+            {
+              while ($getAll=$slides->fetch_assoc())
+              {
+                $slide_image = $getAll['slide_image'];
+
+                echo "<div class='carousel-item active'>
+                <img src='slides_images/$slide_image'>
+                </div>";
+              }
+            }
+
+            $query = "select * from slider";
+            $slides=$slide->getAllRecordByQuery($query);
+            if($slides)
+            {
+              while ($getAll=$slides->fetch_assoc())
+              {
+                $slide_image = $getAll['slide_image'];
+                
+                echo "<div class='carousel-item'>
+                <img src='slides_images/$slide_image'>
+                </div>";
+              }
+            }
+          ?>
+
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
           <span class="carousel-control-prev-icon"></span>
         </a>
@@ -32,20 +68,6 @@
       </div>
     </section>
     <!-- slider end -->
-
-
-    
-<!-- admission burron -->
-<!-- <section class="admission">
-  <div class="container">
-    <div class="row  admission  text-center">
-      <div class="col-md-12">
-        <button class="btn"><a href="#" target="blank">Apply for Admission</a></button>
-      </div>
-    </div>
-  </div>
-
-</section> -->
 
  <!-- messages area -->
  <section class="messege">
@@ -58,10 +80,7 @@
         </div>
         <div class="col-md-8 Chairman">
           <h3>Managing Director</h3>
-      <p class="quotation">WISE HOME COLLEGE was founded to welcome the individuals improve their current 
-        Communication Level, either planning to study or settle abroad. We aim to provide the quality education 
-        with a variety of levels, ranging from Beginner to Advanced. It is a centre dedicated to the enhancement
-         of learning, recognising potential and above all to achieve excellence....</p>
+      <p class="quotation"><?php echo $getdata['dir_msg']; ?></p>
       <a class="Read" href="director-message.php">Read More...</a>
         </div>
       </div>
