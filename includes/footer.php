@@ -1,13 +1,19 @@
+<?php 
+include_once './admin/classes/SlideManagement.php';
+  $slide=new SlideManagement(); 
+
+  $query = "select * from homepagedata";
+  $data=$slide->getAllRecordByQuery($query);
+  $getdata=$data->fetch_assoc();
+?>
+
+
    <section class="footer-section">
       <div class="container">
         <div class="row">
           <div class="col-md-3">
             <h6 class="pl-0">About Wise Home College</h6>
-            <p>
-              WISE HOME COLLEGE was founded to welcome the individuals improve their current Communication Level, 
-              either planning to study or settle abroad. We aim to provide the quality education with a variety of 
-              levels, ranging from Beginner to Advanced. It is a centre dedicated to the enhancement of learning, 
-              recognising potential and above all to achieve excellence. 
+            <p><?php echo $getdata['about']; ?> 
             </p>
           </div>
           <div class="col-md-3">
@@ -38,11 +44,11 @@
               </li>
               <li>
                 <i class="fa fa-mobile" aria-hidden="true"></i>
-                <a href="#">+92-3456893986</a>
+                <a href="#"><?php echo $getdata['phone1']; ?></a>
               </li>
               <li>
                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                <a href="#">info@wisehomecollege.com</a>
+                <a href="#"><?php echo $getdata['email']; ?></a>
               </li>
               <li>
                 <i class="fa fa-clock-o" aria-hidden="true"></i>

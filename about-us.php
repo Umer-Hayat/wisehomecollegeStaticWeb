@@ -1,5 +1,12 @@
 <?php include("includes/header.php"); ?>
+<?php 
+include_once 'admin/classes/SlideManagement.php';
+  $slide=new SlideManagement(); 
 
+  $query = "select * from homepagedata";
+  $data=$slide->getAllRecordByQuery($query);
+  $getdata=$data->fetch_assoc();
+?>
     <section class="bg">
       <div class="container">
         <div class="row">
@@ -25,7 +32,7 @@
          </span>
          <br>
           <p class="vision-para">
-            We do our best every day to achieve the vision by building up the learning environment in the college that promotes personal and intellectual exploration to turn out skilled, patriotic, and pioneering students who can meet the universal standards. Our vision is to contribute to the global community through the promotion of teaching, learning, and knowledge.</p>
+            <?php echo $getdata['vision']; ?></p>
         </div>
         <div class="col-md-4 mt-5 text-center">
           <img width="90%" src="img/logo.jpg"  class="img-fluid c-logo" alt="img2">
@@ -35,11 +42,7 @@
           </span>
           <br>
            <p>
-            1. To ensure that its students come away from their experience 
-            with knowledge and skill that will enable them to fulfill their 
-            personal and professional aspirations, interact productively with others.<br>
-            2. To contribute meaningfully to society, and continue learning 
-            throughout individual lives.
+            <?php echo $getdata['goals']; ?>
             </p>
          </div>
     </div>
@@ -49,7 +52,7 @@
         </span>
         <br>
          <p>
-          Our purpose is to develop young women who are independent learners with the skills and attributes to tackle existing and future challenges, to make our community, our nation, and our world a better place. BS College and community work together to challenge and empower everyone to learn and achieve their personal best.</p>
+          <?php echo $getdata['mission']; ?></p>
        </div>
        <div class="col-md-4">
 
@@ -58,9 +61,7 @@
         <span ><i style="color: #ed8d37" class="fa fa-graduation-cap"></i> <a href="">How to achieve them</a> 
         </span>
         <br>
-         <p>
-      We ensure that our team is the best in their fields, hardworking, motivated and sincere to our objectives.
-      We ensure that our school environment and facilities are state of the art and conducive to a healthy learning environment and aligned to our objectives.         </div>
+         <p><?php echo $getdata['achieve']; ?></div>
   </div>
     </div>
   </div>

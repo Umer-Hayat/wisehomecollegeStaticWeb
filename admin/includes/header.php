@@ -185,10 +185,10 @@ Session::checkSession();
                   <a
                     style="background-color: transparent;"
                     class="waves-effect waves-dark"
-                    href="images.php"
+                    href="slides.php"
                     aria-expanded="false"
                     ><i class="fa fa-image"></i
-                    ><span class="hide-menu">Images</span></a
+                    ><span class="hide-menu">Slides</span></a
                   >
                 </li>
               </ul>

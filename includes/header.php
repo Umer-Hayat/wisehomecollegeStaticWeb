@@ -1,3 +1,12 @@
+<?php 
+include_once './admin/classes/SlideManagement.php';
+  $slide=new SlideManagement(); 
+
+  $query = "select * from homepagedata";
+  $data=$slide->getAllRecordByQuery($query);
+  $getdata=$data->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,11 +39,10 @@
               <small>
                 <!-- <span class="hide">Admissions Open</span> -->
                 <span
-                  ><i class="fa fa-phone"></i> +92 3456893986 | +92
-                  3456893986</span
+                  ><i class="fa fa-phone"></i> <?php echo $getdata['phone1']; ?> | <?php echo $getdata['phone2']; ?></span
                 >
                 <span class="hide"
-                  ><a href="#"><i class="fa fa-envelope"></i></a> info@wisehomecollege.com</span
+                  ><a href="#"><i class="fa fa-envelope"></i></a><?php echo $getdata['email']; ?></span
                 >
               </small>
             </div>

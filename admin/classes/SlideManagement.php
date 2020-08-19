@@ -3,7 +3,7 @@ $filepath=realpath(dirname(__FILE__));
 include_once ($filepath.'/session.php');
 include_once ($filepath.'/database.php');
 include_once ($filepath.'/format.php');
-class StudentManagement
+class SlideManagement
 {   private $db;
     private $fm;
 	function __construct()
@@ -12,37 +12,20 @@ class StudentManagement
 		$this->fm=new Format();
 	}
 
-    public function register($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from)
+    public function uploadSlideImage($name)
     {
         $name=$this->fm->validation($name);
-        $fname=$this->fm->validation($fname);
-        $cnic=$this->fm->validation($cnic);
-        $exp_date=$this->fm->validation($exp_date);
-        $email=$this->fm->validation($email);
-        $password=$this->fm->validation($password);
-        $contact=$this->fm->validation($contact);
-        $address=$this->fm->validation($address);
-        $qualif=$this->fm->validation($qualif);
-        $q_from=$this->fm->validation($q_from);
 
-        $query1="select * from students where cnic='$cnic'";
-        $result1=$this->db->select($query1);
-        if($result1)
-        {
-            $msg = "Data Not Insert CNIC Already Exist...";
+        $query = "INSERT INTO slider(slide_image) VALUES('$name')";
+        $result = $this->db->insert($query);
+        if ($result) {
+            $msg = "Image Uploaded";
             return $msg;
-        }else
-        {
-            $query = "INSERT INTO students(name,fname,cnic,exp_date,email,password,contact,address,qualif,q_from,status) VALUES('$name','$fname','$cnic','$exp_date','$email','$password','$contact','$address','$qualif','$q_from','0')";
-            $result = $this->db->insert($query);
-            if ($result) {
-                $msg = "Data Inserted";
-                return $msg;
-            } else {
-                $msg = "Data Not Inserted";
-                return $msg;
-            }
+        } else {
+            $msg = "Image Not Uploaded";
+            return $msg;
         }
+
     }
 
     public function updateStudent($name,$fname,$badge,$rollNo,$cnic,$mobile,$section,$program,$semester,$address,$id)
@@ -153,9 +136,9 @@ class StudentManagement
     }
 
 
-    public function deleteStudent($id)
+    public function deleteSlide($id)
     {
-        $query="delete from students where id='$id'";
+        $query="delete from slider where id='$id'";
         $result=$this->db->delete($query);
         return $result;
     }
