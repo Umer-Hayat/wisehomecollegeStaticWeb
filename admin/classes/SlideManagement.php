@@ -138,41 +138,20 @@ class SlideManagement
 
     public function deleteSlide($id)
     {
+        $query = "SELECT * FROM slider WHERE id=$id";
+        $result=$this->db->select($query);
+        $data=$result->fetch_assoc();
+        $image = $data['slide_image'];
+
+        if ($image) {
+            unlink('./'.$image);
+        
+
         $query="delete from slider where id='$id'";
         $result=$this->db->delete($query);
         return $result;
-    }
-    public function addSubjects($subjects,$badge,$section)
-    {
-        $query="UPDATE student SET subjects='$subjects', subjectStatus='1' WHERE badgeId='$badge' AND section='$section'";
-        $result=$this->db->insert($query);
-        if ($result) {
-            $msg = "Data Inserted";
-            return $msg;
-        } else {
-            $msg = "Data Not Inserted";
-            return $msg;
         }
-
     }
-    public function addSubjects2($subjects,$badge)
-    {
-        $query="UPDATE student SET subjects='$subjects', subjectStatus='1' WHERE badgeId='$badge'";
-        $result=$this->db->insert($query);
-        if ($result) {
-            $msg = "Data Inserted";
-            return $msg;
-        } else {
-            $msg = "Data Not Inserted";
-            return $msg;
-        }
-
-    }
-
-
-
-
-
 }
 
 
