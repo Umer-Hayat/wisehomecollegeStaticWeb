@@ -10,6 +10,19 @@ if(isset($_GET['del']))
        echo " <script>alert('Student Deleted Successfully');</script>";
     echo '<script>window.location.replace("students.php")</script>';
 }
+
+if(isset($_GET['edit']))
+{
+
+    if(isset($_POST['update']))
+    {
+        $fee=$_POST['update'];
+        $result=$st->updatefee($fee, $id);
+    }
+    $id=$_GET['edit'];
+    $result=$st->updatefee($id);
+    
+}
 ?>
 
 
@@ -103,16 +116,18 @@ if(isset($_GET['del']))
                         </div>
                         <!--Body-->
                         <div class="modal-body mx-4">
+                          <form method="post">
                           <!--Body-->
                           <div class="md-form mb-3">
                             <label data-error="wrong" data-success="right" for="Form-email1">Fees</label><br>
-                            <input type="number" value="<?php echo $getAll['fee']; ?>"   id="Form-email1" class="form-control validate">
+                            <input type="number" name="fee" value="<?php echo $getAll['fee']; ?>" id="Form-email1" class="form-control validate">
                             
                           </div>
 
                           <div class="text-center mb-3">
-                            <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Save</button>
+                            <button type="submit" name="update"  class="btn blue-gradient btn-block btn-rounded z-depth-1a">Save</button>
                           </div>
+                          </form>
                         </div>
                       </div>
                       <!--/.Content-->

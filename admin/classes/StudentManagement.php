@@ -45,6 +45,18 @@ class StudentManagement
         }
     }
 
+    public function updatefee($fee,$id){
+        $query = "update students set fee='$fee' where id='$id'";
+        $result = $this->db->update($query);
+        if ($result) {
+                $msg = "Data Updated";
+                return $msg;
+            } else {
+                $msg = "Data Not Updated";
+                return $msg;
+            }
+    }
+
     public function updateStudent($name,$fname,$badge,$rollNo,$cnic,$mobile,$section,$program,$semester,$address,$id)
     {
 
