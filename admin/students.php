@@ -31,33 +31,37 @@ if(isset($_GET['del']))
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                       <thead>
                         <tr>
+                          <th>No#</th>
                           <th>Name</th>
                           <th>Father Name</th>
                           <th>CNIC</th>
                           <th>CNIC Expire.</th>
+                          <th>Fees</th>
+                          <th>Fee Status</th>
                           <th>Email</th>
                           <th>Password</th>
                           <th>Contact No</th>
                           <th>Address</th>
                           <th>Qualification</th>
                           <th>From</th>
-                          <th>Status</th>
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
+                          <th>No#</th>
                           <th>Name</th>
                           <th>Father Name</th>
                           <th>CNIC</th>
                           <th>CNIC Expire.</th>
+                          <th>Fees</th>
+                          <th>Fee Status</th>
                           <th>Email</th>
                           <th>Password</th>
                           <th>Contact No</th>
                           <th>Address</th>
                           <th>Qualification</th>
                           <th>From</th>
-                          <th>Status</th>
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </tfoot>
@@ -66,21 +70,64 @@ if(isset($_GET['del']))
                             $letter=$st->getAllRecords('students');
                             if($letter)
                             {
+                              $i=1;
                                 while ($getAll=$letter->fetch_assoc())
                                 {
                         ?>
                         <tr>
+                          <td style="text-align: center;"><?php echo $i; $i++?></td>
                           <td><?php echo $getAll['name']; ?></td>
                           <td><?php echo $getAll['fname']; ?></td>
                           <td><?php echo $getAll['cnic']; ?></td>
                           <td><?php echo $getAll['exp_date']; ?></td>
+                          <td><?php echo $getAll['fee']; ?>
+                            <a
+                              href="students.php?edit=<?php echo $getAll['id']; ?>"
+                              data-original-title="Edit"
+                              data-toggle="modal" data-target="#elegantModalForm"
+                            >
+                              <i class="fa fa-pencil text-inverse pl-3 m-r-10"></i>
+                            </a>
+
+                            <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <!--Content-->
+                      <div class="modal-content form-elegant">
+                        <!--Header-->
+                        <div class="modal-header text-center">
+                          <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Edit Fees</strong></h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body mx-4">
+                          <!--Body-->
+                          <div class="md-form mb-3">
+                            <label data-error="wrong" data-success="right" for="Form-email1">Fees</label><br>
+                            <input type="number" value="<?php echo $getAll['fee']; ?>"   id="Form-email1" class="form-control validate">
+                            
+                          </div>
+
+                          <div class="text-center mb-3">
+                            <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Save</button>
+                          </div>
+                        </div>
+                      </div>
+                      <!--/.Content-->
+                    </div>
+                  </div>
+                  <!-- Modal -->
+                          </td>
+                          <td><?php echo $getAll['status']; ?></td>
                           <td><?php echo $getAll['email']; ?></td>
                           <td><?php echo $getAll['password']; ?></td>
                           <td><?php echo $getAll['contact']; ?></td>
                           <td><?php echo $getAll['address']; ?></td>
                           <td><?php echo $getAll['qualif']; ?></td>
                           <td><?php echo $getAll['q_from']; ?></td>
-                          <td><?php echo $getAll['status']; ?></td>
+                          
                           <!-- <td>
                             <div class="label label-table label-success">
                               Completed
@@ -107,6 +154,12 @@ if(isset($_GET['del']))
                         <?php }} ?>
                       </tbody>
                     </table>
+
+
+                    
+
+
+
                   </div>
                 </div>
               </div>
