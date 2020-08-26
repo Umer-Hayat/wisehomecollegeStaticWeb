@@ -6,9 +6,10 @@ $st=new StudentManagement();
 if(isset($_GET['del']))
 {
     $result=$st->deleteStudent($_GET['del']);
-    if($result)
-       echo " <script>alert('Student Deleted Successfully');</script>";
-    echo '<script>window.location.replace("students.php")</script>';
+    if($result){
+      echo " <script>alert('Student Deleted Successfully');</script>";
+      echo '<script>window.location.replace("students.php")</script>';
+    }
 }
 
 if(isset($_GET['edit']))
