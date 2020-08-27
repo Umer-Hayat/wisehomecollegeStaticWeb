@@ -45,22 +45,6 @@ include_once 'admin/classes/SlideManagement.php';
               }
             }
           ?>
-
-
-
-          <!-- <div class="carousel-item active">
-            <img src="img/s11.jpg" alt="Los Angeles" />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="img/s21.jpg"
-              alt="Chicago"
-            />
-          </div>
-          <div class="carousel-item">
-            <img src="img/s31.jpg" alt="New York"/>
-          </div>
-        </div> -->
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
           <span class="carousel-control-prev-icon"></span>
         </a>
@@ -69,21 +53,7 @@ include_once 'admin/classes/SlideManagement.php';
         </a>
       </div>
     </section>
-    <!-- slider end -->
-
-
     
-<!-- admission burron -->
-<!-- <section class="admission">
-  <div class="container">
-    <div class="row  admission  text-center">
-      <div class="col-md-12">
-        <button class="btn"><a href="#" target="blank">Apply for Admission</a></button>
-      </div>
-    </div>
-  </div>
-
-</section> -->
 
  <!-- messages area -->
  <section class="messege">
