@@ -69,7 +69,6 @@ header .dropdown-item:hover {
 
 header nav {
   margin-top: 3%;
-  -webkit-transition: 200ms ease;
   transition: 200ms ease;
 }
 
@@ -82,13 +81,11 @@ header nav a {
 
 header nav li {
   margin-right: 50px;
-  -webkit-transition: 200ms ease;
   transition: 200ms ease;
 }
 
 header nav li .nav-link:hover {
   padding-top: 5px;
-  -webkit-transition: 0.1s;
   transition: 0.1s;
   color: #074582 !important;
   font-weight: bold;
@@ -188,8 +185,7 @@ header nav li .nav-link:hover {
 }
 
 .messege .pgc {
-  -webkit-box-shadow: 2px 2px #c2c2c2;
-          box-shadow: 2px 2px #c2c2c2;
+  box-shadow: 2px 2px #c2c2c2;
   border-radius: 5px;
   background-color: #074582;
   padding: 2%;
@@ -202,13 +198,11 @@ header nav li .nav-link:hover {
 
 .messege .pgc .pp img {
   width: 60%;
-  -webkit-transition: 0.7s;
   transition: 0.7s;
 }
 
 .messege .pgc .pp img:hover {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .messege .row .Chairman {
@@ -348,13 +342,11 @@ header nav li .nav-link:hover {
 
 .course .box {
   text-align: center;
-  -webkit-box-shadow: 0 0 10px #f2f2f2;
   box-shadow: 0 0 10px #f2f2f2;
   background-color: #fff;
   border-radius: 10px;
   padding: 15px;
   margin: 15px;
-  -webkit-transition: 0.7s;
   transition: 0.7s;
 }
 
@@ -385,8 +377,7 @@ header nav li .nav-link:hover {
 }
 
 .course .box:hover {
-  -webkit-transform: scale(1.08);
-          transform: scale(1.08);
+  transform: scale(1.08);
 }
 
 /*=============================================
@@ -397,19 +388,16 @@ header nav li .nav-link:hover {
 }
 
 .certificate .img-box {
-  -webkit-box-shadow: 0 0 10px #dad8d8;
   box-shadow: 0 0 10px #dad8d8;
   background-color: #fff;
   border-radius: 10px;
   padding: 10px;
   margin: 15px;
-  -webkit-transition: 0.7s;
   transition: 0.7s;
 }
 
 .certificate .img-box:hover {
-  -webkit-transform: scale(1.08);
-          transform: scale(1.08);
+  transform: scale(1.08);
 }
 
 .certificate .view-btn {
@@ -454,7 +442,6 @@ header nav li .nav-link:hover {
 
 .register .container {
   background-color: #fff;
-  -webkit-box-shadow: 0 0 10px #f2f2f2;
   box-shadow: 0 0 10px #f2f2f2;
   padding: 20px;
   border-radius: 10px;
@@ -483,15 +470,6 @@ header nav li .nav-link:hover {
   font-size: 55px;
   font-weight: bolder;
   font-family: "Roboto Slab", serif;
-}
-
-@-webkit-keyframes shine {
-  from {
-    -webkit-mask-position: 150%;
-  }
-  to {
-    -webkit-mask-position: -50%;
-  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -921,4 +899,3 @@ footer {
 .scholarships .scholarships-detail a:hover .fa {
   background-color: #f09a3e;
 }
-/*# sourceMappingURL=style.css.map */

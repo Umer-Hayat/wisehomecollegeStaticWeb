@@ -21,10 +21,10 @@ include_once './admin/classes/SlideManagement.php';
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
-    <link rel="stylesheet" href="custom/cards-gallery.css">
-    <link rel="stylesheet" href="custom/style.css" />
+    <link rel="stylesheet" href="dist/css/cards-gallery.css">
+    <link rel="stylesheet" href="dist/css/style.css" />
     <link rel="icon" href="img/logo.jpg" type="image/gif" sizes="16x16">
-    <meta name="description" content="BS College For Girls kharian campus - Bright Stars College is a Project of Bright Stars educational network that is a welfare organization and aims to promote learning. This society has allocated generously millions of scholarships to educational projects ">
+    <meta name="description" content="Wise Home College - Wise Home College is a Project of Bright Stars educational network that is a welfare organization and aims to promote learning. This society has allocated generously millions of scholarships to educational projects ">
     <meta name="keywords" content="Wise Home College, kharian, kharian campus">
       <title>Wise Home College Kharian</title>
   </head>
