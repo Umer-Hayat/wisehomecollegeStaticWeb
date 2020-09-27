@@ -88,8 +88,8 @@ header {
         padding-top: 5px;
         // border-top: 3px solid $color;
         // margin-top: -19px;
-        // transition: height 200ms ease-in;
-        transition: 0.1s;
+        transition: height 200ms ease-out;
+        transition: 0.2s;
         color: $color !important;
         font-weight: bold;
         cursor: pointer;

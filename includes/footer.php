@@ -38,17 +38,23 @@ include_once './admin/classes/SlideManagement.php';
           <div class="col-md-3">
             <h6>Contact Us</h6>
             <ul class="value">
-              <li><a> <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <li><a
+                    href="https://maps.google.com/?q=Wise home college of modern languages"
+                    target="blank"
+                  > <i class="fa fa-map-marker" aria-hidden="true"></i>
                 1st Floor Shoukat Plaza
                 G.T Road Kharian</a>
               </li>
               <li>
-                <i class="fa fa-mobile" aria-hidden="true"></i>
-                <a href="#"><?php echo $getdata['phone1']; ?></a>
+                
+                <a href="tel: <?php echo $getdata['phone1']; ?>">
+                  <i class="fa fa-mobile"></i></a> | 
+                  <a href="https://api.whatsapp.com/send?phone=<?php echo $getdata['phone2']; ?>"><i class="fa fa-whatsapp"></i></a>
+                  <?php echo $getdata['phone1']; ?>
               </li>
               <li>
                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                <a href="#"><?php echo $getdata['email']; ?></a>
+                <a href="mailto:<?php echo $getdata['email']; ?>"><?php echo $getdata['email']; ?></a>
               </li>
               <li>
                 <i class="fa fa-clock-o" aria-hidden="true"></i>

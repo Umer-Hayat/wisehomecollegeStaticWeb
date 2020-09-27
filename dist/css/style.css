@@ -86,7 +86,8 @@ header nav li {
 
 header nav li .nav-link:hover {
   padding-top: 5px;
-  transition: 0.1s;
+  transition: height 200ms ease-out;
+  transition: 0.2s;
   color: #074582 !important;
   font-weight: bold;
   cursor: pointer;

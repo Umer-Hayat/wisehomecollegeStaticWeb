@@ -48,7 +48,7 @@ include_once './admin/classes/SlideManagement.php';
               </small>
             </div>
             <div class="col-md-4 text-lg-right hide">
-              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a target="blank" href="https://www.facebook.com/wisehomecollege/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
               <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
             </div>
           </div>
