@@ -39,12 +39,11 @@ include_once './admin/classes/SlideManagement.php';
               <small>
                 <!-- <span class="hide">Admissions Open</span> -->
                 <span
-                  ><i class="fa fa-phone"></i> <?php echo $getdata['phone1']; ?> 
-                  | 
-                  <a href="https://api.whatsapp.com/send?phone=<?php echo $getdata['phone2']; ?>"><?php echo $getdata['phone2']; ?></a>
+                  ><a href="tel: <?php echo $getdata['phone1']; ?>"><i class="fa fa-phone"></i> <?php echo $getdata['phone1']; ?></a>
+                  |<a href="https://api.whatsapp.com/send?phone=<?php echo $getdata['phone2']; ?>"><i class="fa fa-whatsapp"></i> <?php echo $getdata['phone2']; ?></a>
                   </span>
                 <span class="hide"
-                  ><a href="#"><i class="fa fa-envelope"></i></a><?php echo $getdata['email']; ?></span
+                  ><a href="mailto:<?php echo $getdata['email']; ?>"><i class="fa fa-envelope"></i><?php echo $getdata['email']; ?></a></span
                 >
               </small>
             </div>
