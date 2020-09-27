@@ -600,7 +600,7 @@ header nav li .nav-link:hover {
 =            About us Code            =
 =============================================*/
 .bg {
-  background-image: url(../img/aboutus.jpg);
+  background-image: url("../../img/aboutus.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
