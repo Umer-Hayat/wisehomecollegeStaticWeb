@@ -15,7 +15,38 @@ include_once 'admin/classes/StudentManagement.php';
     $qualif = $_POST['qualif'];
     $q_from = $_POST['from'];
 
-    // $check = $st->register($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from);
+    $check = $st->register($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from);
+
+if($check== 'Data Inserted'){
+    $body = '
+<table>
+  <tr>
+    <td class="label"><b>Name:</b></td>
+    <td>'. $name .'</td>
+  </tr>
+  <tr>
+    <td class="label"><b>Father Name:</b></td>
+    <td>' . $fname . '</td>
+  </tr>
+  <tr>
+    <td class="label"><b>CNIC no:</b></td>
+    <td>' . $cnic . '</td>
+  </tr>
+  <tr>
+    <td class="label"><b>Email:</b></td>
+    <td>' . $email . '</td>
+  </tr>
+  <tr>
+    <td class="label"><b>Phone No:</b></td>
+    <td><a href=tel:'. $contact .'>' . $contact . '</a></td>
+  </tr>
+  <tr>
+    <td class="label"><b>Address:</b></td>
+    <td>' . $address . '</td>
+  </tr>
+</table>';
+
+
 
     // PHP Mailer
 
@@ -34,16 +65,16 @@ include_once 'admin/classes/StudentManagement.php';
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
 
-    $mail->setFrom(EMAIL, 'Info');
+    $mail->setFrom(EMAIL, 'Wise Home Portal');
     $mail->addAddress('umerhayat520@gmail.com');
     $mail->addReplyTo(EMAIL);
 
     // $mail->addAttachment('/var/tmp/file.tar.gz'); 
     $mail->isHTML(true);                                  // Set email format to HTML
 
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->Subject = 'New Student Register';
+    $mail->Body    = $body;
+    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     if(!$mail->send()) {
         // echo 'Message could not be sent.';
@@ -51,7 +82,7 @@ include_once 'admin/classes/StudentManagement.php';
     } else {
         // echo 'Message has been sent';
     }
-    }
+    }}
 ?>
 <br>
     <section class="bg">
