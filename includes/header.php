@@ -5,6 +5,9 @@ include_once './admin/classes/SlideManagement.php';
   $query = "select * from homepagedata";
   $data=$slide->getAllRecordByQuery($query);
   $getdata=$data->fetch_assoc();
+
+
+ 
 ?>
 
 <!DOCTYPE html>

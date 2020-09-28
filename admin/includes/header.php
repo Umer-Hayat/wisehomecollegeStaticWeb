@@ -1,4 +1,19 @@
 <?php
+
+$now = new DateTime();
+$back = $now->sub(DateInterval::createFromDateString('30 days'));
+echo $back->format('d-m-y');
+
+echo "hello";
+echo $back->format('d-m-y');
+
+echo "hello";
+echo $back->format('d-m-y');
+echo "Hello";
+$d=strtotime("-1 Month");
+echo date("d-m-y", $d) . "<br>";
+
+
 include_once "classes/session.php";
 Session::checkSession();
 ?>
