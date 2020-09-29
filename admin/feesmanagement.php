@@ -15,13 +15,13 @@ if(isset($_GET['del']))
 if(isset($_GET['edit']))
 {
 
-    if(isset($_POST['update']))
-    {
-        $fee=$_POST['update'];
-        $result=$st->updatefee($fee, $id);
-    }
-    $id=$_GET['edit'];
-    $result=$st->updatefee($id);
+    // if(isset($_POST['update']))
+    // {
+    //     $fee=$_POST['update'];
+    //     $result=$st->updatefee($fee, $id);
+    // }
+    // $id=$_GET['edit'];
+    // $result=$st->updatefee($id);
     
 }
 ?>
@@ -31,15 +31,74 @@ if(isset($_GET['edit']))
         <br />
         <br />
         <div class="container-fluid">
+          <?php
+          if(isset($_GET['edit']))
+          {
+
+           ?>
+
+          <div class="row">
+            <!-- column -->
+            <div class="col-12">
+              <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Update Fees of Student</h3>
+                               
+                                <form class="form-material m-t-30 row" method="post">
+                                  <div class="row text-center">
+                                       <div style="color:red; margin-left: 20px; font-size:16px;"><?php
+                                           if (isset($_POST['submit'])) {
+                                               echo "$check";
+                                           }
+                                           ?>
+                                    </div>
+                                   </div>
+                                    <div class="form-group col-md-3 m-t-10">
+                                      <label>Student Name:</label>
+                                <!-- <select class="form-control" required name="RoomNo"> -->
+                                    <!-- <option value="">Select Student</option> -->
+                                <?php
+                                $id = $_GET['edit'];
+                            $student=$st->getAllRecordByQuery("select * from students where status='active' and id='$id'");
+                                if($student)
+                                {
+                                while ($getAll=$student->fetch_assoc()) {
+                                    ?>
+                                    <!-- <option value="<?php echo $getAll['id']; ?>"><?php echo $getAll['name']; ?></option> -->
+                                    <input type="text" name="fname" readonly class="form-control form-control-line" value="<?php echo $getAll['name']; ?>"> 
+                                    <?php
+                                }}
+                                ?>
+                                </select>
+                                    </div>
+                                    <div class="form-group col-md-3 m-t-10">
+                                        <input type="text" name="fname" class="form-control form-control-line" placeholder="Enter Student Father Name"> 
+                                    </div>
+                                    <div class="form-group col-md-3 m-t-10">
+                                        <input type="number" name="cnic" class="form-control" placeholder="Enter CNIC Number">
+                                    </div>
+                                    <div class="form-group col-md-4 m-t-10">
+                                        <label>Class Starting Date:</label>
+                                        <input type="date" name="expdate" class="form-control" placeholder="Enter CNIC Number">
+                                    </div>
+                                    <div class="col-md-12 m-t-10 text-center">
+                                        <input type="reset" class="btn btn-secondary" >
+                                        <input type="submit" name="submit" value="Update" class="btn btn-primary" >
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+          </div>
+        <?php } ?>
+
           <div class="row">
             <!-- column -->
 
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Students</h4>
-                  <a href="addStudent.php" class="btn btn-primary">Add New Student</a>
-                    <br>
+                  <h4 class="card-title">Fees Management</h4>
                   <hr />
                   <div class="table-responsive m-t-10">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
@@ -48,16 +107,9 @@ if(isset($_GET['edit']))
                           <th>No#</th>
                           <th>Name</th>
                           <th>Father Name</th>
-                          <th>CNIC</th>
-                          <th>CNIC Expire.</th>
                           <th>Fees</th>
                           <th>Fee Status</th>
-                          <th>Email</th>
-                          <th>Password</th>
                           <th>Contact No</th>
-                          <th>Address</th>
-                          <th>Qualification</th>
-                          <th>From</th>
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </thead>
@@ -66,92 +118,43 @@ if(isset($_GET['edit']))
                           <th>No#</th>
                           <th>Name</th>
                           <th>Father Name</th>
-                          <th>CNIC</th>
-                          <th>CNIC Expire.</th>
                           <th>Fees</th>
                           <th>Fee Status</th>
-                          <th>Email</th>
-                          <th>Password</th>
                           <th>Contact No</th>
-                          <th>Address</th>
-                          <th>Qualification</th>
-                          <th>From</th>
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </tfoot>
                       <tbody>
                          <?php
-                            $letter=$st->getAllRecords('students');
-                            if($letter)
+                                $student=$st->getAllRecordsByStatus('active');
+                            
+                            if($student)
                             {
                               $i=1;
-                                while ($getAll=$letter->fetch_assoc())
+                                while ($getAll=$student->fetch_assoc())
                                 {
                         ?>
                         <tr>
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
                           <td><?php echo $getAll['name']; ?></td>
                           <td><?php echo $getAll['fname']; ?></td>
-                          <td><?php echo $getAll['cnic']; ?></td>
-                          <td><?php echo $getAll['exp_date']; ?></td>
-                          <td><?php echo $getAll['fee']; ?>
-                            <a
-                              href="students.php?edit=<?php echo $getAll['id']; ?>"
-                              data-original-title="Edit"
-                              data-toggle="modal" data-target="#elegantModalForm"
-                            >
-                              <i class="fa fa-pencil text-inverse pl-3 m-r-10"></i>
-                            </a>
-
-                            <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <!--Content-->
-                      <div class="modal-content form-elegant">
-                        <!--Header-->
-                        <div class="modal-header text-center">
-                          <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Edit Fees</strong></h3>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <!--Body-->
-                        <div class="modal-body mx-4">
-                          <form method="post">
-                          <!--Body-->
-                          <div class="md-form mb-3">
-                            <label data-error="wrong" data-success="right" for="Form-email1">Fees</label><br>
-                            <input type="number" name="fee" value="<?php echo $getAll['fee']; ?>" id="Form-email1" class="form-control validate">
-                            
-                          </div>
-
-                          <div class="text-center mb-3">
-                            <button type="submit" name="update"  class="btn blue-gradient btn-block btn-rounded z-depth-1a">Save</button>
-                          </div>
-                          </form>
-                        </div>
-                      </div>
-                      <!--/.Content-->
-                    </div>
-                  </div>
-                  <!-- Modal -->
+                          <td><?php echo $getAll['fee']; ?></td>
+                          <td>
+                            <?php
+                              if($getAll['fee_status'] == 'paid'){ ?>
+                                <div class="label label-table label-success">
+                                  <?php echo $getAll['fee_status']; ?>
+                                </div>
+                            <?php }else{ ?>
+                                <div class="label label-table label-warning">
+                                  <?php echo $getAll['fee_status']; ?>
+                                </div>
+                            <?php } ?>
                           </td>
-                          <td><?php echo $getAll['status']; ?></td>
-                          <td><?php echo $getAll['email']; ?></td>
-                          <td><?php echo $getAll['password']; ?></td>
                           <td><?php echo $getAll['contact']; ?></td>
-                          <td><?php echo $getAll['address']; ?></td>
-                          <td><?php echo $getAll['qualif']; ?></td>
-                          <td><?php echo $getAll['q_from']; ?></td>
-                          
-                          <!-- <td>
-                            <div class="label label-table label-success">
-                              Completed
-                            </div>
-                          </td> -->
                           <td class="text-nowrap">
                             <a
-                              href="updateStudent.php?edit=<?php echo $getAll['id']; ?>"
+                              href="feesmanagement.php?edit=<?php echo $getAll['id']; ?>"
                               data-original-title="Edit"
                               data-toggle="tooltip"
                               data-target="#editOrder"

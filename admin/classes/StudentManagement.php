@@ -140,6 +140,12 @@ class StudentManagement
         $result=$this->db->select($query);
         return $result;
     }
+    public function getAllRecordsByStatus($status)
+    {
+        $query="select * from students where status='$status'";
+        $result=$this->db->select($query);
+        return $result;
+    }
 
     public function getAllRecord($id,$table)
     {
