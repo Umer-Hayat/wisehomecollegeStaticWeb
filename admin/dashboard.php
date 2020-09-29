@@ -48,7 +48,7 @@
                 </div>
               </div> -->
 
-              <div class="col-lg-4">
+              <div class="col-lg-6">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -62,16 +62,20 @@
                           <table class="table">
                             <thead>
                               <tr>
-                                <th>Name</th>
+                                <th>Student Name</th>
+                                <th>Payment Method</th>
+                                <th>Last paid Date</th>
                                 <th>Fee Status</th>
-                                <th>Action</th>
+                                <!-- <th>Action</th> -->
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
                                 <td>abc</td>
-                                <td>2000</td>
-                                <td class="text-nowrap">
+                                <td>Intallment</td>
+                                <td>28-8-2020</td>
+                                <td>unpayed</td>
+                                <!-- <td class="text-nowrap">
                                   <a
                                     href="#"
                                     data-toggle="tooltip"
@@ -79,7 +83,7 @@
                                   >
                                     <i class="fa fa-send text-danger"></i>
                                   </a>
-                                </td>
+                                </td> -->
                               </tr>
                             </tbody>
                           </table>
