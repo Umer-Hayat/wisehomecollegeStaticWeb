@@ -82,7 +82,20 @@ if(isset($_GET['del']))
                                     <div class="form-group col-md-4 m-t-10">
                                         <input type="text" name="from" class="form-control" placeholder="From">
                                     </div>
-                                    <div class="form-group col-md-12 m-t-10">
+                                    <div class="form-group col-md-6">
+                                        <select name="course" class="form-control">
+                                          <option>Select course</option>
+                                          <option value="IELTS">IELTS</option>
+                                          <option  value="german">German</option>
+                                          <option  value="spanish">Spanish</option>
+                                          <option  value="norweigen">Norweigen</option>
+                                          <option  value="italian">Italian</option>
+                                          <option  value="danish">Danish</option>
+                                          <option  value="swedish">Swedish</option>
+                                          <option  value="spoken">Spoken English</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6 m-t-10">
                                         <label>Address</label>
                                         <textarea class="form-control" name="address" rows="2"></textarea>
                                     </div>
@@ -257,8 +270,7 @@ if(isset($_GET['del']))
                         <tr>
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
                           <td>
-                            <a
-                              
+                            <a                              
                               href="students.php?edit=<?php echo $getAll['id']; ?>">
                               <?php echo $getAll['name']; ?>
                             </a>
