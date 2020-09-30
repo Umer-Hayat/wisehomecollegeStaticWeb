@@ -45,6 +45,18 @@ class StudentManagement
         }
     }
 
+    public function updatestudent($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from,$id){
+        $query = "update students set name='$name',fname='$fname',cnic='$cnic',exp_date='$exp_date',email='$email',password='$password',contact='$contact',address='$address',qualif='$qualif',q_from='$q_from' where id='$id'";
+        $result = $this->db->update($query);
+        if ($result) {
+                $msg = "Data Updated";
+                return $msg;
+            } else {
+                $msg = "Data Not Updated";
+                return $msg;
+            }
+    }
+
     public function updatefee($fee,$id){
         $query = "update students set fee='$fee' where id='$id'";
         $result = $this->db->update($query);
@@ -57,51 +69,51 @@ class StudentManagement
             }
     }
 
-    public function updateStudent($name,$fname,$badge,$rollNo,$cnic,$mobile,$section,$program,$semester,$address,$id)
-    {
+    // public function updateStudent($name,$fname,$badge,$rollNo,$cnic,$mobile,$section,$program,$semester,$address,$id)
+    // {
 
 
-        $query1="select * from student where rollNo='$rollNo'";
-        $result1=$this->db->select($query1);
-        $query2="select * from student where cnic='$cnic'";
-        $result2=$this->db->select($query2);
+    //     $query1="select * from student where rollNo='$rollNo'";
+    //     $result1=$this->db->select($query1);
+    //     $query2="select * from student where cnic='$cnic'";
+    //     $result2=$this->db->select($query2);
 
-        if($result1 && $result2)
-        {
-            $query = "update student set name='$name',fatherName='$fname',badgeId='$badge',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
-            $result = $this->db->insert($query);
-            $msg = "Roll No and cnic Already Exist... but other information updated";
-            return $msg;
-        }else if($result1) {
-            $query = "update student set name='$name',fatherName='$fname',badgeId='$badge',cnic='$cnic',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
-            $result = $this->db->insert($query);
-            $msg = "Roll No Already Exist... but other information updated";
-            return $msg;
-        }else if($result2)
-        {
-            $query = "update student set name='$name',fatherName='$fname',rollNo='$rollNo',badgeId='$badge',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
-            $result = $this->db->insert($query);
-            $msg = "Data Not Insert CNIC Already Exist... but other information updated";
-            return $msg;
-        }else
-        {
-            $query4="select * from student_badge where id='$badge'";
-            $result4=$this->db->select($query4);
-            $badge4=$result4->fetch_assoc();
-            $rollNo=$badge4['badge'].'-'.$rollNo;
+    //     if($result1 && $result2)
+    //     {
+    //         $query = "update student set name='$name',fatherName='$fname',badgeId='$badge',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
+    //         $result = $this->db->insert($query);
+    //         $msg = "Roll No and cnic Already Exist... but other information updated";
+    //         return $msg;
+    //     }else if($result1) {
+    //         $query = "update student set name='$name',fatherName='$fname',badgeId='$badge',cnic='$cnic',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
+    //         $result = $this->db->insert($query);
+    //         $msg = "Roll No Already Exist... but other information updated";
+    //         return $msg;
+    //     }else if($result2)
+    //     {
+    //         $query = "update student set name='$name',fatherName='$fname',rollNo='$rollNo',badgeId='$badge',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
+    //         $result = $this->db->insert($query);
+    //         $msg = "Data Not Insert CNIC Already Exist... but other information updated";
+    //         return $msg;
+    //     }else
+    //     {
+    //         $query4="select * from student_badge where id='$badge'";
+    //         $result4=$this->db->select($query4);
+    //         $badge4=$result4->fetch_assoc();
+    //         $rollNo=$badge4['badge'].'-'.$rollNo;
 
-            $query = "update student set name='$name',fatherName='$fname',rollNo='$rollNo',badgeId='$badge',cnic='$cnic',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
-            $result = $this->db->insert($query);
-            if ($result) {
-                $msg = "Data Inserted";
-                return $msg;
-            } else {
-                $msg = "Data Not Inserted";
-                return $msg;
-            }
-        }
+    //         $query = "update student set name='$name',fatherName='$fname',rollNo='$rollNo',badgeId='$badge',cnic='$cnic',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
+    //         $result = $this->db->insert($query);
+    //         if ($result) {
+    //             $msg = "Data Inserted";
+    //             return $msg;
+    //         } else {
+    //             $msg = "Data Not Inserted";
+    //             return $msg;
+    //         }
+    //     }
 
-    }
+    // }
 
 	public function addBadge($badge)
     {

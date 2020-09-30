@@ -11,21 +11,7 @@ if(isset($_GET['del']))
       echo '<script>window.location.replace("students.php")</script>';
     }
 }
-
-// if(isset($_GET['edit']))
-// {
-
-    // if(isset($_POST['update']))
-    // {
-    //     $fee=$_POST['update'];
-    //     $result=$st->updatefee($fee, $id);
-    // }
-    // $id=$_GET['edit'];
-    // $result=$st->updatefee($id);
-// }
 ?>
-
-
       <div class="page-wrapper">
         <br />
         <br />
@@ -33,7 +19,6 @@ if(isset($_GET['del']))
 
           <?php
           if (isset($_GET['add'])) {
-
 
           if(isset($_POST['submit'])){
             $name = $_POST['name'];
@@ -58,10 +43,10 @@ if(isset($_GET['del']))
             <div class="col-12">
               <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title text-center">Add New Student</h3>
+                                <h3 class="card-title text-center"><b>Add New Student</b></h3>
                                
                                 <form class="form-material m-t-20 row" method="post">
-                                  <div class="row text-center">
+                                  <div class="row text-center" style="margin-right: -5px;">
                                        <div style="color:red; margin-left: 20px; font-size:16px;"><?php
                                            if (isset($_POST['submit'])) {
                                                echo "$check";
@@ -69,22 +54,22 @@ if(isset($_GET['del']))
                                            ?>
                                     </div>
                                    </div>
-                                    <div class="form-group col-md-6 m-t-10">
+                                    <div class="form-group col-md-4 m-t-10">
                                         <input type="text" name="name" class="form-control form-control-line" placeholder="Enter Student Name"> 
                                     </div>
-                                    <div class="form-group col-md-6 m-t-10">
+                                    <div class="form-group col-md-4 m-t-10">
                                         <input type="text" name="fname" class="form-control form-control-line" placeholder="Enter Student Father Name"> 
                                     </div>
-                                    <div class="form-group col-md-6 m-t-10">
+                                    <div class="form-group col-md-4 m-t-10">
                                         <input type="number" name="cnic" class="form-control" placeholder="Enter CNIC Number">
                                     </div>
-                                    <div class="form-group col-md-6 m-t-10">
+                                    <div class="form-group col-md-4 m-t-10">
                                         <input type="date" name="expdate" class="form-control" placeholder="Enter CNIC Number">
                                     </div>
-                                    <div class="form-group col-md-6 m-t-10">
+                                    <div class="form-group col-md-4 m-t-10">
                                         <input type="email" name="email" class="form-control" placeholder="Enter Student Email">
                                     </div>
-                                    <div class="form-group col-md-6 m-t-10">
+                                    <div class="form-group col-md-4 m-t-10">
                                         <input type="password" name="password" class="form-control" placeholder="Enter Password">
                                     </div>
                                     <div class="form-group col-md-4 m-t-10">
@@ -113,15 +98,114 @@ if(isset($_GET['del']))
           <?php }
            ?>
 
+           <?php
+          if (isset($_GET['edit'])) {
+            $id = $_GET['edit'];
+
+          if(isset($_POST['update'])){
+            $name = $_POST['name'];
+            $fname = $_POST['fname'];
+            $cnic = $_POST['cnic'];
+            $exp_date = $_POST['expdate'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $contact = $_POST['contact'];
+            $address = $_POST['address'];
+            $qualif = $_POST['qualif'];
+            $q_from = $_POST['from'];
+            $check = $st->updatestudent($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from,$id);
+            if ($check == "Data Updated") {
+                echo '<script>window.location.replace("students.php")</script>';
+            }
+            }
+            
+
+            $std=$st->getAllRecord($id,'students');
+            $getAll=$std->fetch_assoc();
+
+           ?>
+            <div class="row">
+            <!-- column -->
+            <div class="col-12">
+              <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title text-center"><b>Update Student Record</b></h3>
+                               
+                                <form class="form-material m-t-20 row" method="post">
+                                  <div class="row text-center" style="margin-right: -5px;">
+                                       <div style="color:red; margin-left: 20px; font-size:16px;"><?php
+                                           if (isset($_POST['submit'])) {
+                                               echo "$check";
+                                           }
+                                           ?>
+                                    </div>
+                                   </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Student Name:</b></label>
+                                        <input type="text" name="name" class="form-control form-control-line" value="<?php echo $getAll['name']; ?>"> 
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Student Father Name:</b></label>
+                                        <input type="text" name="fname" class="form-control form-control-line" value="<?php echo $getAll['fname']; ?>"> 
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>CNIC No:</b></label>
+                                        <input type="number" name="cnic" class="form-control" value="<?php echo $getAll['cnic']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>CNIC Expire Date:</b></label>
+                                        <input type="text" name="expdate" class="form-control" value="<?php echo $getAll['exp_date']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Email:</b></label>
+                                        <input type="email" name="email" class="form-control" value="<?php echo $getAll['email']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Password:</b></label>
+                                        <input type="password" name="password" class="form-control" value="<?php echo $getAll['password']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Contact No:</b></label>
+                                        <input type="number" name="contact" class="form-control" value="<?php echo $getAll['contact']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Qualification:</b></label>
+                                        <input type="text" name="qualif" class="form-control" value="<?php echo $getAll['qualif']; ?>">
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                      <label><b>From:</b></label>
+                                        <input type="text" name="from" class="form-control" value="<?php echo $getAll['q_from']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label><b>Address</b></label>
+                                        <textarea class="form-control" name="address" rows="2"><?php echo $getAll['address']; ?></textarea>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <!-- <input type="reset" class="btn btn-secondary" > -->
+                                        <input type="submit" name="update" value="Update" class="btn btn-primary" >
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+          </div>
+          <?php }
+           ?>
+
+
           <div class="row">
             <!-- column -->
 
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Students</h4>
+                  <h3 class="card-title"><b>Students</b></h3>
+                  <?php
+                  if (!isset($_GET['add'])) { ?>
                   <a href="students.php?add" class="btn btn-primary">Add New Student</a>
                     <br>
+                  <?php } ?>
                   <hr />
                   <div class="table-responsive m-t-10">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
@@ -130,16 +214,16 @@ if(isset($_GET['del']))
                           <th>No#</th>
                           <th>Name</th>
                           <th>Father Name</th>
-                          <th>CNIC</th>
+                          <!-- <th>CNIC</th>
                           <th>CNIC Expire.</th>
                           <th>Fees</th>
-                          <th>Fee Status</th>
+                          <th>Fee Status</th> -->
                           <th>Email</th>
-                          <th>Password</th>
+                          <!-- <th>Password</th> -->
                           <th>Contact No</th>
-                          <th>Address</th>
+                          <!-- <th>Address</th>
                           <th>Qualification</th>
-                          <th>From</th>
+                          <th>From</th> -->
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </thead>
@@ -148,16 +232,16 @@ if(isset($_GET['del']))
                           <th>No#</th>
                           <th>Name</th>
                           <th>Father Name</th>
-                          <th>CNIC</th>
+                          <!-- <th>CNIC</th>
                           <th>CNIC Expire.</th>
                           <th>Fees</th>
-                          <th>Fee Status</th>
+                          <th>Fee Status</th> -->
                           <th>Email</th>
-                          <th>Password</th>
+                          <!-- <th>Password</th> -->
                           <th>Contact No</th>
-                          <th>Address</th>
+                          <!-- <th>Address</th>
                           <th>Qualification</th>
-                          <th>From</th>
+                          <th>From</th> -->
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </tfoot>
@@ -172,59 +256,24 @@ if(isset($_GET['del']))
                         ?>
                         <tr>
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
-                          <td><?php echo $getAll['name']; ?></td>
-                          <td><?php echo $getAll['fname']; ?></td>
-                          <td><?php echo $getAll['cnic']; ?></td>
-                          <td><?php echo $getAll['exp_date']; ?></td>
-                          <td><?php echo $getAll['fee']; ?>
+                          <td>
                             <a
-                              href="students.php?edit=<?php echo $getAll['id']; ?>"
-                              data-original-title="Edit"
-                              data-toggle="modal" data-target="#elegantModalForm"
-                            >
-                              <i class="fa fa-pencil text-inverse pl-3 m-r-10"></i>
+                              
+                              href="students.php?edit=<?php echo $getAll['id']; ?>">
+                              <?php echo $getAll['name']; ?>
                             </a>
-
-                            <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <!--Content-->
-                      <div class="modal-content form-elegant">
-                        <!--Header-->
-                        <div class="modal-header text-center">
-                          <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Edit Fees</strong></h3>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <!--Body-->
-                        <div class="modal-body mx-4">
-                          <form method="post">
-                          <!--Body-->
-                          <div class="md-form mb-3">
-                            <label data-error="wrong" data-success="right" for="Form-email1">Fees</label><br>
-                            <input type="number" name="fee" value="<?php echo $getAll['fee']; ?>" id="Form-email1" class="form-control validate">
-                            
-                          </div>
-
-                          <div class="text-center mb-3">
-                            <button type="submit" name="update"  class="btn blue-gradient btn-block btn-rounded z-depth-1a">Save</button>
-                          </div>
-                          </form>
-                        </div>
-                      </div>
-                      <!--/.Content-->
-                    </div>
-                  </div>
-                  <!-- Modal -->
                           </td>
-                          <td><?php echo $getAll['status']; ?></td>
+                          <td><?php echo $getAll['fname']; ?></td>
+                          <!-- <td><?php echo $getAll['cnic']; ?></td> -->
+                          <!-- <td><?php echo $getAll['exp_date']; ?></td> -->
+                          <!-- <td><?php echo $getAll['fee']; ?></td> -->
+                          <!-- <td><?php echo $getAll['status']; ?></td> -->
                           <td><?php echo $getAll['email']; ?></td>
-                          <td><?php echo $getAll['password']; ?></td>
+                          <!-- <td><?php echo $getAll['password']; ?></td> -->
                           <td><?php echo $getAll['contact']; ?></td>
-                          <td><?php echo $getAll['address']; ?></td>
+                          <!-- <td><?php echo $getAll['address']; ?></td>
                           <td><?php echo $getAll['qualif']; ?></td>
-                          <td><?php echo $getAll['q_from']; ?></td>
+                          <td><?php echo $getAll['q_from']; ?></td> -->
                           
                           <!-- <td>
                             <div class="label label-table label-success">
@@ -233,7 +282,7 @@ if(isset($_GET['del']))
                           </td> -->
                           <td class="text-nowrap">
                             <a
-                              href="updateStudent.php?edit=<?php echo $getAll['id']; ?>"
+                              href="students.php?edit=<?php echo $getAll['id']; ?>"
                               data-original-title="Edit"
                               data-toggle="tooltip"
                               data-target="#editOrder"

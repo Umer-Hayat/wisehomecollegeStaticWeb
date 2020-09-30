@@ -12,18 +12,6 @@ if(isset($_GET['del']))
     }
 }
 
-if(isset($_GET['edit']))
-{
-
-    // if(isset($_POST['update']))
-    // {
-    //     $fee=$_POST['update'];
-    //     $result=$st->updatefee($fee, $id);
-    // }
-    // $id=$_GET['edit'];
-    // $result=$st->updatefee($id);
-    
-}
 ?>
 
 
