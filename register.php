@@ -64,41 +64,6 @@ include_once 'admin/classes/StudentManagement.php';
     }else{
         // echo "Anything is wrong";
     }
-
-    // PHP Mailer
-
-    // require 'PHPMailerAutoload.php';
-    // require 'credential.php';
-
-    // $mail = new PHPMailer;
-
-    //                                 // Set mailer to use SMTP
-    // $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-    // $mail->Port = 25;  
-    // $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    // $mail->SMTPSecure = 'tls'; 
-    // $mail->Username = 'wisehomecollegeinfo@gmail.com';                 // SMTP username
-    // $mail->Password = 'testwisehome';                           // SMTP password
-    //                           // Enable TLS encryption, `ssl` also accepted
-    //                                   // TCP port to connect to
-    
-
-    // $mail->setFrom('testtesttestwisehome@gmail.com', 'Wise Home Portal');
-    // $mail->addAddress('umerhayat520@gmail.com');
-    // $mail->addReplyTo('testtesttestwisehome@gmail.com');
-
-    // $mail->isHTML(true);                                  // Set email format to HTML
-
-    // $mail->Subject = 'New Student Register';
-    // $mail->Body    = $body;
-    // // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-    // if(!$mail->send()) {
-    //     echo 'Message could not be sent.';
-    //     echo 'Mailer Error: ' . $mail->ErrorInfo;
-    // } else {
-    //     echo 'Message has been sent';
-    // }
     }
   }
 ?>
