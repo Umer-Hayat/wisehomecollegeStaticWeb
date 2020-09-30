@@ -17,74 +17,92 @@ include_once 'admin/classes/StudentManagement.php';
 
     $check = $st->register($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from);
 
-if($check== 'Data Inserted'){
-    $body = '
-<table>
-  <tr>
+    if($check == "Data Inserted"){
+    $to = "umerhayat520@gmail.com";
+    $subject = "New Student Registration";
+    
+    
+    $message = '
+    <table>
+    <tr>
     <td class="label"><b>Name:</b></td>
     <td>'. $name .'</td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
     <td class="label"><b>Father Name:</b></td>
     <td>' . $fname . '</td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
     <td class="label"><b>CNIC no:</b></td>
     <td>' . $cnic . '</td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
     <td class="label"><b>Email:</b></td>
     <td>' . $email . '</td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
     <td class="label"><b>Phone No:</b></td>
     <td><a href=tel:'. $contact .'>' . $contact . '</a></td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
     <td class="label"><b>Address:</b></td>
     <td>' . $address . '</td>
-  </tr>
-</table>';
-
-
+    </tr>
+    </table>
+    ';
+    
+    // Always set content-type when sending HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    
+    // More headers
+    $headers .= 'From: <wisehomecollegeinfo@gmail.com>' . "\r\n";
+    
+    
+    if(mail($to,$subject,$message,$headers)){
+        // echo "Email sent";
+    }else{
+        // echo "Anything is wrong";
+    }
 
     // PHP Mailer
 
-    require 'PHPMailerAutoload.php';
-    require 'credential.php';
+    // require 'PHPMailerAutoload.php';
+    // require 'credential.php';
 
-    $mail = new PHPMailer;
+    // $mail = new PHPMailer;
 
-    // $mail->SMTPDebug = 4;                               // Enable verbose debug output
+    //                                 // Set mailer to use SMTP
+    // $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    // $mail->Port = 25;  
+    // $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    // $mail->SMTPSecure = 'tls'; 
+    // $mail->Username = 'wisehomecollegeinfo@gmail.com';                 // SMTP username
+    // $mail->Password = 'testwisehome';                           // SMTP password
+    //                           // Enable TLS encryption, `ssl` also accepted
+    //                                   // TCP port to connect to
+    
 
-    $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = EMAIL;                 // SMTP username
-    $mail->Password = PASS;                           // SMTP password
-    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                                    // TCP port to connect to
+    // $mail->setFrom('testtesttestwisehome@gmail.com', 'Wise Home Portal');
+    // $mail->addAddress('umerhayat520@gmail.com');
+    // $mail->addReplyTo('testtesttestwisehome@gmail.com');
 
-    $mail->setFrom(EMAIL, 'Wise Home Portal');
-    $mail->addAddress('umerhayat520@gmail.com');
-    $mail->addReplyTo(EMAIL);
+    // $mail->isHTML(true);                                  // Set email format to HTML
 
-    // $mail->addAttachment('/var/tmp/file.tar.gz'); 
-    $mail->isHTML(true);                                  // Set email format to HTML
+    // $mail->Subject = 'New Student Register';
+    // $mail->Body    = $body;
+    // // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-    $mail->Subject = 'New Student Register';
-    $mail->Body    = $body;
-    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-    if(!$mail->send()) {
-        // echo 'Message could not be sent.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
-    } else {
-        // echo 'Message has been sent';
+    // if(!$mail->send()) {
+    //     echo 'Message could not be sent.';
+    //     echo 'Mailer Error: ' . $mail->ErrorInfo;
+    // } else {
+    //     echo 'Message has been sent';
+    // }
     }
-    }}
+  }
 ?>
-<br>
+<!-- <br> -->
     <section class="bg">
       <div class="container">
         <div class="row">
@@ -94,7 +112,7 @@ if($check== 'Data Inserted'){
         </div>
       </div>
     </section>
-    <br>
+    <!-- <br> -->
 
     <section class="register">
         <div class="container">

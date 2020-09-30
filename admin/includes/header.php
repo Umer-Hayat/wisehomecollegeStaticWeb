@@ -12,8 +12,6 @@
 // echo "Hello";
 // $d=strtotime("-1 Month");
 // echo date("d-m-y", $d) . "<br>";
-
-
 include_once "classes/session.php";
 Session::checkSession();
 ?>
@@ -200,10 +198,10 @@ Session::checkSession();
                   <a
                     style="background-color: transparent;"
                     class="waves-effect waves-dark"
-                    href="messages.php"
+                    href="homepagedata.php"
                     aria-expanded="false"
-                    ><i class="fa fa-envelope"></i
-                    ><span class="hide-menu">Messages</span></a
+                    ><i class="fa fa-database"></i
+                    ><span class="hide-menu">Home Page Data</span></a
                   >
                 </li>
                 <li>

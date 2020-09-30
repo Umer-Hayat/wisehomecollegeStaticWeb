@@ -22,7 +22,6 @@ if(isset($_GET['edit']))
     }
     $id=$_GET['edit'];
     $result=$st->updatefee($id);
-    
 }
 ?>
 

@@ -34,6 +34,9 @@ if(isset($_GET['edit']))
           <?php
           if(isset($_GET['edit']))
           {
+            if(isset($_POST['submit'])){
+              echo '<script>window.location.replace("feesmanagement.php")</script>';
+            }
 
            ?>
 
@@ -59,7 +62,7 @@ if(isset($_GET['edit']))
                                     <!-- <option value="">Select Student</option> -->
                                 <?php
                                 $id = $_GET['edit'];
-                            $student=$st->getAllRecordByQuery("select * from students where status='active' and id='$id'");
+                                $student=$st->getAllRecordByQuery("select * from students where status='active' and id='$id'");
                                 if($student)
                                 {
                                 while ($getAll=$student->fetch_assoc()) {
@@ -69,10 +72,16 @@ if(isset($_GET['edit']))
                                     <?php
                                 }}
                                 ?>
-                                </select>
+                                <!-- </select> -->
                                     </div>
                                     <div class="form-group col-md-3 m-t-10">
-                                        <input type="text" name="fname" class="form-control form-control-line" placeholder="Enter Student Father Name"> 
+                                      <label>Payment Type:</label>
+                                      <select class="form-control" required name="Paymenttype">
+                                    <option value="">Select Payment type</option>
+                                    <option value="">Installment</option>
+                                    <option value="">Full</option>
+                                  </select>
+                                        <!-- <input type="text" name="fname" class="form-control form-control-line" placeholder="Enter Student Father Name">  -->
                                     </div>
                                     <div class="form-group col-md-3 m-t-10">
                                         <input type="number" name="cnic" class="form-control" placeholder="Enter CNIC Number">

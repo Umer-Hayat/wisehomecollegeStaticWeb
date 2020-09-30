@@ -205,7 +205,18 @@ class StudentManagement
     }
 
 
-
+    public function updatehomedata($dir_msg,$vision,$goals,$mission,$achieve,$about,$phone1,$phone2,$email)
+    {
+        $query="UPDATE homepagedata SET dir_msg='$dir_msg', vision='$vision',goals='$goals', mission='$mission',achieve='$achieve', about='$about',phone1='$phone1', phone2='$phone2',email='$email'";
+        $result=$this->db->update($query);
+        if ($result) {
+            $msg = "Data Updated";
+            return $msg;
+        } else {
+            $msg = "Data Not Updated";
+            return $msg;
+        }
+    }
 
 
 }
