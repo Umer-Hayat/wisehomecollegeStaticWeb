@@ -26,25 +26,25 @@ if(isset($_GET['del']))
             $cnic = $_POST['cnic'];
             $exp_date = $_POST['expdate'];
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            $fee = $_POST['fee'];
+            $course = $_POST['course'];
+            $start_date = $_POST['strdate'];
             $contact = $_POST['contact'];
             $address = $_POST['address'];
             $qualif = $_POST['qualif'];
             $q_from = $_POST['from'];
-            $check = $st->register($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from);
+            $check = $st->register($name,$fname,$cnic,$exp_date,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from);
             if ($check == "Data Inserted") {
                 echo '<script>window.location.replace("students.php")</script>';
             }
-            }
-
-           ?>
+          }
+          ?>
             <div class="row">
             <!-- column -->
             <div class="col-12">
               <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title text-center"><b>Add New Student</b></h3>
-                               
                                 <form class="form-material m-t-20 row" method="post">
                                   <div class="row text-center" style="margin-right: -5px;">
                                        <div style="color:red; margin-left: 20px; font-size:16px;"><?php
@@ -55,48 +55,63 @@ if(isset($_GET['del']))
                                     </div>
                                    </div>
                                     <div class="form-group col-md-4 m-t-10">
-                                        <input type="text" name="name" class="form-control form-control-line" placeholder="Enter Student Name"> 
+                                      <label><b>Student Name:</b></label>
+                                        <input type="text" name="name" class="form-control form-control-line" placeholder="Enter Name"> 
                                     </div>
                                     <div class="form-group col-md-4 m-t-10">
-                                        <input type="text" name="fname" class="form-control form-control-line" placeholder="Enter Student Father Name"> 
+                                      <label><b>Father Name:</b></label>
+                                        <input type="text" name="fname" class="form-control form-control-line" placeholder="Enter Name"> 
                                     </div>
                                     <div class="form-group col-md-4 m-t-10">
-                                        <input type="number" name="cnic" class="form-control" placeholder="Enter CNIC Number">
+                                      <label><b>CNIC Number:</b></label>
+                                        <input type="number" name="cnic" class="form-control" placeholder="Enter Number">
                                     </div>
                                     <div class="form-group col-md-4 m-t-10">
-                                        <input type="date" name="expdate" class="form-control" placeholder="Enter CNIC Number">
+                                        <!-- <input type="date" name="expdate" class="form-control" placeholder="Enter CNIC Number"> -->
+                                        <label><b>CNIC Expire Date:</b></label>
+                                        <input type="date" name="expdate" class="form-control">
                                     </div>
                                     <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Email:</b></label>
                                         <input type="email" name="email" class="form-control" placeholder="Enter Student Email">
                                     </div>
+                                    
                                     <div class="form-group col-md-4 m-t-10">
-                                        <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                                      <label><b>Contact No:</b></label>
+                                        <input type="number" name="contact" class="form-control" placeholder="Enter number">
                                     </div>
                                     <div class="form-group col-md-4 m-t-10">
-                                        <input type="number" name="contact" class="form-control" placeholder="Enter Contact No">
-                                    </div>
-                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Qualification:</b></label>
                                         <input type="text" name="qualif" class="form-control" placeholder="Enter Qualification">
                                     </div>
-
                                     <div class="form-group col-md-4 m-t-10">
+                                      <label><b>From:</b></label>
                                         <input type="text" name="from" class="form-control" placeholder="From">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <select name="course" class="form-control">
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Course Fee:</b></label>
+                                        <input type="number" name="fee" class="form-control" placeholder="Enter Fee">
+                                    </div>
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Course:</b></label>
+                                        <select name="course" required class="form-control">
                                           <option>Select course</option>
                                           <option value="IELTS">IELTS</option>
-                                          <option  value="german">German</option>
-                                          <option  value="spanish">Spanish</option>
-                                          <option  value="norweigen">Norweigen</option>
-                                          <option  value="italian">Italian</option>
-                                          <option  value="danish">Danish</option>
-                                          <option  value="swedish">Swedish</option>
-                                          <option  value="spoken">Spoken English</option>
+                                          <option value="german">German</option>
+                                          <option value="spanish">Spanish</option>
+                                          <option value="norweigen">Norweigen</option>
+                                          <option value="italian">Italian</option>
+                                          <option value="danish">Danish</option>
+                                          <option value="swedish">Swedish</option>
+                                          <option value="spoken">Spoken English</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-6 m-t-10">
-                                        <label>Address</label>
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Course Start Date:</b></label>
+                                        <input type="date" name="strdate" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Address:</b></label>
                                         <textarea class="form-control" name="address" rows="2"></textarea>
                                     </div>
                                     <div class="col-md-12 m-t-10 text-center">
@@ -121,12 +136,14 @@ if(isset($_GET['del']))
             $cnic = $_POST['cnic'];
             $exp_date = $_POST['expdate'];
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            $fee = $_POST['fee'];
+            $course = $_POST['course'];
+            $start_date = $_POST['strdate'];
             $contact = $_POST['contact'];
             $address = $_POST['address'];
             $qualif = $_POST['qualif'];
             $q_from = $_POST['from'];
-            $check = $st->updatestudent($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from,$id);
+            $check = $st->updatestudent($name,$fname,$cnic,$exp_date,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from,$id);
             if ($check == "Data Updated") {
                 echo '<script>window.location.replace("students.php")</script>';
             }
@@ -174,10 +191,6 @@ if(isset($_GET['del']))
                                         <input type="email" name="email" class="form-control" value="<?php echo $getAll['email']; ?>">
                                     </div>
                                     <div class="form-group col-md-4">
-                                      <label><b>Password:</b></label>
-                                        <input type="password" name="password" class="form-control" value="<?php echo $getAll['password']; ?>">
-                                    </div>
-                                    <div class="form-group col-md-4">
                                       <label><b>Contact No:</b></label>
                                         <input type="number" name="contact" class="form-control" value="<?php echo $getAll['contact']; ?>">
                                     </div>
@@ -190,7 +203,29 @@ if(isset($_GET['del']))
                                       <label><b>From:</b></label>
                                         <input type="text" name="from" class="form-control" value="<?php echo $getAll['q_from']; ?>">
                                     </div>
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-4">
+                                      <label><b>Course Fee:</b></label>
+                                        <input type="text" name="fee" class="form-control" value="<?php echo $getAll['fee']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Course:</b></label>
+                                        <select name="course" required class="form-control">
+                                          <option value="<?php echo $getAll['course']; ?>"><?php echo $getAll['course']; ?></option>
+                                          <option value="IELTS">IELTS</option>
+                                          <option value="german">German</option>
+                                          <option value="spanish">Spanish</option>
+                                          <option value="norweigen">Norweigen</option>
+                                          <option value="italian">Italian</option>
+                                          <option value="danish">Danish</option>
+                                          <option value="swedish">Swedish</option>
+                                          <option value="spoken">Spoken English</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Course Start Date:</b></label>
+                                        <input type="text" name="strdate" class="form-control" value="<?php echo $getAll['start_date']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
                                         <label><b>Address</b></label>
                                         <textarea class="form-control" name="address" rows="2"><?php echo $getAll['address']; ?></textarea>
                                     </div>

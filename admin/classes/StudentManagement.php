@@ -12,14 +12,16 @@ class StudentManagement
 		$this->fm=new Format();
 	}
 
-    public function register($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from)
+    public function register($name,$fname,$cnic,$exp_date,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from)
     {
         $name=$this->fm->validation($name);
         $fname=$this->fm->validation($fname);
         $cnic=$this->fm->validation($cnic);
         $exp_date=$this->fm->validation($exp_date);
         $email=$this->fm->validation($email);
-        $password=$this->fm->validation($password);
+        $fee=$this->fm->validation($fee);
+        $course=$this->fm->validation($course);
+        $start_date=$this->fm->validation($start_date);
         $contact=$this->fm->validation($contact);
         $address=$this->fm->validation($address);
         $qualif=$this->fm->validation($qualif);
@@ -33,7 +35,7 @@ class StudentManagement
             return $msg;
         }else
         {
-            $query = "INSERT INTO students(name,fname,cnic,exp_date,email,password,contact,address,qualif,q_from,status) VALUES('$name','$fname','$cnic','$exp_date','$email','$password','$contact','$address','$qualif','$q_from','0')";
+            $query = "INSERT INTO students(name,fname,cnic,exp_date,email,fee,course,start_date,contact,address,qualif,q_from,status) VALUES('$name','$fname','$cnic','$exp_date','$email','$fee','$course','$start_date','$contact','$address','$qualif','$q_from','0')";
             $result = $this->db->insert($query);
             if ($result) {
                 $msg = "Data Inserted";
@@ -45,8 +47,8 @@ class StudentManagement
         }
     }
 
-    public function updatestudent($name,$fname,$cnic,$exp_date,$email,$password,$contact,$address,$qualif,$q_from,$id){
-        $query = "update students set name='$name',fname='$fname',cnic='$cnic',exp_date='$exp_date',email='$email',password='$password',contact='$contact',address='$address',qualif='$qualif',q_from='$q_from' where id='$id'";
+    public function updatestudent($name,$fname,$cnic,$exp_date,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from,$id){
+        $query = "update students set name='$name',fname='$fname',cnic='$cnic',exp_date='$exp_date',email='$email',fee='$fee',course='$course',start_date='$start_date',contact='$contact',address='$address',qualif='$qualif',q_from='$q_from' where id='$id'";
         $result = $this->db->update($query);
         if ($result) {
                 $msg = "Data Updated";
@@ -57,17 +59,17 @@ class StudentManagement
             }
     }
 
-    public function updatefee($fee,$id){
-        $query = "update students set fee='$fee' where id='$id'";
-        $result = $this->db->update($query);
-        if ($result) {
-                $msg = "Data Updated";
-                return $msg;
-            } else {
-                $msg = "Data Not Updated";
-                return $msg;
-            }
-    }
+    // public function updatefee($fee,$id){
+    //     $query = "update students set fee='$fee' where id='$id'";
+    //     $result = $this->db->update($query);
+    //     if ($result) {
+    //             $msg = "Data Updated";
+    //             return $msg;
+    //         } else {
+    //             $msg = "Data Not Updated";
+    //             return $msg;
+    //         }
+    // }
 
     // public function updateStudent($name,$fname,$badge,$rollNo,$cnic,$mobile,$section,$program,$semester,$address,$id)
     // {
@@ -230,6 +232,47 @@ class StudentManagement
         }
     }
 
+    public function getAllRecordofFees($fee_status){
+
+        $d=strtotime("-1 Month");
+        $date = date("y-m-d", $d);
+        // echo date("d-m-y", $d) . "<br>";
+
+        $query="select * from students where fee_status='$fee_status' and start_date='$date'";
+        $result=$this->db->select($query);
+        return $result;
+    }
+
+    public function addBatch($name,$start_date){
+
+        $query = "INSERT INTO batch(batch_name,batch_start) VALUES('$name','$start_date')";
+            $result = $this->db->insert($query);
+            if ($result) {
+                $msg = "Data Inserted";
+                return $msg;
+            } else {
+                $msg = "Data Not Inserted";
+                return $msg;
+            }
+    }
+    public function updatebatch($name,$batch_start,$id){
+        $query="UPDATE batch SET batch_name='$name', batch_start='$batch_start' WHERE id='$id'";
+        $result=$this->db->update($query);
+        if ($result) {
+            $msg = "Data Updated";
+            return $msg;
+        } else {
+            $msg = "Data Not Updated";
+            return $msg;
+        }
+    }
+
+    public function deleteBatch($id)
+    {
+        $query="delete from batch where id='$id'";
+        $result=$this->db->delete($query);
+        return $result;
+    }
 
 }
 

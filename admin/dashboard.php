@@ -1,53 +1,23 @@
 
 <?php include("includes/header.php"); ?>
+<?php include_once 'classes/StudentManagement.php';
+$st=new StudentManagement();
+if(isset($_GET['del']))
+{
+    // $result=$st->deleteStudent($_GET['del']);
+    // if($result){
+    //   // echo " <script>alert('Student Deleted Successfully');</script>";
+    //   echo '<script>window.location.replace("students.php")</script>';
+    // }
+}
+?>
+
 
 <div class="page-wrapper">
-          <!-- ============================================================== -->
-          <!-- Bread crumb and right sidebar toggle -->
-          <!-- ============================================================== -->
           <br />
           <br />
-          <!-- ============================================================== -->
-          <!-- End Bread crumb and right sidebar toggle -->
-          <!-- ============================================================== -->
-          <!-- ============================================================== -->
-          <!-- Container fluid  -->
-          <!-- ============================================================== -->
           <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
             <div class="row">
-              <!-- Column -->
-              <!-- <div class="col-lg-8">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="d-flex flex-wrap">
-                          <div>
-                            <h4 class="card-title">Yearly Earning</h4>
-                          </div>
-                          <div class="ml-auto">
-                            <ul class="list-inline">
-                              <li>
-                                <h6 class="text-muted text-success">
-                                  <i class="fa fa-circle font-10 m-r-10"></i
-                                  >Sales
-                                </h6>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div id="earning" style="height: 355px;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
               <div class="col-lg-6">
                 <div class="card">
                   <div class="card-body">
@@ -63,28 +33,29 @@
                             <thead>
                               <tr>
                                 <th>Student Name</th>
-                                <th>Payment Method</th>
-                                <th>Last paid Date</th>
-                                <th>Fee Status</th>
+                                <th>Totall Fee</th>
                                 <!-- <th>Action</th> -->
                               </tr>
                             </thead>
                             <tbody>
+                              <?php
+                                  $student=$st->getAllRecordofFees('unpaid');
+                                  if($student)
+                                  {
+                                    $i=1;
+                                      while ($getAll=$student->fetch_assoc())
+                                      {
+                              ?>
                               <tr>
-                                <td>abc</td>
-                                <td>Intallment</td>
-                                <td>28-8-2020</td>
-                                <td>unpayed</td>
-                                <!-- <td class="text-nowrap">
-                                  <a
-                                    href="#"
-                                    data-toggle="tooltip"
-                                    data-original-title="Send SMS"
-                                  >
-                                    <i class="fa fa-send text-danger"></i>
+                                <td>
+                                  <a                              
+                                    href="students.php?edit=<?php echo $getAll['id']; ?>">
+                                    <?php echo $getAll['name']; ?>
                                   </a>
-                                </td> -->
+                                </td>
+                                <td><?php echo $getAll['fee']; ?></td>
                               </tr>
+                                <?php }} ?>
                             </tbody>
                           </table>
                         </div>

@@ -1,17 +1,4 @@
 <?php
-
-// $now = new DateTime();
-// $back = $now->sub(DateInterval::createFromDateString('30 days'));
-// echo $back->format('d-m-y');
-
-// echo "hello";
-// echo $back->format('d-m-y');
-
-// echo "hello";
-// echo $back->format('d-m-y');
-// echo "Hello";
-// $d=strtotime("-1 Month");
-// echo date("d-m-y", $d) . "<br>";
 include_once "classes/session.php";
 Session::checkSession();
 ?>
@@ -182,6 +169,16 @@ Session::checkSession();
                     aria-expanded="false"
                     ><i class="fa fa-users"></i
                     ><span class="hide-menu">Students</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    style="background-color: transparent;"
+                    class="waves-effect waves-dark"
+                    href="batch.php"
+                    aria-expanded="false"
+                    ><i class="fa fa-tasks"></i
+                    ><span class="hide-menu">Manage Batch</span></a
                   >
                 </li>
                 <li>
