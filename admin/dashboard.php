@@ -2,17 +2,7 @@
 <?php include("includes/header.php"); ?>
 <?php include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
-if(isset($_GET['del']))
-{
-    // $result=$st->deleteStudent($_GET['del']);
-    // if($result){
-    //   // echo " <script>alert('Student Deleted Successfully');</script>";
-    //   echo '<script>window.location.replace("students.php")</script>';
-    // }
-}
 ?>
-
-
 <div class="page-wrapper">
           <br />
           <br />
@@ -39,12 +29,12 @@ if(isset($_GET['del']))
                             </thead>
                             <tbody>
                               <?php
-                                  $student=$st->getAllRecordofFees('unpaid');
-                                  if($student)
+                                $student=$st->getAllRecordofFees('unpaid');
+                                if($student)
+                                {
+                                  $i=1;
+                                  while ($getAll=$student->fetch_assoc())
                                   {
-                                    $i=1;
-                                      while ($getAll=$student->fetch_assoc())
-                                      {
                               ?>
                               <tr>
                                 <td>

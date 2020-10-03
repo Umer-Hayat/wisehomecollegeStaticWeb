@@ -95,7 +95,7 @@ if(isset($_GET['del']))
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Fees Management</h4>
+                  <h4 class="card-title"><b>Fees Management</b></h4>
                   <hr />
                   <div class="table-responsive m-t-10">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
