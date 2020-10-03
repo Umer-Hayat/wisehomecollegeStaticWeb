@@ -150,6 +150,10 @@ if(isset($_GET['del']))
                           </td>
                           <td><?php echo $getAll['contact']; ?></td>
                           <td class="text-nowrap">
+                          <a href='#'
+                          data-original-title="Print Chalan"
+                              data-toggle="tooltip"
+                          ><i class='fa fa-print'></i></a>
                             <a
                               href="feesmanagement.php?edit=<?php echo $getAll['id']; ?>"
                               data-original-title="Edit"
@@ -165,6 +169,7 @@ if(isset($_GET['del']))
                             >
                               <i class="fa fa-close text-danger"></i>
                             </a>
+
                           </td>
                         </tr>
                         <?php }} ?>
