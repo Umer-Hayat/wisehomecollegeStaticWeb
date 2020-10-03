@@ -185,7 +185,7 @@ Session::checkSession();
                   <a
                     style="background-color: transparent;"
                     class="waves-effect waves-dark"
-                    href="feesmanagement.php"
+                    href="selectfee.php"
                     aria-expanded="false"
                     ><i class="fa fa-money"></i
                     ><span class="hide-menu">Fees Management</span></a
