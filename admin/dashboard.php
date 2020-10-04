@@ -8,7 +8,7 @@ $st=new StudentManagement();
           <br />
           <div class="container-fluid">
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-md-8">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -42,7 +42,7 @@ $st=new StudentManagement();
                               <tr>
                                 <td>
                                   <a                              
-                                    href="students.php?edit=<?php echo $getAll['id']; ?>">
+                                    href="students.php?view=<?php echo $getAll['id']; ?>">
                                     <?php echo $getAll['name']; ?>
                                   </a>
                                 </td>
@@ -54,8 +54,7 @@ $st=new StudentManagement();
                                     href="https://api.whatsapp.com/send?phone=<?php echo $getAll['contact']; ?>&text=Message From Wise Home College!! Dear Student, Today is your Due Date Please Pay your fee as soon as possible!">
                                     <div class="label label-table label-success">Send Whatsapp Msg</div>
                                   </a>
-                                
-                                  <?php echo $getAll['contact']; ?></td>
+                                </td>
                               </tr>
                                 <?php }} ?>
                             </tbody>

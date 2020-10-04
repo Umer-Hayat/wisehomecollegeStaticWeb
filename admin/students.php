@@ -145,6 +145,10 @@ if(isset($_GET['del']))
                                         <input type="number" required name="cnic" class="form-control" placeholder="Enter Number">
                                     </div>
                                     <div class="form-group col-md-3 m-t-10">
+                                        <label><b>CNIC Expire Date:</b></label>
+                                        <input type="date" required name="expdate" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-4 m-t-10">
                                       <label><b>Select Batch:</b></label>
                                         <select class="form-control" required name="batch">
                                           <option value="">Select Batch</option>
@@ -158,10 +162,6 @@ if(isset($_GET['del']))
                                           <option value="<?php echo $getAll['id'] ?>"><?php echo $getAll['batch_name']; ?></option>
                                         <?php }} ?>
                                         </select> 
-                                    </div>
-                                    <div class="form-group col-md-4 m-t-10">
-                                        <label><b>CNIC Expire Date:</b></label>
-                                        <input type="date" required name="expdate" class="form-control">
                                     </div>
                                     <div class="form-group col-md-4 m-t-10">
                                       <label><b>Email:</b></label>
@@ -227,6 +227,7 @@ if(isset($_GET['del']))
             $fname = $_POST['fname'];
             $cnic = $_POST['cnic'];
             $exp_date = $_POST['expdate'];
+            $batch = $_POST['batch'];
             $email = $_POST['email'];
             $fee = $_POST['fee'];
             $course = $_POST['course'];
@@ -235,7 +236,7 @@ if(isset($_GET['del']))
             $address = $_POST['address'];
             $qualif = $_POST['qualif'];
             $q_from = $_POST['from'];
-            $check = $st->updatestudent($name,$fname,$cnic,$exp_date,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from,$id);
+            $check = $st->updatestudent($name,$fname,$cnic,$exp_date,$batch,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from,$id);
             if ($check == "Data Updated") {
                 echo '<script>window.location.replace("students.php")</script>';
             }
@@ -262,21 +263,42 @@ if(isset($_GET['del']))
                                            ?>
                                     </div>
                                    </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-3">
                                       <label><b>Student Name:</b></label>
                                         <input type="text" name="name" class="form-control form-control-line" value="<?php echo $getAll['name']; ?>"> 
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-3">
                                       <label><b>Student Father Name:</b></label>
                                         <input type="text" name="fname" class="form-control form-control-line" value="<?php echo $getAll['fname']; ?>"> 
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-3">
                                       <label><b>CNIC No:</b></label>
                                         <input type="number" name="cnic" class="form-control" value="<?php echo $getAll['cnic']; ?>">
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-3">
                                       <label><b>CNIC Expire Date:</b></label>
                                         <input type="text" name="expdate" class="form-control" value="<?php echo $getAll['exp_date']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Select Batch:</b></label>
+                                        <select class="form-control" required name="batch">
+                                          <option value="<?php echo $getAll['batch_id']; ?>"><?php
+                                          $ba_id = $getAll['batch_id'];
+                                          $letter=$st->getAllRecord($ba_id,'batch');
+                                          $data=$letter->fetch_assoc();
+
+                                           echo $data['batch_name']; ?></option>
+                                          <?php
+                                              $bat=$st->getAllRecords('batch');
+                                              if($bat)
+                                              {
+                                                  while ($data1=$bat->fetch_assoc())
+                                                  {
+                                                    if($data1['id'] != $ba_id){
+                                          ?>
+                                          <option value="<?php echo $data1['id'] ?>"><?php echo $data1['batch_name']; ?></option>
+                                        <?php }}} ?>
+                                        </select> 
                                     </div>
                                     <div class="form-group col-md-4">
                                       <label><b>Email:</b></label>
@@ -350,6 +372,7 @@ if(isset($_GET['del']))
                   <div class="table-responsive m-t-10">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                       <thead>
+
                         <tr>
                           <th>No#</th>
                           <th>Name</th>

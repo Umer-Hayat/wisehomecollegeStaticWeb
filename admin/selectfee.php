@@ -52,7 +52,6 @@ $st=new StudentManagement();
                                         </select>
                                     </div> -->
                                     <div class="col-md-12 m-t-10 text-center">
-                                        <input type="reset" class="btn btn-secondary" >
                                         <input type="submit" name="submit" value="Next" class="btn btn-primary" >
                                     </div>
                                 </form>

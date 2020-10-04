@@ -64,7 +64,7 @@ class StudentManagement
 
     }
 
-    
+
     public function deleteSlide($id)
     {
         $query = "SELECT * FROM slider WHERE id=$id";
@@ -82,8 +82,8 @@ class StudentManagement
         }
     }
 
-    public function updatestudent($name,$fname,$cnic,$exp_date,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from,$id){
-        $query = "update students set name='$name',fname='$fname',cnic='$cnic',exp_date='$exp_date',email='$email',fee='$fee',course='$course',start_date='$start_date',contact='$contact',address='$address',qualif='$qualif',q_from='$q_from' where id='$id'";
+    public function updatestudent($name,$fname,$cnic,$exp_date,$batch_id,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from,$id){
+        $query = "update students set name='$name',fname='$fname',cnic='$cnic',exp_date='$exp_date',batch_id='$batch_id',email='$email',fee='$fee',course='$course',start_date='$start_date',contact='$contact',address='$address',qualif='$qualif',q_from='$q_from' where id='$id'";
         $result = $this->db->update($query);
         if ($result) {
                 $msg = "Data Updated";
