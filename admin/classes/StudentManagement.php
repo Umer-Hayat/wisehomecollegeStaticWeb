@@ -274,6 +274,11 @@ class StudentManagement
         return $result;
     }
 
+    public function selectBatch($batch_id,$Paymenttype){
+        $query="select * from students where batch_id='$batch_id' and fee_status='$Paymenttype'";
+        $result=$this->db->select($query);
+        return $result;
+    }
 }
 
 

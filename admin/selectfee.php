@@ -18,45 +18,50 @@ if(isset($_GET['del']))
         <div class="container-fluid">
 
           <?php
-          if (isset($_GET['add'])) {
-
           if(isset($_POST['submit'])){
-            $name = $_POST['name'];
-            $strdate = $_POST['strdate'];
-            $check = $st->addBatch($name,$strdate);
-            if ($check == "Data Inserted") {
+            $batch = $_POST['batch'];
+            $Paymenttype = $_POST['Paymenttype'];
+            $check = $st->selectBatch($batch,$Paymenttype);
+            if ($check) {
+              echo "string";
                 echo '<script>window.location.replace("batch.php")</script>';
             }
           }
-        }
           ?>
             <div class="row">
             <!-- column -->
-            <div class="col-4"></div>
-            <div class="col-4">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
               <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title text-center"><b>Add New Batch</b></h3>
+                                <h3 class="card-title text-center"><b>Batch Payment</b></h3>
                                 <form class="form-material m-t-20 row" method="post">
-                                  <div class="row text-center" style="margin-right: -5px;">
-                                       <div style="color:red; margin-left: 20px; font-size:16px;"><?php
-                                           if (isset($_POST['submit'])) {
-                                               echo "$check";
-                                           }
-                                           ?>
-                                    </div>
-                                   </div>
+                                  
                                     <div class="form-group col-md-12 m-t-10">
-                                      <label><b>Batch Name:</b></label>
-                                        <input type="text" name="name" class="form-control form-control-line" placeholder="Enter Name"> 
+                                      <label><b>Select Batch:</b></label>
+                                        <select class="form-control" required name="batch">
+                                          <option value="">Select Batch</option>
+                                          <?php
+                                              $bat=$st->getAllRecords('batch');
+                                              if($bat)
+                                              {
+                                                  while ($getAll=$bat->fetch_assoc())
+                                                  {
+                                          ?>
+                                          <option value="<?php echo $getAll['id'] ?>"><?php echo $getAll['batch_name']; ?></option>
+                                        <?php }} ?>
+                                        </select> 
                                     </div>                                    
                                     <div class="form-group col-md-12 m-t-10">
-                                      <label><b>Batch Start Date:</b></label>
-                                        <input type="date" name="strdate" class="form-control">
+                                      <label><b>Select Fee:</b></label>
+                                        <select class="form-control" name="Paymenttype">
+                                          <option value="unpaid">Unpaid</option>
+                                          <option value="paid">Paid</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-12 m-t-10 text-center">
                                         <input type="reset" class="btn btn-secondary" >
-                                        <input type="submit" name="submit" class="btn btn-primary" >
+                                        <input type="submit" name="submit" value="Next" class="btn btn-primary" >
                                     </div>
                                 </form>
                             </div>
