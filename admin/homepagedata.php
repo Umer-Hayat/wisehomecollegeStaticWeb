@@ -5,6 +5,26 @@
 include_once 'classes/StudentManagement.php';
   $st=new StudentManagement();
 
+  if(isset($_GET['del']))
+{
+    $result=$st->deleteSlide($_GET['del']);
+    if($result)
+    echo '<script>window.location.replace("homepagedata.php")</script>';
+}
+
+  if (isset($_POST['upload'])) {
+    
+    $target_dir = "../slides_images/";
+    $name1 = $_FILES['image']['name'];
+    $image = $target_dir . basename($_FILES["image"]["name"]);
+
+    move_uploaded_file($_FILES['image']['tmp_name'],$target_dir.$name1);
+
+    $check = $st->uploadSlideImage($image);
+  }
+
+
+
   if(isset($_POST['submit'])){
     $dir_msg = $_POST['dir_msg'];
     $vision = $_POST['vision'];
@@ -84,6 +104,69 @@ include_once 'classes/StudentManagement.php';
                                 </form>
                             </div>
                         </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- column -->
+
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Slides Image</h4>
+
+                    <form method="post" enctype="multipart/form-data">
+                      <div class="row text-center">
+                         <div style="color:red; margin-left: 20px; font-size:16px;"><?php
+                             if (isset($_POST['upload'])) {
+                                 echo "$check";
+                             }
+                             ?>
+                      </div>
+                     </div>
+                      <input type="file" name="image" > 
+                      <input type="submit" name="upload" value="Upload" class="btn btn-primary"> 
+                    </form>
+                    <br>
+                  <hr />
+                  <div class="table-responsive m-t-10">
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>Slide Image</th>
+                          <th class="text-nowrap">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         <?php
+                            $letter=$st->getAllRecords('slider');
+                            if($letter)
+                            {
+                                while ($getAll=$letter->fetch_assoc())
+                                {
+                        ?>
+                        <tr>
+                          <td>
+                              <img height="100" width="150" src="../slides_images/<?php echo $getAll['slide_image'] ?>">
+                            
+                          </td>
+                          <td class="text-nowrap">
+                            
+                            <a
+                              onclick="return confirm('Are you sure to delete!')" href="homepagedata.php?del=<?php echo $getAll['id'];?>"
+                              data-toggle="tooltip"
+                              data-original-title="Delete Student"
+                            >
+                              <i class="fa fa-close text-danger"></i>
+                            </a>
+                          </td>
+                        </tr>
+                        <?php }} ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

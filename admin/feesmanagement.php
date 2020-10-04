@@ -96,7 +96,7 @@ if(isset($_GET['del']))
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Fees Management</h4>
+                  <h4 class="card-title"><b>Fees Management</b></h4>
                   <hr />
                   <div class="table-responsive m-t-10">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
@@ -124,7 +124,7 @@ if(isset($_GET['del']))
                       </tfoot>
                       <tbody>
                          <?php
-                                $student=$st->getAllRecordsByStatus($batch_id,'active');
+                                $student=$st->getAllRecordsByStatus($batch_id,'1');
                             
                             if($student)
                             {
@@ -149,14 +149,16 @@ if(isset($_GET['del']))
                                 </div>
                             <?php } ?>
                           </td>
-                          <td><?php echo $getAll['contact']; ?></td>
+                          <td>
+                            <a target="blank"
+                                    href="https://api.whatsapp.com/send?phone=<?php echo $getAll['contact']; ?>&text=Message From Wise Home College!! Dear Student, Today is your Due Date Please Pay your fee as soon as possible!"><?php echo $getAll['contact']; ?>
+                                  </a>
+                          </td>
                           <td class="text-nowrap">
-                          <a style="font-size: 14px;" class="label label-table label-success" href='#'
-                          data-original-title="Pay Fee"
-                              data-toggle="tooltip"
+                          <a style="font-size: 14px;" class="label label-table label-success" href='payfee.php?batch=<?php echo $batch_id; ?>&id=<?php echo $getAll['id']; ?>'
                           >
                           <!-- <i class='fa fa-print'></i> -->
-                          Pay Fee
+                          Add Payment
                         </a>
                           </td>
                         </tr>

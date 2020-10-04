@@ -12,11 +12,12 @@ class StudentManagement
 		$this->fm=new Format();
 	}
 
-    public function register($name,$fname,$cnic,$exp_date,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from)
+    public function register($name,$fname,$cnic,$batch_id,$exp_date,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from)
     {
         $name=$this->fm->validation($name);
         $fname=$this->fm->validation($fname);
         $cnic=$this->fm->validation($cnic);
+        $batch_id=$this->fm->validation($batch_id);
         $exp_date=$this->fm->validation($exp_date);
         $email=$this->fm->validation($email);
         $fee=$this->fm->validation($fee);
@@ -35,7 +36,7 @@ class StudentManagement
             return $msg;
         }else
         {
-            $query = "INSERT INTO students(name,fname,cnic,exp_date,email,fee,course,start_date,contact,address,qualif,q_from,status) VALUES('$name','$fname','$cnic','$exp_date','$email','$fee','$course','$start_date','$contact','$address','$qualif','$q_from','0')";
+            $query = "INSERT INTO students(name,fname,cnic,batch_id,exp_date,email,fee,fee_status,course,start_date,contact,address,qualif,q_from,status) VALUES('$name','$fname','$cnic','$batch_id','$exp_date','$email','$fee','unpaid','$course','$start_date','$contact','$address','$qualif','$q_from','1')";
             $result = $this->db->insert($query);
             if ($result) {
                 $msg = "Data Inserted";
@@ -44,6 +45,40 @@ class StudentManagement
                 $msg = "Data Not Inserted";
                 return $msg;
             }
+        }
+    }
+
+    public function uploadSlideImage($name)
+    {
+        $name=$this->fm->validation($name);
+
+        $query = "INSERT INTO slider(slide_image) VALUES('$name')";
+        $result = $this->db->insert($query);
+        if ($result) {
+            $msg = "Image Uploaded";
+            return $msg;
+        } else {
+            $msg = "Image Not Uploaded";
+            return $msg;
+        }
+
+    }
+
+    
+    public function deleteSlide($id)
+    {
+        $query = "SELECT * FROM slider WHERE id=$id";
+        $result=$this->db->select($query);
+        $data=$result->fetch_assoc();
+        $image = $data['slide_image'];
+
+        if ($image) {
+            unlink('./'.$image);
+        
+
+        $query="delete from slider where id='$id'";
+        $result=$this->db->delete($query);
+        return $result;
         }
     }
 
@@ -269,6 +304,27 @@ class StudentManagement
         $result=$this->db->select($query);
         return $result;
     }
+
+    public function payFee($id,$batch_id,$type,$amount){
+        $query = "INSERT INTO fee(student_id,batch_id,payment_type,amount,date,totall_payment) VALUES('$id','$batch_id','$type','$amount',now(),'$amount')";
+            $result = $this->db->insert($query);
+            if ($result) {
+                if ($type == 'full') {
+                    $query1="UPDATE students SET fee_status='paid' WHERE id='$id'";
+                    $result2=$this->db->update($query1);
+                }
+                if ($type == 'installment') {
+                    $query2="UPDATE students SET fee_status='installment paid' WHERE id='$id'";
+                    $result3=$this->db->update($query2);
+                }
+                $msg = "Data Inserted";
+                return $msg;
+            } else {
+                $msg = "Data Not Inserted";
+                return $msg;
+            }
+    }
+
 }
 
 
