@@ -1,6 +1,6 @@
 <?php 
-include_once './admin/classes/SlideManagement.php';
-  $slide=new SlideManagement(); 
+include_once './admin/classes/StudentManagement.php';
+$slide=new StudentManagement();
 
   $query = "select * from homepagedata";
   $data=$slide->getAllRecordByQuery($query);
@@ -69,7 +69,7 @@ include_once './admin/classes/SlideManagement.php';
     <footer class="container">
       <div class="row text-center">
         <div class="col-md-6">Copyright © 2020 Wise Home College.</div>
-        <div class="col-md-6">Design And Developed by Umer Hayat</div>
+        <div class="col-md-6">Design And Developed by <a target="blank" href="https://umer-hayat.github.io/portfolio/">Umer Hayat</a></div>
       </div>
         
     </footer>

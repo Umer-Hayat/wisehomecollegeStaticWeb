@@ -1,6 +1,6 @@
 <?php 
-include_once './admin/classes/SlideManagement.php';
-  $slide=new SlideManagement(); 
+include_once './admin/classes/StudentManagement.php';
+$slide=new StudentManagement();
 
   $query = "select * from homepagedata";
   $data=$slide->getAllRecordByQuery($query);
@@ -104,12 +104,12 @@ include_once './admin/classes/SlideManagement.php';
                   <li class="nav-item">
                     <a class="nav-link" href="contact-us.php">Contact Us</a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link" href="register.php">Register</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="" data-toggle="modal" data-target="#elegantModalForm">Login</a>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </nav>
