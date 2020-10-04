@@ -51,7 +51,7 @@ $st=new StudentManagement();
                                 <td>
                                   
                                   <a target="blank"
-                                    href="https://api.whatsapp.com/send?phone=<?php echo $getAll['contact']; ?>&text='Today is your Due Date Please Pay your fee as soon as posible!'">
+                                    href="https://api.whatsapp.com/send?phone=<?php echo $getAll['contact']; ?>&text=Message From Wise Home College!! Dear Student, Today is your Due Date Please Pay your fee as soon as possible!">
                                     <div class="label label-table label-success">Send Whatsapp Msg</div>
                                   </a>
                                 
