@@ -154,9 +154,9 @@ class StudentManagement
         $result=$this->db->select($query);
         return $result;
     }
-    public function getAllRecordsByStatus($status)
+    public function getAllRecordsByStatus($batch_id, $status)
     {
-        $query="select * from students where status='$status'";
+        $query="select * from students where batch_id='$batch_id' and status='$status'";
         $result=$this->db->select($query);
         return $result;
     }
@@ -204,20 +204,6 @@ class StudentManagement
         }
 
     }
-    public function addSubjects2($subjects,$badge)
-    {
-        $query="UPDATE student SET subjects='$subjects', subjectStatus='1' WHERE badgeId='$badge'";
-        $result=$this->db->insert($query);
-        if ($result) {
-            $msg = "Data Inserted";
-            return $msg;
-        } else {
-            $msg = "Data Not Inserted";
-            return $msg;
-        }
-
-    }
-
 
     public function updatehomedata($dir_msg,$vision,$goals,$mission,$achieve,$about,$phone1,$phone2,$email)
     {
@@ -231,17 +217,21 @@ class StudentManagement
             return $msg;
         }
     }
+    public function updateFeeStatus($id){
 
-    public function getAllRecordofFees($fee_status){
+        $query="UPDATE students SET fee_status='unpaid' WHERE id='$id'";
+        $result2=$this->db->update($query);
+    }
+
+    public function getAllRecordofFees(){
 
         $d=strtotime("-1 Month");
         $date = date("y-m-d", $d);
-        // echo date("d-m-y", $d) . "<br>";
-
-        $query="select * from students where fee_status='$fee_status' and start_date='$date'";
+        $query="select * from students where start_date='$date'";
         $result=$this->db->select($query);
         return $result;
     }
+    
 
     public function addBatch($name,$start_date){
 

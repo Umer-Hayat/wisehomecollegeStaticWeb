@@ -24,17 +24,20 @@ $st=new StudentManagement();
                               <tr>
                                 <th>Student Name</th>
                                 <th>Totall Fee</th>
-                                <!-- <th>Action</th> -->
+                                <th>Contact No</th>
+                                <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
                               <?php
-                                $student=$st->getAllRecordofFees('unpaid');
+                                $student=$st->getAllRecordofFees();
                                 if($student)
                                 {
                                   $i=1;
                                   while ($getAll=$student->fetch_assoc())
                                   {
+                                    $S_id = $getAll['id'];
+                                    $st->updateFeeStatus($S_id);
                               ?>
                               <tr>
                                 <td>
@@ -44,6 +47,15 @@ $st=new StudentManagement();
                                   </a>
                                 </td>
                                 <td><?php echo $getAll['fee']; ?></td>
+                                <td><?php echo $getAll['contact']; ?></td>
+                                <td>
+                                  
+                                  <a target="blank"
+                                    href="https://api.whatsapp.com/send?phone=<?php echo $getAll['contact']; ?>&text='Today is your Due Date Please Pay your fee as soon as posible!'">
+                                    <div class="label label-table label-success">Send Whatsapp Msg</div>
+                                  </a>
+                                
+                                  <?php echo $getAll['contact']; ?></td>
                               </tr>
                                 <?php }} ?>
                             </tbody>

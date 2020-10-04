@@ -3,14 +3,7 @@
 
 <?php include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
-if(isset($_GET['del']))
-{
-    $result=$st->deleteBatch($_GET['del']);
-    if($result){
-      // echo " <script>alert('Student Deleted Successfully');</script>";
-      echo '<script>window.location.replace("batch.php")</script>';
-    }
-}
+
 ?>
       <div class="page-wrapper">
         <br />
@@ -21,11 +14,10 @@ if(isset($_GET['del']))
           if(isset($_POST['submit'])){
             $batch = $_POST['batch'];
             $Paymenttype = $_POST['Paymenttype'];
-            $check = $st->selectBatch($batch,$Paymenttype);
-            if ($check) {
-              echo "string";
-                echo '<script>window.location.replace("batch.php")</script>';
-            }
+            // $check = $st->selectBatch($batch,$Paymenttype);
+            // if ($check) {
+                echo '<script>window.location.replace("feesmanagement.php?batch='.$batch.'")</script>';
+            // }
           }
           ?>
             <div class="row">
@@ -52,13 +44,13 @@ if(isset($_GET['del']))
                                         <?php }} ?>
                                         </select> 
                                     </div>                                    
-                                    <div class="form-group col-md-12 m-t-10">
+                                    <!-- <div class="form-group col-md-12 m-t-10">
                                       <label><b>Select Fee:</b></label>
                                         <select class="form-control" name="Paymenttype">
                                           <option value="unpaid">Unpaid</option>
                                           <option value="paid">Paid</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-12 m-t-10 text-center">
                                         <input type="reset" class="btn btn-secondary" >
                                         <input type="submit" name="submit" value="Next" class="btn btn-primary" >

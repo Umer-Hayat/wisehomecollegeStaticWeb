@@ -3,6 +3,7 @@
 
 <?php include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
+$batch_id = $_GET['batch'];
 if(isset($_GET['del']))
 {
     $result=$st->deleteStudent($_GET['del']);
@@ -123,13 +124,13 @@ if(isset($_GET['del']))
                       </tfoot>
                       <tbody>
                          <?php
-                                $student=$st->getAllRecordsByStatus('active');
+                                $student=$st->getAllRecordsByStatus($batch_id,'active');
                             
                             if($student)
                             {
                               $i=1;
-                                while ($getAll=$student->fetch_assoc())
-                                {
+                              while ($getAll=$student->fetch_assoc())
+                              {
                         ?>
                         <tr>
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
@@ -150,26 +151,13 @@ if(isset($_GET['del']))
                           </td>
                           <td><?php echo $getAll['contact']; ?></td>
                           <td class="text-nowrap">
-                          <a href='#'
-                          data-original-title="Print Chalan"
+                          <a style="font-size: 14px;" class="label label-table label-success" href='#'
+                          data-original-title="Pay Fee"
                               data-toggle="tooltip"
-                          ><i class='fa fa-print'></i></a>
-                            <a
-                              href="feesmanagement.php?edit=<?php echo $getAll['id']; ?>"
-                              data-original-title="Edit"
-                              data-toggle="tooltip"
-                              data-target="#editOrder"
-                            >
-                              <i class="fa fa-pencil text-inverse m-r-10"></i>
-                            </a>
-                            <a
-                              onclick="return confirm('Are you sure to delete!')" href="students.php?del=<?php echo $getAll['id'];?>"
-                              data-toggle="tooltip"
-                              data-original-title="Delete Student"
-                            >
-                              <i class="fa fa-close text-danger"></i>
-                            </a>
-
+                          >
+                          <!-- <i class='fa fa-print'></i> -->
+                          Pay Fee
+                        </a>
                           </td>
                         </tr>
                         <?php }} ?>
