@@ -306,7 +306,19 @@ class StudentManagement
     }
 
     public function payFee($id,$batch_id,$type,$amount){
-        $query = "INSERT INTO fee(student_id,batch_id,payment_type,amount,date,totall_payment) VALUES('$id','$batch_id','$type','$amount',now(),'$amount')";
+        $query="select * from fee where student_id='$id'";
+        $result4=$this->db->select($query);
+        if ($result4) {
+            $data=$result4->fetch_assoc();
+
+            $totall = $data['totall_payment'] + $amount;
+        }else{
+            $totall = $amount;
+        }
+        
+
+
+        $query = "INSERT INTO fee(student_id,batch_id,payment_type,amount,date,totall_payment) VALUES('$id','$batch_id','$type','$amount',now(),'$totall')";
             $result = $this->db->insert($query);
             if ($result) {
                 if ($type == 'full') {
