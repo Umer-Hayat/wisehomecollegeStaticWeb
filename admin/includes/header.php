@@ -205,6 +205,16 @@ if (!isset($_SESSION['login'])) {
                     ><span class="hide-menu">Home Page Data</span></a
                   >
                 </li>
+                <li>
+                  <a
+                    style="background-color: transparent;"
+                    class="waves-effect waves-dark"
+                    href="expense.php"
+                    aria-expanded="false"
+                    ><i class="fa fa-money"></i
+                    ><span class="hide-menu">Daily Expense</span></a
+                  >
+                </li>
               </ul>
             </nav>
             <!-- End Sidebar navigation -->

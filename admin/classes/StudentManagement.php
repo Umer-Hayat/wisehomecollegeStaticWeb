@@ -341,6 +341,38 @@ class StudentManagement
             }
     }
 
+    public function addExpense($title,$amount){
+        // $date = date("y-m-d");
+        $query = "INSERT INTO expense(title,amount,date) VALUES('$title','$amount',now())";
+        $result = $this->db->insert($query);
+            if ($result) {
+                $msg = "Data Inserted";
+                return $msg;
+            } else {
+                $msg = "Data Not Inserted";
+                return $msg;
+            }
+    }
+
+    public function updateExpense($title,$amount,$id){
+        $query = "UPDATE expense SET title='$title',amount='$amount' WHERE id='$id'";
+        $result = $this->db->update($query);
+        if ($result) {
+            $msg = "Data Updated";
+            return $msg;
+        } else {
+            $msg = "Data Not Updated";
+            return $msg;
+        }
+    }
+
+    public function deleteExpense($id)
+    {
+        $query="delete from expense where id='$id'";
+        $result=$this->db->delete($query);
+        return $result;
+    }
+
 }
 
 
