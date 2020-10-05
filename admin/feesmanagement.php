@@ -155,11 +155,18 @@ if(isset($_GET['del']))
                                   </a>
                           </td>
                           <td class="text-nowrap">
-                          <a style="font-size: 14px;" class="label label-table label-success" href='payfee.php?batch=<?php echo $batch_id; ?>&id=<?php echo $getAll['id']; ?>'
-                          >
-                          <!-- <i class='fa fa-print'></i> -->
-                          Add Payment
-                        </a>
+                            <?php
+                              if($getAll['fee_status'] == 'paid'){ ?>
+                                
+                            <?php }else{ ?>
+                                <a style="font-size: 14px;" class="label label-table label-success" href='payfee.php?batch=<?php echo $batch_id; ?>&id=<?php echo $getAll['id']; ?>'
+                                  >
+                                  <!-- <i class='fa fa-print'></i> -->
+                                  Add Payment
+                                </a>
+                            <?php } ?>
+
+                          
                           </td>
                         </tr>
                         <?php }} ?>

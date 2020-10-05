@@ -107,7 +107,7 @@ if(isset($_GET['del']))
             $fee = $_POST['fee'];
             $course = $_POST['course'];
             $start_date = $_POST['strdate'];
-            $contact = $_POST['contact'];
+            $contact = '0092'.$_POST['contact'];
             $address = $_POST['address'];
             $qualif = $_POST['qualif'];
             $q_from = $_POST['from'];
@@ -170,8 +170,14 @@ if(isset($_GET['del']))
                                     
                                     <div class="form-group col-md-4 m-t-10">
                                       <label><b>Contact No:</b></label>
-                                        <input type="number" required name="contact" class="form-control" placeholder="Enter Whatsapp Number">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">0092</span>
+                                            </div>
+                                            <input type="number" required name="contact" class="form-control pl-2" placeholder="Enter Whatsapp Number" aria-describedby="basic-addon1">
+                                        </div>
                                     </div>
+
                                     <div class="form-group col-md-4 m-t-10">
                                       <label><b>Qualification:</b></label>
                                         <input type="text" name="qualif" class="form-control" placeholder="Enter Qualification">
@@ -232,7 +238,7 @@ if(isset($_GET['del']))
             $fee = $_POST['fee'];
             $course = $_POST['course'];
             $start_date = $_POST['strdate'];
-            $contact = $_POST['contact'];
+            $contact = '0092'.$_POST['contact'];
             $address = $_POST['address'];
             $qualif = $_POST['qualif'];
             $q_from = $_POST['from'];
@@ -306,7 +312,12 @@ if(isset($_GET['del']))
                                     </div>
                                     <div class="form-group col-md-4">
                                       <label><b>Contact No:</b></label>
-                                        <input type="number" name="contact" class="form-control" value="<?php echo $getAll['contact']; ?>">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">0092</span>
+                                            </div>
+                                            <input type="number" name="contact" class="form-control" value="<?php echo $getAll['contact']; ?>" aria-describedby="basic-addon1">
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-4">
                                       <label><b>Qualification:</b></label>

@@ -15,13 +15,15 @@ $st=new StudentManagement();
                       <div class="col-12">
                         <div>
                           <div>
-                            <h4 class="card-title">Fees Pending Students</h4>
+                            <h4 class="card-title"><b>Today Due Date Fee Students</b></h4>
+                            <hr/>
                           </div>
                         </div>
                         <div class="table-responsive">
                           <table class="table">
                             <thead>
                               <tr>
+                                <th>No#</th>
                                 <th>Student Name</th>
                                 <th>Totall Fee</th>
                                 <th>Contact No</th>
@@ -40,9 +42,12 @@ $st=new StudentManagement();
                                     $st->updateFeeStatus($S_id);
                               ?>
                               <tr>
+                                <td><?php echo $i; ?></td>
+                                
                                 <td>
                                   <a                              
                                     href="students.php?view=<?php echo $getAll['id']; ?>">
+                                    
                                     <?php echo $getAll['name']; ?>
                                   </a>
                                 </td>

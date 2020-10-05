@@ -1,17 +1,17 @@
+<?php session_start(); ?>
 <?php
 $filepath=realpath(dirname(__FILE__)); 
-include_once ($filepath.'/session.php');
 include_once ($filepath.'/database.php');
 include_once ($filepath.'/format.php');
 class adminlogin 
 {   private $db;
     private $fm;
-	function __construct()
-	{
-		$this->db=new Database();
-		$this->fm=new Format();
-	}
-	public function adminLogin($adminUser,$adminPass)
+    function __construct()
+    {
+        $this->db=new Database();
+        $this->fm=new Format();
+    }
+    public function adminLogin($adminUser,$adminPass)
     {
         $adminUser=$this->fm->validation($adminUser);
         $adminPass=$this->fm->validation($adminPass);
@@ -23,15 +23,10 @@ class adminlogin
         {
          $query="select *from tb_user where user_name='$adminUser' AND user_pass='$adminPass'";
          $result=$this->db->select($query);
-         if($result!=false)
+         if($result)
          {
-             $value=$result->fetch_assoc();
-             session::set("adminlogin",true);
-             session::set("adminUser",$value['user_name']);
-             session::set("adminId",$value['id']);
-             session::set("adminPass",$value['user_pass']);
-             header("Location:dashboard.php");
-           
+             $_SESSION['login'] = true;
+             header("Location: dashboard.php");
          }
          else
              {

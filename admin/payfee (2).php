@@ -4,6 +4,8 @@
 <?php include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
 
+$stu_id = $_GET['id'];
+$batch_id = $_GET['batch'];
 ?>
       <div class="page-wrapper">
         <br />
@@ -12,12 +14,12 @@ $st=new StudentManagement();
 
           <?php
           if(isset($_POST['submit'])){
-            $batch = $_POST['batch'];
-            $Paymenttype = $_POST['Paymenttype'];
-            // $check = $st->selectBatch($batch,$Paymenttype);
-            // if ($check) {
-                echo '<script>window.location.replace("feesmanagement.php?batch='.$batch.'")</script>';
-            // }
+            $type = $_POST['type'];
+            $amount = $_POST['amount'];
+            $check = $st->payFee($stu_id,$batch_id,$type,$amount);
+            if ($check) {
+                echo '<script>window.location.replace("feesmanagement.php?batch='.$batch_id.'")</script>';
+            }
           }
           ?>
             <div class="row">
@@ -26,33 +28,32 @@ $st=new StudentManagement();
             <div class="col-md-4">
               <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title text-center"><b>Batch</b></h3>
+                                <h3 class="card-title text-center"><b>Fee Payment</b></h3>
                                 <form class="form-material m-t-20 row" method="post">
                                   
                                     <div class="form-group col-md-12 m-t-10">
-                                      <label><b>Select Batch:</b></label>
-                                        <select class="form-control" required name="batch">
-                                          <option value="">Select Batch</option>
                                           <?php
-                                              $bat=$st->getAllRecords('batch');
-                                              if($bat)
-                                              {
-                                                  while ($getAll=$bat->fetch_assoc())
-                                                  {
+                                              $student=$st->getAllRecord($stu_id,'students');
+                                              $getAll=$student->fetch_assoc();
                                           ?>
-                                          <option value="<?php echo $getAll['id'] ?>"><?php echo $getAll['batch_name']; ?></option>
-                                        <?php }} ?>
-                                        </select> 
-                                    </div>                                    
-                                    <!-- <div class="form-group col-md-12 m-t-10">
-                                      <label><b>Select Fee:</b></label>
-                                        <select class="form-control" name="Paymenttype">
-                                          <option value="unpaid">Unpaid</option>
-                                          <option value="paid">Paid</option>
+                                          <label><b>Student Name:</b></label>
+                                        <input type="text" readonly class="form-control" value="<?php echo $getAll['name'] ?>">
+                                    </div>
+                                    <div class="form-group col-md-12 m-t-10">
+                                      <label><b>Payment Type:</b></label>
+                                        <select class="form-control" required name="type">
+                                            <option value="">Select Payment Type</option>
+                                            <option value="full">Full</option>
+                                            <option value="installment">Installment</option>
                                         </select>
-                                    </div> -->
+                                    </div>                                    
+                                    <div class="form-group col-md-12 m-t-10">
+                                      <label><b>Amount:</b></label>
+                                        <input type="number" value="<?php echo $getAll['fee'] ?>" name="amount" class="form-control">
+                                    </div>
                                     <div class="col-md-12 m-t-10 text-center">
-                                        <input type="submit" name="submit" value="Next" class="btn btn-primary" >
+                                        <input type="reset" class="btn btn-secondary" >
+                                        <input type="submit" name="submit" class="btn btn-primary" >
                                     </div>
                                 </form>
                             </div>

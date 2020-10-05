@@ -8,8 +8,9 @@ include_once 'classes/StudentManagement.php';
   if(isset($_GET['del']))
 {
     $result=$st->deleteSlide($_GET['del']);
-    if($result)
-    echo '<script>window.location.replace("homepagedata.php")</script>';
+    if($result){
+      echo '<script>window.location.replace("homepagedata.php")</script>';
+    }
 }
 
   if (isset($_POST['upload'])) {

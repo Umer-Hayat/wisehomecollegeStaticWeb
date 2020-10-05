@@ -254,8 +254,15 @@ class StudentManagement
     }
     public function updateFeeStatus($id){
 
-        $query="UPDATE students SET fee_status='unpaid' WHERE id='$id'";
-        $result2=$this->db->update($query);
+        // $d=strtotime("-1 Month");
+        $date = date("y-m-d");
+        $query1="select * from fee where student_id='$id' and date='$date'";
+        $result1=$this->db->select($query1);
+        if (!$result1) {
+            $query="UPDATE students SET fee_status='unpaid' WHERE id='$id'";
+            $result2=$this->db->update($query);
+        }
+        
     }
 
     public function getAllRecordofFees(){
@@ -306,7 +313,7 @@ class StudentManagement
     }
 
     public function payFee($id,$batch_id,$type,$amount){
-        $query="select * from fee where student_id='$id'";
+        $query="select * from fee where student_id='$id' ORDER BY id DESC";
         $result4=$this->db->select($query);
         if ($result4) {
             $data=$result4->fetch_assoc();
@@ -315,9 +322,6 @@ class StudentManagement
         }else{
             $totall = $amount;
         }
-        
-
-
         $query = "INSERT INTO fee(student_id,batch_id,payment_type,amount,date,totall_payment) VALUES('$id','$batch_id','$type','$amount',now(),'$totall')";
             $result = $this->db->insert($query);
             if ($result) {

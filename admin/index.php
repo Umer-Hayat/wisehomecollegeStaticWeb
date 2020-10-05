@@ -1,7 +1,8 @@
 <?php
 include_once 'classes/adminLogin.php';
-include_once 'classes/session.php';
-Session::checkLogin();
+if (isset($_SESSION['login'])) {
+    header("Location: dashboard.php");
+}
 $msg="";
 if(isset($_POST['login']))
 {

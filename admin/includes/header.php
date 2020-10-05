@@ -1,6 +1,8 @@
+<?php session_start(); ?>
 <?php
-include_once "classes/session.php";
-Session::checkSession();
+if (!isset($_SESSION['login'])) {
+  header("Location:index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,7 +130,9 @@ Session::checkSession();
                       </li>
                             <?php
                             if (isset($_GET['action']) && $_GET['action']=="logout") {
-                                session::destroy();
+                                session_destroy();
+                                echo "<script>window.open('index.php','_self')</script>";
+
 
                             }
                             ?>
