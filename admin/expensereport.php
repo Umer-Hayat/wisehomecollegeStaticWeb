@@ -3,17 +3,8 @@
 
 <?php include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
-$batch_id = $_GET['batch'];
 $from = $_GET['from'];
 $to = $_GET['to'];
-if(isset($_GET['del']))
-{
-    $result=$st->deleteStudent($_GET['del']);
-    if($result){
-      // echo " <script>alert('Student Deleted Successfully');</script>";
-      echo '<script>window.location.replace("students.php")</script>';
-    }
-}
 
 ?>
       <div class="page-wrapper">
@@ -34,8 +25,7 @@ if(isset($_GET['del']))
                       <thead>
                         <tr>
                           <th>No#</th>
-                          <th>Name</th>
-                          <th>Father Name</th>
+                          <th>Title</th>
                           <th>Amount</th>
                           <th>Date</th>
                         </tr>
@@ -43,36 +33,25 @@ if(isset($_GET['del']))
                       <tfoot>
                         <tr>
                           <th>No#</th>
-                          <th>Name</th>
-                          <th>Father Name</th>
+                          <th>Title</th>
                           <th>Amount</th>
                           <th>Date</th>
                         </tr>
                       </tfoot>
                       <tbody>
                          <?php
-                         $query1 = "SELECT * FROM fee WHERE batch_id='$batch_id' and 'date' BETWEEN '$from' AND '$to'";
-                         $query = "SELECT * FROM fee WHERE batch_id='$batch_id' and date BETWEEN '$from' AND '$to'";
-                                $student=$st->getAllRecordByQuery($query);
+                         $query = "SELECT * FROM expense WHERE date BETWEEN '$from' AND '$to'";
+                                $expen=$st->getAllRecordByQuery($query);
                             
-                            if($student)
+                            if($expen)
                             {
                               $i=1;
-                              while ($getAll=$student->fetch_assoc())
+                              while ($getAll=$expen->fetch_assoc())
                               {
                         ?>
                         <tr>
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
-                          <td>
-                            <?php
-                                $id = $getAll['student_id'];
-                                $stu=$st->getAllRecord($id,'students');
-                                $get=$stu->fetch_assoc();
-                            ?>
-                            <?php echo $get['name']; ?>
-                            
-                          </td>
-                          <td><?php echo $get['fname']; ?></td>
+                          <td><?php echo $getAll['title']; ?></td>
                           <td><?php echo $getAll['amount']; ?></td>
                           <td><?php echo $getAll['date']; ?></td>
                         </tr>
