@@ -11,12 +11,13 @@ $st=new StudentManagement();
             <div class="container-fluid">
 
               <?php
-              if(isset($_POST['submit'])){
+              if(isset($_POST['batchNext'])){
                 $batch = $_POST['batch'];
-                $Paymenttype = $_POST['Paymenttype'];
-                // $check = $st->selectBatch($batch,$Paymenttype);
+                $from = $_POST['from'];
+                $to = $_POST['to'];
+                // $check = $st->selectBatch($batch,$from,$to);
                 // if ($check) {
-                    echo '<script>window.location.replace("feesmanagement.php?batch='.$batch.'")</script>';
+                    echo '<script>window.location.replace("batchreport.php?batch='.$batch.'&from='.$from.'&to='.$to.'")</script>';
                 // }
               }
               ?>

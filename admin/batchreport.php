@@ -4,6 +4,8 @@
 <?php include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
 $batch_id = $_GET['batch'];
+$from = $_GET['from'];
+$to = $_GET['to'];
 if(isset($_GET['del']))
 {
     $result=$st->deleteStudent($_GET['del']);
@@ -106,9 +108,7 @@ if(isset($_GET['del']))
                           <th>Name</th>
                           <th>Father Name</th>
                           <th>Fees</th>
-                          <th>Fee Status</th>
-                          <th>Contact No</th>
-                          <th class="text-nowrap">Action</th>
+                          <th>Date</th>
                         </tr>
                       </thead>
                       <tfoot>
@@ -117,14 +117,14 @@ if(isset($_GET['del']))
                           <th>Name</th>
                           <th>Father Name</th>
                           <th>Fees</th>
-                          <th>Fee Status</th>
-                          <th>Contact No</th>
-                          <th class="text-nowrap">Action</th>
+                          <th>Date</th>
                         </tr>
                       </tfoot>
                       <tbody>
                          <?php
-                                $student=$st->getAllRecordsByStatus($batch_id,'1');
+                         $query1 = "SELECT * FROM fee WHERE batch_id='$batch_id' and 'date' BETWEEN '$from' AND '$to'";
+                         $query = "SELECT * FROM fee WHERE batch_id='$batch_id' and date BETWEEN '$from' AND '$to'";
+                                $student=$st->getAllRecordByQuery($query);
                             
                             if($student)
                             {
@@ -134,50 +134,22 @@ if(isset($_GET['del']))
                         ?>
                         <tr>
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
-                          <td><?php echo $getAll['name']; ?></td>
-                          <td><?php echo $getAll['fname']; ?></td>
-                          <td><?php echo $getAll['fee']; ?></td>
                           <td>
                             <?php
-                              if($getAll['fee_status'] == 'paid'){ ?>
-                                <div class="label label-table label-success">
-                                  <?php echo $getAll['fee_status']; ?>
-                                </div>
-                            <?php }else{ ?>
-                                <div class="label label-table label-warning">
-                                  <?php echo $getAll['fee_status']; ?>
-                                </div>
-                            <?php } ?>
+                                $id = $getAll['student_id'];
+                                $stu=$st->getAllRecord($id,'students');
+                                $get=$stu->fetch_assoc();
+                            ?>
+                            <?php echo $get['name']; ?>
+                            
                           </td>
-                          <td>
-                            <a target="blank"
-                                    href="https://api.whatsapp.com/send?phone=<?php echo $getAll['contact']; ?>&text=Message From Wise Home College!! Dear Student, Today is your Due Date Please Pay your fee as soon as possible!"><?php echo $getAll['contact']; ?>
-                                  </a>
-                          </td>
-                          <td class="text-nowrap">
-                            <?php
-                              if($getAll['fee_status'] == 'paid'){ ?>
-                                
-                            <?php }else{ ?>
-                                <a style="font-size: 14px;" class="label label-table label-success" href='payfee.php?batch=<?php echo $batch_id; ?>&id=<?php echo $getAll['id']; ?>'
-                                  >
-                                  <!-- <i class='fa fa-print'></i> -->
-                                  Add Payment
-                                </a>
-                            <?php } ?>
-
-                          
-                          </td>
+                          <td><?php echo $get['fname']; ?></td>
+                          <td><?php echo $getAll['amount']; ?></td>
+                          <td><?php echo $getAll['date']; ?></td>
                         </tr>
                         <?php }} ?>
                       </tbody>
                     </table>
-
-
-                    
-
-
-
                   </div>
                 </div>
               </div>
