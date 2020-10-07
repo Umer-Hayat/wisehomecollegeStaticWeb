@@ -67,6 +67,7 @@ class StudentManagement
 
     public function deleteSlide($id)
     {
+
         $query = "SELECT * FROM slider WHERE id=$id";
         $result=$this->db->select($query);
         $data=$result->fetch_assoc();
@@ -83,6 +84,22 @@ class StudentManagement
     }
 
     public function updatestudent($name,$fname,$cnic,$exp_date,$batch_id,$email,$fee,$course,$start_date,$contact,$address,$qualif,$q_from,$id){
+
+        $name=$this->fm->validation($name);
+        $fname=$this->fm->validation($fname);
+        $cnic=$this->fm->validation($cnic);
+        $batch_id=$this->fm->validation($batch_id);
+        $exp_date=$this->fm->validation($exp_date);
+        $email=$this->fm->validation($email);
+        $fee=$this->fm->validation($fee);
+        $course=$this->fm->validation($course);
+        $start_date=$this->fm->validation($start_date);
+        $contact=$this->fm->validation($contact);
+        $address=$this->fm->validation($address);
+        $qualif=$this->fm->validation($qualif);
+        $q_from=$this->fm->validation($q_from);
+        $id=$this->fm->validation($id);
+
         $query = "update students set name='$name',fname='$fname',cnic='$cnic',exp_date='$exp_date',batch_id='$batch_id',email='$email',fee='$fee',course='$course',start_date='$start_date',contact='$contact',address='$address',qualif='$qualif',q_from='$q_from' where id='$id'";
         $result = $this->db->update($query);
         if ($result) {
@@ -94,66 +111,10 @@ class StudentManagement
             }
     }
 
-    // public function updatefee($fee,$id){
-    //     $query = "update students set fee='$fee' where id='$id'";
-    //     $result = $this->db->update($query);
-    //     if ($result) {
-    //             $msg = "Data Updated";
-    //             return $msg;
-    //         } else {
-    //             $msg = "Data Not Updated";
-    //             return $msg;
-    //         }
-    // }
-
-    // public function updateStudent($name,$fname,$badge,$rollNo,$cnic,$mobile,$section,$program,$semester,$address,$id)
-    // {
-
-
-    //     $query1="select * from student where rollNo='$rollNo'";
-    //     $result1=$this->db->select($query1);
-    //     $query2="select * from student where cnic='$cnic'";
-    //     $result2=$this->db->select($query2);
-
-    //     if($result1 && $result2)
-    //     {
-    //         $query = "update student set name='$name',fatherName='$fname',badgeId='$badge',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
-    //         $result = $this->db->insert($query);
-    //         $msg = "Roll No and cnic Already Exist... but other information updated";
-    //         return $msg;
-    //     }else if($result1) {
-    //         $query = "update student set name='$name',fatherName='$fname',badgeId='$badge',cnic='$cnic',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
-    //         $result = $this->db->insert($query);
-    //         $msg = "Roll No Already Exist... but other information updated";
-    //         return $msg;
-    //     }else if($result2)
-    //     {
-    //         $query = "update student set name='$name',fatherName='$fname',rollNo='$rollNo',badgeId='$badge',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
-    //         $result = $this->db->insert($query);
-    //         $msg = "Data Not Insert CNIC Already Exist... but other information updated";
-    //         return $msg;
-    //     }else
-    //     {
-    //         $query4="select * from student_badge where id='$badge'";
-    //         $result4=$this->db->select($query4);
-    //         $badge4=$result4->fetch_assoc();
-    //         $rollNo=$badge4['badge'].'-'.$rollNo;
-
-    //         $query = "update student set name='$name',fatherName='$fname',rollNo='$rollNo',badgeId='$badge',cnic='$cnic',phone='$mobile',address='$address',program='$program',section='$section',semester='$semester' where id='$id'";
-    //         $result = $this->db->insert($query);
-    //         if ($result) {
-    //             $msg = "Data Inserted";
-    //             return $msg;
-    //         } else {
-    //             $msg = "Data Not Inserted";
-    //             return $msg;
-    //         }
-    //     }
-
-    // }
 
 	public function addBadge($badge)
     {
+        $badge=$this->fm->validation($badge);
 
         $query="INSERT INTO student_badge(badge) VALUES('$badge')";
         $result=$this->db->insert($query);
@@ -169,6 +130,9 @@ class StudentManagement
 
     public function updateBadge($badge,$id)
     {
+        $badge=$this->fm->validation($badge);
+        $id=$this->fm->validation($id);
+
         $query = "update student_badge set badge='$badge' where id='$id'";
         $result = $this->db->update($query);
         if ($result) {
@@ -228,6 +192,10 @@ class StudentManagement
     }
     public function addSubjects($subjects,$badge,$section)
     {
+        $subjects=$this->fm->validation($subjects);
+        $badge=$this->fm->validation($badge);
+        $section=$this->fm->validation($section);
+
         $query="UPDATE student SET subjects='$subjects', subjectStatus='1' WHERE badgeId='$badge' AND section='$section'";
         $result=$this->db->insert($query);
         if ($result) {
