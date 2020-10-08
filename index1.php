@@ -1,8 +1,13 @@
 <?php include("includes/header.php"); ?>
 
 <?php 
-include_once 'admin/classes/SlideManagement.php';
-  $slide=new SlideManagement();  
+include_once 'admin/classes/StudentManagement.php';
+$slide=new StudentManagement();
+  // $slide=new SlideManagement(); 
+
+  $query = "select * from homepagedata";
+  $data=$slide->getAllRecordByQuery($query);
+  $getdata=$data->fetch_assoc();
 ?>
     <!-- Slider area -->
 
@@ -10,8 +15,17 @@ include_once 'admin/classes/SlideManagement.php';
       <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
           <li data-target="#demo" data-slide-to="0" class="active"></li>
-          <li data-target="#demo" data-slide-to="1"></li>
-          <li data-target="#demo" data-slide-to="2"></li>
+          <?php
+            $query = "select * from slider";
+            $slides=$slide->getAllRecordByQuery($query);
+            $count = mysqli_num_rows($slides);
+            for ($i=1; $i < $count; $i++) {
+           ?>
+          <li data-target="#demo" data-slide-to="<?php echo $i; ?>"></li>
+          <?php
+          }
+           ?>
+          <!-- <li data-target="#demo" data-slide-to="2"></li> -->
         </ul>
         <div class="carousel-inner">
           
@@ -45,6 +59,7 @@ include_once 'admin/classes/SlideManagement.php';
               }
             }
           ?>
+
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
           <span class="carousel-control-prev-icon"></span>
         </a>
@@ -53,7 +68,7 @@ include_once 'admin/classes/SlideManagement.php';
         </a>
       </div>
     </section>
-    
+    <!-- slider end -->
 
  <!-- messages area -->
  <section class="messege">
@@ -66,10 +81,7 @@ include_once 'admin/classes/SlideManagement.php';
         </div>
         <div class="col-md-8 Chairman">
           <h3>Managing Director</h3>
-      <p class="quotation">WISE HOME COLLEGE was founded to welcome the individuals improve their current 
-        Communication Level, either planning to study or settle abroad. We aim to provide the quality education 
-        with a variety of levels, ranging from Beginner to Advanced. It is a centre dedicated to the enhancement
-         of learning, recognising potential and above all to achieve excellence....</p>
+      <p class="quotation"><?php echo $getdata['dir_msg']; ?></p>
       <a class="Read" href="director-message.php">Read More...</a>
         </div>
       </div>
@@ -179,7 +191,71 @@ include_once 'admin/classes/SlideManagement.php';
       </div>
    </section>
 
-  <section class="fi-logo">
+    <!-- Gallary -->
+
+    <section class="gallary">
+      <div class="container">
+        <div class="row mb-3">
+          <div  class="col-md-12 text-center">
+            <h3 class="underline-green">Gallary</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="img-box">
+              <a href="img/gallary/pic1.jpg">
+            <img src="img/gallary/pic1.jpg" class="img-fluid" alt="">
+            </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-box">
+            <a href="img/gallary/pic2.jpg">
+            <img src="img/gallary/pic2.jpg" class="img-fluid" alt="">
+            </a>
+          </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-box">
+            <a href="img/gallary/pic3.jpg">
+            <img src="img/gallary/pic3.jpg" class="img-fluid" alt="">
+            </a>
+          </div>
+          </div>
+        </div>
+      </div>
+   </section>
+
+<!-- Gallary -->
+
+<section class="feedback">
+      <div class="container">
+        <div class="row mb-3">
+          <div  class="col-md-12 text-center">
+            <h3 class="underline-green">Student Feedback</h3>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4">
+            <div class="frame-box">
+              <iframe src="https://www.youtube.com/embed/-LK_yWPzFSM"  frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="frame-box">
+              <iframe src="https://www.youtube.com/embed/-LK_yWPzFSM"  frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="frame-box">
+              <iframe src="https://www.youtube.com/embed/-LK_yWPzFSM"  frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+  <!-- <section class="fi-logo">
     <div class="container">
     <div class="row text-center">
       <div class="col-md-12">
@@ -188,7 +264,7 @@ include_once 'admin/classes/SlideManagement.php';
       </div>
     </div>
     </div>
-  </section>
+  </section> -->
  
     <!-- footer -->
 
