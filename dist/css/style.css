@@ -20,6 +20,9 @@ header {
 =            Media  Querie s Area            =
 =============================================*/
 }
+img{
+     pointer-events: none;
+}
 
 header .top-header {
   color: white;
@@ -70,13 +73,14 @@ header .dropdown-item:hover {
 header nav {
   margin-top: 3%;
   transition: 200ms ease;
+   position: sticky;
 }
 
 header nav a {
   color: #323232 !important;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 header nav li {
@@ -356,11 +360,14 @@ header nav li .nav-link:hover {
   border-top-left-radius: 10px;
   height: 130px;
   width: 100%;
+  display:block;
 }
-
 .course .box a {
+    text-decoration: none;
+}
+.course .box span {
   margin: 0;
-  text-decoration: none;
+  
   border-top: 10px solid #f7fbff;
   padding: 5px 0;
   display: block;
@@ -373,7 +380,7 @@ header nav li .nav-link:hover {
   cursor: pointer;
 }
 
-.course .box a:hover {
+.course .box span:hover {
   opacity: 0.8;
 }
 

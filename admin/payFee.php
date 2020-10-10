@@ -16,7 +16,8 @@ $batch_id = $_GET['batch'];
           if(isset($_POST['submit'])){
             $type = $_POST['type'];
             $amount = $_POST['amount'];
-            $check = $st->payFee($stu_id,$batch_id,$type,$amount);
+            $rno = $_POST['rno'];
+            $check = $st->payFee($stu_id,$batch_id,$type,$amount,$rno);
             if ($check) {
                 echo '<script>window.location.replace("feesmanagement.php?batch='.$batch_id.'")</script>';
             }
@@ -24,14 +25,14 @@ $batch_id = $_GET['batch'];
           ?>
             <div class="row">
             <!-- column -->
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
               <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title text-center"><b>Fee Payment</b></h3>
                                 <form class="form-material m-t-20 row" method="post">
                                   
-                                    <div class="form-group col-md-12 m-t-10">
+                                    <div class="form-group col-md-6 m-t-10">
                                           <?php
                                               $student=$st->getAllRecord($stu_id,'students');
                                               $getAll=$student->fetch_assoc();
@@ -39,15 +40,19 @@ $batch_id = $_GET['batch'];
                                           <label><b>Student Name:</b></label>
                                         <input type="text" readonly class="form-control" value="<?php echo $getAll['name'] ?>">
                                     </div>
-                                    <div class="form-group col-md-12 m-t-10">
+                                    <div class="form-group col-md-6 m-t-10">
                                       <label><b>Payment Type:</b></label>
                                         <select class="form-control" required name="type">
                                             <option value="">Select Payment Type</option>
                                             <option value="full">Full</option>
                                             <option value="installment">Installment</option>
                                         </select>
-                                    </div>                                    
-                                    <div class="form-group col-md-12 m-t-10">
+                                    </div>    
+                                    <div class="form-group col-md-6 m-t-10">
+                                      <label><b>Receipt Number:</b></label>
+                                        <input type="text" placeholder="Enter receipt Number" name="rno" class="form-control">
+                                    </div>                                
+                                    <div class="form-group col-md-6 m-t-10">
                                       <label><b>Amount:</b></label>
                                         <input type="number" value="<?php echo $getAll['fee'] ?>" name="amount" class="form-control">
                                     </div>

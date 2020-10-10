@@ -77,18 +77,19 @@ $slide=new StudentManagement();
     <div class="col-md-12">
       <div class="row ">
         <div class="col-md-3  pp">
-          <img src="img/pp.jpg" class="img-fluid rounded-circle" alt="Capture2.png">
+          <img id="ppp" src="img/pp.jpg" class="img-fluid rounded-circle" alt="Capture2.png">
         </div>
         <div class="col-md-8 Chairman">
           <h3>Managing Director</h3>
       <p class="quotation"><?php echo $getdata['dir_msg']; ?></p>
-      <a class="Read" href="director-message.php">Read More...</a>
+      <!--<a class="Read" href="director-message.php">Read More...</a>-->
         </div>
       </div>
     </div>
   </div>
 </div>
 </section>
+
 <!-- Courses -->
    <section class="course">
      <div class="container">
@@ -99,53 +100,56 @@ $slide=new StudentManagement();
       </div>
        <div class="row">
          <div class="col-md-3">
-          <div class="box">
+          <div class="box"><a href="german.php">
             <img src="img/german.jpg" class="img-fluid" alt="">
-            <a href="#">GERMAN</a>
+            <span>GERMAN</span></a>
           </div>
          </div>
          <div class="col-md-3">
-          <div class="box">
+          <div class="box"><a href="ielts.php">
             <img src="img/ielts.png" class="img-fluid" alt="">
-            <a href="#">IELTS</a>
+            <span>IELTS</span></a>
           </div>
         </div>
          <div class="col-md-3">
-          <div class="box">
+          <div class="box"><a href="spanish.php">
             <img src="img/spanish.jpg" class="img-fluid" alt="">
-            <a href="#">SPANISH</a>
+            <span>SPANISH</span></a>
           </div>
          </div>
          <div class="col-md-3">
-          <div class="box">
+          <div class="box"><a href="norweigen.php">
             <img src="img/norwegian.jpg" class="img-fluid" alt="">
-            <a href="#">NORWEIGEN</a>
+            <span>NORWEIGEN</span></a>
           </div>
          </div>
        </div>
        <div class="row">
         <div class="col-md-3">
-         <div class="box">
+         <div class="box"><a href="italian.php">
            <img src="img/italian.jpg" class="img-fluid" alt="">
-           <a href="#">Italian</a>
+           <span>Italian</span></a>
          </div>
         </div>
         <div class="col-md-3">
          <div class="box">
+             <a href="danish.php">
            <img src="img/danish.jpg" class="img-fluid" alt="">
-           <a href="#">Danish</a>
+           <span>Danish</span></a>
          </div>
         </div>
         <div class="col-md-3">
          <div class="box">
+             <a href="swedish.php">
            <img src="img/swedish.png" class="img-fluid" alt="">
-           <a href="#">SWEDISH</a>
+           <span>SWEDISH</span></a>
          </div>
         </div>
         <div class="col-md-3">
          <div class="box">
+            <a href="spoken.php">
            <img src="img/spoken.webp" class="img-fluid" alt="">
-           <a href="#">Spoken English</a>
+           <span>Spoken English</span></a>
          </div>
        </div>
       </div>
@@ -154,7 +158,7 @@ $slide=new StudentManagement();
 
    <!-- Certificates -->
 
-   <section class="certificate">
+   <section class="certificate" id="certificate">
       <div class="container">
         <div class="row mb-3">
           <div  class="col-md-12 text-center">
@@ -191,7 +195,105 @@ $slide=new StudentManagement();
       </div>
    </section>
 
-  <section class="fi-logo">
+    <!-- Gallary -->
+
+    <section class="gallary" id="gallary">
+      <div class="container">
+        <div class="row mb-3">
+          <div  class="col-md-12 text-center">
+            <h3 class="underline-green">Gallery</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="img-box">
+              <a href="img/gallary/pic1.jpg">
+            <img src="img/gallary/pic1.jpg" class="img-fluid" alt="">
+            </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-box">
+            <a href="img/gallary/pic2.jpg">
+            <img src="img/gallary/pic2.jpg" class="img-fluid" alt="">
+            </a>
+          </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-box">
+            <a href="img/gallary/pic3.jpg">
+            <img src="img/gallary/pic3.jpg" class="img-fluid" alt="">
+            </a>
+          </div>
+          </div>
+        </div>
+      </div>
+   </section>
+
+<!-- Feedback -->
+
+<section class="feedback" id="feedback">
+      <div class="container">
+        <div class="row mb-3">
+          <div  class="col-md-12 text-center">
+            <h3 class="underline-green">Student Feedback</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="frame-box">
+              <a href="img/feedback/f1.jpeg">
+            <img src="img/feedback/f1.jpeg" class="img-fluid" alt="">
+            </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="frame-box">
+            <a href="img/feedback/f2.jpeg">
+            <img src="img/feedback/f2.jpeg" class="img-fluid" alt="">
+            </a>
+          </div>
+          </div>
+          <div class="col-md-4">
+            <div class="frame-box">
+            <a href="img/feedback/f3.jpeg">
+            <img src="img/feedback/f3.jpeg" class="img-fluid" alt="">
+            </a>
+          </div>
+          </div>
+        </div>
+      </div>
+   </section>
+
+
+<!--<section class="feedback" id="feedback">-->
+<!--      <div class="container">-->
+<!--        <div class="row mb-3">-->
+<!--          <div  class="col-md-12 text-center">-->
+<!--            <h3 class="underline-green">Student Feedback</h3>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--        <div class="col-md-4">-->
+<!--            <div class="frame-box">-->
+<!--              <iframe src="https://www.youtube.com/embed/-LK_yWPzFSM"  frameborder="0" allowfullscreen></iframe>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4">-->
+<!--            <div class="frame-box">-->
+<!--              <iframe src="https://www.youtube.com/embed/-LK_yWPzFSM"  frameborder="0" allowfullscreen></iframe>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4">-->
+<!--            <div class="frame-box">-->
+<!--              <iframe src="https://www.youtube.com/embed/-LK_yWPzFSM"  frameborder="0" allowfullscreen></iframe>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--</section>-->
+
+  <!-- <section class="fi-logo">
     <div class="container">
     <div class="row text-center">
       <div class="col-md-12">
@@ -200,8 +302,19 @@ $slide=new StudentManagement();
       </div>
     </div>
     </div>
-  </section>
+  </section> -->
  
     <!-- footer -->
 
  <?php include("includes/footer.php"); ?>
+ 
+ <!-- Library Area -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12&appId=1874481306158961&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>

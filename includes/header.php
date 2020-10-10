@@ -27,7 +27,7 @@ $slide=new StudentManagement();
     <link rel="stylesheet" href="dist/css/cards-gallery.css">
     <link rel="stylesheet" href="dist/css/style.css" />
     <link rel="icon" href="img/logo.jpg" type="image/gif" sizes="16x16">
-    <meta name="description" content="Wise Home College - Wise Home College is a Project of Bright Stars educational network that is a welfare organization and aims to promote learning. This society has allocated generously millions of scholarships to educational projects ">
+    <meta name="description" content="Wise Home College - Wise Home College is a educational network that is a welfare organization and aims to promote learning. ">
     <meta name="keywords" content="Wise Home College, kharian, kharian campus">
       <title>Wise Home College Kharian</title>
   </head>
@@ -61,7 +61,7 @@ $slide=new StudentManagement();
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <a href="#"><img src="img/logo1.png" class="img-fluid logo" alt="" /></a> 
+            <a href="#"><img src="img/logo12.png" class="img-fluid logo" alt="" /></a> 
           </div>
           <div class="col-md-9">
             <!-- Start NavBar -->
@@ -103,6 +103,15 @@ $slide=new StudentManagement();
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="contact-us.php">Contact Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#certificate">Certificates</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#gallary">Gallary</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#feedback">Feedbacks</a>
                   </li>
                   <!-- <li class="nav-item">
                     <a class="nav-link" href="register.php">Register</a>

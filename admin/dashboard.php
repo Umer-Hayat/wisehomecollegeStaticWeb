@@ -25,6 +25,7 @@ $st=new StudentManagement();
                               <tr>
                                 <th>No#</th>
                                 <th>Student Name</th>
+                                <th>Batch</th>
                                 <th>Totall Fee</th>
                                 <th>Contact No</th>
                                 <th>Action</th>
@@ -51,6 +52,7 @@ $st=new StudentManagement();
                                     <?php echo $getAll['name']; ?>
                                   </a>
                                 </td>
+                                <td><?php echo $getAll['batch_id']; ?></td>
                                 <td><?php echo $getAll['fee']; ?></td>
                                 <td><?php echo $getAll['contact']; ?></td>
                                 <td>
@@ -85,6 +87,7 @@ $st=new StudentManagement();
                               <tr>
                                 <th>No#</th>
                                 <th>Student Name</th>
+                                <th>Batch</th>
                                 <th>Totall Fee</th>
                                 <th>Contact No</th>
                                 <th>Action</th>
@@ -111,6 +114,15 @@ $st=new StudentManagement();
                                     <?php echo $getAll['name']; ?>
                                   </a>
                                 </td>
+                                <td>
+                                    <?php
+                                        $id = $getAll['batch_id'];
+                                        $stu=$st->getAllRecord($id,'batch');
+                                        $get=$stu->fetch_assoc();
+                                    ?>
+                                    <?php echo $get['batch_name']; ?>
+                                    
+                                  </td>
                                 <td><?php echo $getAll['fee']; ?></td>
                                 <td><?php echo $getAll['contact']; ?></td>
                                 <td>

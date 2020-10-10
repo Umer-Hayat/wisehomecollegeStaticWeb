@@ -17,7 +17,7 @@ $slide=new StudentManagement();
             </p>
           </div>
           <div class="col-md-3">
-            <h6>Quik Links</h6>
+            <h6>Quick Links</h6>
             <ul class="value">
               <li>
                 <a href="index.php">Home</a>
@@ -29,7 +29,16 @@ $slide=new StudentManagement();
                 <li>
                   <a href="about-us.php">About Us</a>
                 </li>
-              </li>
+                <li>
+                  <a target="black" href="https://www.goethe.de/ins/pk/en/index.html">Goethe</a>
+                </li>
+                <li>
+                  <a target="black" href="https://my.ieltsessentials.com/Home">AEO</a>
+                </li>
+                <li>
+                  <a target="black" href="https://takeielts.britishcouncil.org/">British Council</a>
+                </li>
+              <!--</li>-->
             </ul>
           </div>
           <div class="col-md-3">
@@ -58,8 +67,8 @@ $slide=new StudentManagement();
               </li>
               <li>
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <a href="#">Monday - Saturday 8.00 - 16.00
-                    Friday 8.00 - 12.30</a>
+                <span style='font-size:12px;'>Monday - Thursday- 9am - 5pm<br/>
+                    Friday -  9am - 1pm and 2:30pm - 5pm</span>
               </li>
             </ul>
           </div>
@@ -69,7 +78,7 @@ $slide=new StudentManagement();
     <footer class="container">
       <div class="row text-center">
         <div class="col-md-6">Copyright © 2020 Wise Home College.</div>
-        <div class="col-md-6">Design And Developed by <a target="blank" href="https://umer-hayat.github.io/portfolio/">Umer Hayat</a></div>
+        <div class="col-md-6">Design And Developed by <a target="blank" href="https://umerhayat.pk">Umer Hayat</a></div>
       </div>
         
     </footer>
@@ -86,6 +95,12 @@ $slide=new StudentManagement();
             js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12&appId=1874481306158961&autoLogAppEvents=1';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+        
+    $('#ppp').mousedown(function (e) {
+  if(e.button == 2) { // right click
+    return false; // do nothing!
+  }
+}
       </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

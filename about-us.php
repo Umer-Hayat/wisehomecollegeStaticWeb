@@ -1,7 +1,7 @@
 <?php include("includes/header.php"); ?>
 <?php 
-include_once 'admin/classes/SlideManagement.php';
-  $slide=new SlideManagement(); 
+include_once 'admin/classes/StudentManagement.php';
+  $slide=new StudentManagement(); 
 
   $query = "select * from homepagedata";
   $data=$slide->getAllRecordByQuery($query);

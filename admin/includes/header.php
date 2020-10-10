@@ -169,22 +169,23 @@ if (!isset($_SESSION['login'])) {
                   <a
                     style="background-color: transparent;"
                     class="waves-effect waves-dark"
-                    href="students.php"
-                    aria-expanded="false"
-                    ><i class="fa fa-users"></i
-                    ><span class="hide-menu">Students</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    style="background-color: transparent;"
-                    class="waves-effect waves-dark"
                     href="batch.php"
                     aria-expanded="false"
                     ><i class="fa fa-tasks"></i
                     ><span class="hide-menu">Manage Batch</span></a
                   >
                 </li>
+                <li>
+                  <a
+                    style="background-color: transparent;"
+                    class="waves-effect waves-dark"
+                    href="students.php"
+                    aria-expanded="false"
+                    ><i class="fa fa-users"></i
+                    ><span class="hide-menu">Students</span></a
+                  >
+                </li>
+                
                 <li>
                   <a
                     style="background-color: transparent;"
@@ -223,6 +224,16 @@ if (!isset($_SESSION['login'])) {
                     aria-expanded="false"
                     ><i class="fa fa-bar-chart"></i
                     ><span class="hide-menu">Reports</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    style="background-color: transparent;"
+                    class="waves-effect waves-dark"
+                    href="booking.php"
+                    aria-expanded="false"
+                    ><i class="fa fa-ticket"></i
+                    ><span class="hide-menu">Test Bokking</span></a
                   >
                 </li>
               </ul>
