@@ -396,9 +396,8 @@ if(isset($_GET['del']))
                         <tr>
                           <th>No#</th>
                           <th>Name</th>
-                          <!-- <th>Father Name</th> -->
-                          <th>Batch</th>
-                          <th>Contact No</th>
+                          <th>CNIC</th>
+                          <th>Test Date</th>
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </thead>

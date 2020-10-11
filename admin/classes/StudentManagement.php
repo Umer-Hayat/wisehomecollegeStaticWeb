@@ -373,6 +373,32 @@ class StudentManagement
         return $result;
     }
 
+    public function addBooking($name,$cnic,$exp_date,$dob,$contact,$testdate,$testtype,$org,$payment,$regdate,$ref,$email){
+
+        $query = "INSERT INTO booking(name,cnic,exp_date,dob,contact,testdate,testtype,org,payment,regdate,ref,email) VALUES('$name','$cnic','$exp_date','$dob','$contact','$testdate','$testtype','$org','$payment','$regdate','$ref','$email')";
+        $result = $this->db->insert($query);
+            if ($result) {
+                $msg = "Data Inserted";
+                return $msg;
+            } else {
+                $msg = "Data Not Inserted";
+                return $msg;
+            }
+    }
+
+    public function updateBooking($name,$cnic,$exp_date,$dob,$contact,$testdate,$testtype,$org,$payment,$regdate,$ref,$email,$id)
+    {
+        $query = "UPDATE booking SET name='$name',cnic='$cnic',exp_date='$exp_date',dob='$dob',contact='$contact',testdate='$testdate',testtype='$testtype',org='$org',payment='$payment',regdate='$regdate',ref='$ref',email='$email' WHERE id='$id'";
+        $result = $this->db->update($query);
+        if ($result) {
+            $msg = "Data Updated";
+            return $msg;
+        } else {
+            $msg = "Data Not Updated";
+            return $msg;
+        }
+    }
+
 }
 
 

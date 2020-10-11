@@ -5,10 +5,10 @@
 $st=new StudentManagement();
 if(isset($_GET['del']))
 {
-    $result=$st->deleteStudent($_GET['del']);
+    $result=$st->deleteBooking($_GET['del']);
     if($result){
       // echo " <script>alert('Student Deleted Successfully');</script>";
-      echo '<script>window.location.replace("students.php")</script>';
+      echo '<script>window.location.replace("booking.php")</script>';
     }
 }
 ?>
@@ -28,24 +28,16 @@ if(isset($_GET['del']))
             <div class="col-12">
               <div class="card">
                             <div class="card-body">
-                                    <h3 class="card-title text-center"><b>Student Detail</b></h3>
+                                    <h3 class="card-title text-center"><b>Booking Detail</b></h3>
                                     <div class="row">
 
                                       <?php
-                                          $letter=$st->getAllRecord($stud_id,'students');
+                                          $letter=$st->getAllRecord($stud_id,'booking');
                                           $getAll=$letter->fetch_assoc();
                                       ?>
                                             <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Full Name</strong>
                                                 <br>
                                                 <p class="text-muted"><?php echo $getAll['name']; ?></p>
-                                            </div>
-                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Father Name</strong>
-                                                <br>
-                                                <p class="text-muted"><?php echo $getAll['fname']; ?></p>
-                                            </div>
-                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Mobile No</strong>
-                                                <br>
-                                                <p class="text-muted"><?php echo $getAll['contact']; ?></p>
                                             </div>
                                             <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>CNIC</strong>
                                                 <br>
@@ -59,25 +51,37 @@ if(isset($_GET['del']))
                                                 <br>
                                                 <p class="text-muted"><?php echo $getAll['dob']; ?></p>
                                             </div>
-                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Course</strong>
+                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Mobile No</strong>
                                                 <br>
-                                                <p class="text-muted"><?php echo $getAll['course']; ?></p>
+                                                <p class="text-muted"><?php echo $getAll['contact']; ?></p>
                                             </div>
-                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Starting Date</strong>
+                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Test Date</strong>
                                                 <br>
-                                                <p class="text-muted"><?php echo $getAll['start_date']; ?></p>
+                                                <p class="text-muted"><?php echo $getAll['testdate']; ?></p>
                                             </div>
-                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Address</strong>
+                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Test Type</strong>
                                                 <br>
-                                                <p class="text-muted"><?php echo $getAll['address']; ?></p>
+                                                <p class="text-muted"><?php echo $getAll['testtype']; ?></p>
                                             </div>
-                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Qualification</strong>
+                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Organization</strong>
                                                 <br>
-                                                <p class="text-muted"><?php echo $getAll['qualif']; ?></p>
+                                                <p class="text-muted"><?php echo $getAll['org']; ?></p>
                                             </div>
-                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Course Fee</strong>
+                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>payment</strong>
                                                 <br>
-                                                <p class="text-muted"><?php echo $getAll['fee']; ?></p>
+                                                <p class="text-muted"><?php echo $getAll['payment']; ?></p>
+                                            </div>
+                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Registration Date</strong>
+                                                <br>
+                                                <p class="text-muted"><?php echo $getAll['regdate']; ?></p>
+                                            </div>
+                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Reference No</strong>
+                                                <br>
+                                                <p class="text-muted"><?php echo $getAll['ref']; ?></p>
+                                            </div>
+                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Email</strong>
+                                                <br>
+                                                <p class="text-muted"><?php echo $getAll['email']; ?></p>
                                             </div>
 
                                             
@@ -89,35 +93,71 @@ if(isset($_GET['del']))
           <?php }
            ?>
 
+           <?php
+          if (isset($_GET['select'])) {
+
+            if(isset($_POST['submit'])){
+              $cnic = $_POST['cnic'];
+              echo '<script>window.location.replace("booking.php?add&cnic='.$cnic.'")</script>';
+            }
+          ?>
+            <div class="row">
+            <!-- column -->
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title text-center"><b>Booking Test</b></h3>
+                                <form class="form-material m-t-20 row" method="post">
+                                  
+                                    <div class="form-group col-md-12">
+                                      <label><b>Enter CNIC no:</b></label>
+                                        <input type="number" required name="cnic" class="form-control" placeholder="Enter cnic number">
+                                    </div>
+                                    <div class="col-md-12 m-t-10 text-center">
+                                        <input type="submit" name="submit" value="Next" class="btn btn-primary" >
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+          </div>
+
+            ?>
+           <?php } ?>
+
+
 
           <?php
           if (isset($_GET['add'])) {
 
+            $cnic = $_GET['cnic'];
+
+            $query = "select * from students where cnic='$cnic'";
+            $cn=$st->getAllRecordByQuery($query);
+            if ($cn) {
+              $getAll=$cn->fetch_assoc();
+            }
+            
+
+
           if(isset($_POST['submit'])){
             $name = $_POST['name'];
-            $fname = $_POST['fname'];
             $cnic = $_POST['cnic'];
-            $batch_id = $_POST['batch'];
             $exp_date = $_POST['expdate'];
             $dob = $_POST['dob'];
-            $fee = $_POST['fee'];
-            $course = $_POST['course'];
-            $start_date = $_POST['strdate'];
-            $contact = '0092'.$_POST['contact'];
-            $address = $_POST['address'];
-            $qualif = $_POST['qualif'];
-            $id_pic = $_POST['id_pic'];
+            $contact = $_POST['contact'];
+            $testdate = $_POST['testdate'];
+            $testtype = $_POST['testtype'];
+            $org = $_POST['org'];
+            $payment = $_POST['payment'];
+            $regdate = $_POST['regdate'];
+            $ref = $_POST['ref'];
+            $email = $_POST['email'];
 
-            $target_dir = "../cnic_pics/";
-            $name1 = $_FILES['id_pic']['name'];
-            $id_pic = $target_dir . basename($_FILES["id_pic"]["name"]);
-
-            move_uploaded_file($_FILES['id_pic']['tmp_name'],$target_dir.$name1);
-
-
-            $check = $st->register($name,$fname,$cnic,$batch_id,$exp_date,$dob,$fee,$course,$start_date,$contact,$address,$qualif,$id_pic);
+            $check = $st->addBooking($name,$cnic,$exp_date,$dob,$contact,$testdate,$testtype,$org,$payment,$regdate,$ref,$email);
             if ($check == "Data Inserted") {
-                echo '<script>window.location.replace("students.php")</script>';
+                echo '<script>window.location.replace("booking.php")</script>';
             }
           }
           ?>
@@ -126,7 +166,7 @@ if(isset($_GET['del']))
             <div class="col-12">
               <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title text-center"><b>Add New Student</b></h3>
+                                <h3 class="card-title text-center"><b>Add Test Booking</b></h3>
                                 <form class="form-material m-t-20 row" method="post"  enctype="multipart/form-data">
                                   <div class="row text-center" style="margin-right: -5px;">
                                        <div style="color:red; margin-left: 20px; font-size:16px;"><?php
@@ -138,84 +178,78 @@ if(isset($_GET['del']))
                                    </div>
                                     <div class="form-group col-md-3 m-t-10">
                                       <label><b>Student Name:*</b></label>
-                                        <input type="text" required name="name" class="form-control form-control-line" placeholder="Enter Name"> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-10">
-                                      <label><b>Father/Husband Name:*</b></label>
-                                        <input type="text" required name="fname" class="form-control form-control-line" placeholder="Enter Name"> 
+                                        <input type="text" required name="name" class="form-control form-control-line" placeholder="Enter Name" value="<?php
+                                        if(isset($getAll['name'])){ 
+                                         echo $getAll['name']; } ?>"> 
                                     </div>
                                     <div class="form-group col-md-3 m-t-10">
                                       <label><b>CNIC Number:*</b></label>
-                                        <input type="number" required name="cnic" class="form-control" placeholder="Enter Number">
+                                        <input type="number" required name="cnic" class="form-control" placeholder="Enter Number" value="<?php
+                                        if(isset($getAll['cnic'])){ 
+                                         echo $getAll['cnic']; } ?>">
                                     </div>
                                     <div class="form-group col-md-3 m-t-10">
                                         <label><b>CNIC Expire Date:</b></label>
-                                        <input type="date" name="expdate" class="form-control">
+                                        <input type="date" name="expdate" class="form-control" value="<?php
+                                        if(isset($getAll['exp_date'])){ 
+                                         echo date('Y-m-d',strtotime($getAll['exp_date'])); } ?>">
                                     </div>
-                                    <div class="form-group col-md-4 m-t-10">
-                                      <label><b>Select Batch:*</b></label>
-                                        <select class="form-control" required name="batch">
-                                          <option value="">Select Batch</option>
-                                          <?php
-                                              $bat=$st->getAllRecords('batch');
-                                              if($bat)
-                                              {
-                                                  while ($getAll=$bat->fetch_assoc())
-                                                  {
-                                          ?>
-                                          <option value="<?php echo $getAll['id'] ?>"><?php echo $getAll['batch_name']; ?></option>
-                                        <?php }} ?>
-                                        </select> 
-                                    </div>
-                                    <div class="form-group col-md-4 m-t-10">
+                                    <div class="form-group col-md-3 m-t-10">
                                       <label><b>Date of Birth:*</b></label>
-                                        <input type="date" required name="dob" class="form-control">
+                                        <input type="date" required name="dob" class="form-control"  value="<?php
+                                        if(isset($getAll['dob'])){ 
+                                         echo date('Y-m-d',strtotime($getAll['dob'])); } ?>">
                                     </div>
                                     
-                                    <div class="form-group col-md-4 m-t-10">
+                                    <div class="form-group col-md-3 m-t-10">
                                       <label><b>Contact No:*</b></label>
                                         <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">0092</span>
-                                            </div>
-                                            <input type="number" required name="contact" class="form-control pl-2" placeholder="Enter Whatsapp Number" aria-describedby="basic-addon1">
+                                            <input type="number" required name="contact" class="form-control pl-2" placeholder="Enter Contact Number" value="<?php
+                                        if(isset($getAll['contact'])){ 
+                                         echo $getAll['contact']; } ?>">
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-md-4 m-t-10">
-                                      <label><b>Qualification:</b></label>
-                                        <input type="text" name="qualif" class="form-control" placeholder="Enter Qualification">
+                                    <div class="form-group col-md-3 m-t-10">
+                                      <label><b>Test Date:</b></label>
+                                        <input type="date" required name="testdate" class="form-control">
                                     </div>
-                                    
-                                    <div class="form-group col-md-4 m-t-10">
-                                      <label><b>Course Fee:*</b></label>
-                                        <input type="number" required name="fee" class="form-control" placeholder="Enter Fee">
-                                    </div>
-                                    <div class="form-group col-md-4 m-t-10">
-                                      <label><b>Course:*</b></label>
-                                        <select name="course" required class="form-control">
-                                          <option value="">Select course</option>
+                                    <div class="form-group col-md-3 m-t-10">
+                                      <label><b>Test Type:*</b></label>
+                                        <select name="testtype" required class="form-control">
+                                          <option value="">Select Type</option>
                                           <option value="IELTS">IELTS</option>
-                                          <option value="german">German</option>
-                                          <option value="spanish">Spanish</option>
-                                          <option value="norweigen">Norweigen</option>
-                                          <option value="italian">Italian</option>
-                                          <option value="danish">Danish</option>
-                                          <option value="swedish">Swedish</option>
-                                          <option value="spoken">Spoken English</option>
+                                          <option value="IELTSUKVI">IELTS UKVI</option>
+                                          <option value="lifeskills">Life Skills</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-4 m-t-10">
-                                      <label><b>Course Start Date:*</b></label>
-                                        <input type="date" required name="strdate" class="form-control">
+                                    <div class="form-group col-md-3 m-t-10">
+                                      <label><b>Organization:*</b></label>
+                                        <select name="org" required class="form-control">
+                                          <option value="">Select Organization</option>
+                                          <option value="AEO">AEO</option>
+                                          <option value="british">British Council</option>
+                                        </select>
                                     </div>
-                                    <div class="form-group col-md-4 m-t-10">
-                                      <label><b>Upload Cnic:</b></label>
-                                        <input type="file" name="id_pic" class="form-control">
+                                    <div class="form-group col-md-3 m-t-10">
+                                      <label><b>Payment:*</b></label>
+                                        <select name="payment" required class="form-control">
+                                          <option value="">Select payment</option>
+                                          <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
                                     </div>
-                                    <div class="form-group col-md-4 m-t-10">
-                                      <label><b>Address:</b></label>
-                                        <textarea class="form-control" name="address" rows="2"></textarea>
+                                    <div class="form-group col-md-3 m-t-10">
+                                      <label><b>Registration Date:*</b></label>
+                                        <input type="date" required name="regdate" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-3 m-t-10">
+                                      <label><b>Reference No:</b></label>
+                                        <input type="text" name="ref" class="form-control" placeholder="Enter Reference No">
+                                    </div>
+                                    <div class="form-group col-md-3 m-t-10">
+                                      <label><b>Email:</b></label>
+                                        <input type="email" name="email" class="form-control" placeholder="Enter Email">
                                     </div>
                                     <div class="col-md-12 m-t-10 text-center">
                                         <input type="reset" class="btn btn-secondary" >
@@ -236,34 +270,25 @@ if(isset($_GET['del']))
             $std=$st->getAllRecord($id,'students');
             $getAll=$std->fetch_assoc();
 
-          if(isset($_POST['update'])){
+            if(isset($_POST['update'])){
             $name = $_POST['name'];
-            $fname = $_POST['fname'];
             $cnic = $_POST['cnic'];
             $exp_date = $_POST['expdate'];
-            $batch = $_POST['batch'];
             $dob = $_POST['dob'];
-            $fee = $_POST['fee'];
-            $course = $_POST['course'];
-            $start_date = $_POST['strdate'];
             $contact = $_POST['contact'];
-            $address = $_POST['address'];
-            $qualif = $_POST['qualif'];
-            
-            $id_pic = $_POST['id_pic'];
-            if($id_pic == ""){
-              $id_pic = $getAll['id_pic'];
-            }
+            $testdate = $_POST['testdate'];
+            $testtype = $_POST['testtype'];
+            $org = $_POST['org'];
+            $payment = $_POST['payment'];
+            $regdate = $_POST['regdate'];
+            $ref = $_POST['ref'];
+            $email = $_POST['email'];
 
-            $check = $st->updatestudent($name,$fname,$cnic,$exp_date,$batch,$dob,$fee,$course,$start_date,$contact,$address,$qualif,$id_pic,$id);
-            if ($check == "Data Updated") {
-                echo '<script>window.location.replace("students.php")</script>';
+            $check = $st->updateBooking($name,$cnic,$exp_date,$dob,$contact,$testdate,$testtype,$org,$payment,$regdate,$ref,$email,$id);
+            if ($check == "Data Inserted") {
+                echo '<script>window.location.replace("booking.php")</script>';
             }
-            }
-            
-
-            
-
+          }
            ?>
             <div class="row">
             <!-- column -->
@@ -382,10 +407,10 @@ if(isset($_GET['del']))
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="card-title"><b>Students</b></h3>
+                  <h3 class="card-title"><b>Test Booking</b></h3>
                   <?php
                   if (!isset($_GET['add'])) { ?>
-                  <a href="students.php?add" class="btn btn-primary">Add New Student</a>
+                  <a href="booking.php?select" class="btn btn-primary">Add New Booking</a>
                     <br>
                   <?php } ?>
                   <hr />
@@ -396,25 +421,24 @@ if(isset($_GET['del']))
                         <tr>
                           <th>No#</th>
                           <th>Name</th>
-                          <!-- <th>Father Name</th> -->
-                          <th>Batch</th>
-                          <th>Contact No</th>
-                          <th class="text-nowrap">Action</th>
+                          <th>CNIC</th>
+                          <th>Test Date</th>
+                          <!-- <th class="text-nowrap">Action</th> -->
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
                           <th>No#</th>
                           <th>Name</th>
-                          <!-- <th>Father Name</th> -->
-                          <th>Batch</th>
+                          <th>CNIC</th>
                           <th>Contact No</th>
-                          <th class="text-nowrap">Action</th>
+                          <th>Test Date</th>
+                          <!-- <th class="text-nowrap">Action</th> -->
                         </tr>
                       </tfoot>
                       <tbody>
                          <?php
-                            $letter=$st->getAllRecords('students');
+                            $letter=$st->getAllRecords('booking');
                             if($letter)
                             {
                               $i=1;
@@ -425,24 +449,14 @@ if(isset($_GET['del']))
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
                           <td>
                             <a                              
-                              href="students.php?view=<?php echo $getAll['id']; ?>">
+                              href="booking.php?view=<?php echo $getAll['id']; ?>">
                               <?php echo $getAll['name']; ?>
                             </a>
                           </td>
-                          <!-- <td><?php echo $getAll['fname']; ?></td> -->
-                          <td style="width: 20px !important;"><?php 
-                          $b_id = $getAll['batch_id'];
-                          $batch=$st->getAllRecord($b_id,'batch');
-                          $data=$batch->fetch_assoc();
-
-
-                          echo $data['batch_name']; ?></td>
-                          <td>
-                            <a target="blank"
-                                    href="https://api.whatsapp.com/send?phone=<?php echo $getAll['contact']; ?>"><?php echo $getAll['contact']; ?>
-                                  </a>
-                          </td>
-                          <td class="text-nowrap">
+                          <td><?php echo $getAll['cnic']; ?></td>
+                          <td><?php echo $getAll['contact']; ?></td>
+                          <td><?php echo $getAll['testdate']; ?></td>
+                          <!-- <td class="text-nowrap">
                             <a
                               href="students.php?edit=<?php echo $getAll['id']; ?>"
                               data-original-title="Edit"
@@ -458,7 +472,7 @@ if(isset($_GET['del']))
                             >
                               <i class="fa fa-close text-danger"></i>
                             </a>
-                          </td>
+                          </td> -->
                         </tr>
                         <?php }} ?>
                       </tbody>
