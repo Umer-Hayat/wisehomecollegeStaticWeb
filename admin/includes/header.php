@@ -3,6 +3,17 @@
 if (!isset($_SESSION['login'])) {
   header("Location:index.php");
 }
+
+include_once 'classes/StudentManagement.php';
+$st=new StudentManagement();
+
+
+$query = "SELECT * FROM visiterCounter ORDER BY id desc";
+$res=$st->getAllRecordByQuery($query);
+if($res){
+    $getAll=$res->fetch_assoc();
+    $count = $getAll['count'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,6 +96,7 @@ if (!isset($_SESSION['login'])) {
               <!-- ============================================================== -->
               <ul class="navbar-nav mr-auto mt-md-0">
                 <!-- This is  -->
+                
                 <li class="nav-item">
                   <a
                     class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
@@ -92,6 +104,7 @@ if (!isset($_SESSION['login'])) {
                     ><i class="fa fa-bars"></i
                   ></a>
                 </li>
+                
                 <li class="nav-item m-l-10">
                   <a
                     class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
@@ -110,6 +123,9 @@ if (!isset($_SESSION['login'])) {
                 <!-- ============================================================== -->
                 <!-- Profile -->
                 <!-- ============================================================== -->
+                <li class="nav-item" style="line-height: 60px; color: white; margin-right: 20px">
+                 <b>Totall Visitor: <?php echo $count; ?></b>
+                </li>
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle text-muted waves-effect waves-dark"
@@ -196,16 +212,7 @@ if (!isset($_SESSION['login'])) {
                     ><span class="hide-menu">Fees Management</span></a
                   >
                 </li>
-                <li>
-                  <a
-                    style="background-color: transparent;"
-                    class="waves-effect waves-dark"
-                    href="homepagedata.php"
-                    aria-expanded="false"
-                    ><i class="fa fa-database"></i
-                    ><span class="hide-menu">Home Page Data</span></a
-                  >
-                </li>
+                
                 <li>
                   <a
                     style="background-color: transparent;"
@@ -233,7 +240,17 @@ if (!isset($_SESSION['login'])) {
                     href="booking.php"
                     aria-expanded="false"
                     ><i class="fa fa-ticket"></i
-                    ><span class="hide-menu">Test Bokking</span></a
+                    ><span class="hide-menu">Test Booking</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    style="background-color: transparent;"
+                    class="waves-effect waves-dark"
+                    href="homepagedata.php"
+                    aria-expanded="false"
+                    ><i class="fa fa-database"></i
+                    ><span class="hide-menu">Home Page Data</span></a
                   >
                 </li>
               </ul>
