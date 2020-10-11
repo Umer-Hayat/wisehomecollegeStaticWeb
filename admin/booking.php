@@ -5,7 +5,7 @@
 $st=new StudentManagement();
 if(isset($_GET['del']))
 {
-    $result=$st->deleteBooking($_GET['del']);
+    $result=$st->deleteItem($_GET['del'],'booking');
     if($result){
       // echo " <script>alert('Student Deleted Successfully');</script>";
       echo '<script>window.location.replace("booking.php")</script>';
@@ -151,7 +151,12 @@ if(isset($_GET['del']))
             $testtype = $_POST['testtype'];
             $org = $_POST['org'];
             $payment = $_POST['payment'];
-            $regdate = $_POST['regdate'];
+            if($_POST['regdate'] != ''){
+                $regdate = $_POST['regdate'];
+            }else{
+                $regdate = '00/00/0000';
+            }
+            
             $ref = $_POST['ref'];
             $email = $_POST['email'];
 
@@ -240,8 +245,8 @@ if(isset($_GET['del']))
                                         </select>
                                     </div>
                                     <div class="form-group col-md-3 m-t-10">
-                                      <label><b>Registration Date:*</b></label>
-                                        <input type="date" required name="regdate" class="form-control">
+                                      <label><b>Registration Date:</b></label>
+                                        <input type="date" name="regdate" class="form-control">
                                     </div>
                                     <div class="form-group col-md-3 m-t-10">
                                       <label><b>Reference No:</b></label>
@@ -267,7 +272,7 @@ if(isset($_GET['del']))
           if (isset($_GET['edit'])) {
             $id = $_GET['edit'];
 
-            $std=$st->getAllRecord($id,'students');
+            $std=$st->getAllRecord($id,'booking');
             $getAll=$std->fetch_assoc();
 
             if(isset($_POST['update'])){
@@ -280,12 +285,16 @@ if(isset($_GET['del']))
             $testtype = $_POST['testtype'];
             $org = $_POST['org'];
             $payment = $_POST['payment'];
-            $regdate = $_POST['regdate'];
+            if($_POST['regdate'] != ''){
+                $regdate = $_POST['regdate'];
+            }else{
+                $regdate = '00/00/0000';
+            }
             $ref = $_POST['ref'];
             $email = $_POST['email'];
 
             $check = $st->updateBooking($name,$cnic,$exp_date,$dob,$contact,$testdate,$testtype,$org,$payment,$regdate,$ref,$email,$id);
-            if ($check == "Data Inserted") {
+            if ($check == "Data Updated") {
                 echo '<script>window.location.replace("booking.php")</script>';
             }
           }
@@ -311,10 +320,6 @@ if(isset($_GET['del']))
                                         <input type="text" required name="name" class="form-control form-control-line" value="<?php echo $getAll['name']; ?>"> 
                                     </div>
                                     <div class="form-group col-md-3">
-                                      <label><b>Student Father Name:</b></label>
-                                        <input type="text" required name="fname" class="form-control form-control-line" value="<?php echo $getAll['fname']; ?>"> 
-                                    </div>
-                                    <div class="form-group col-md-3">
                                       <label><b>CNIC No:</b></label>
                                         <input type="number" required name="cnic" class="form-control" value="<?php echo $getAll['cnic']; ?>">
                                     </div>
@@ -322,28 +327,7 @@ if(isset($_GET['del']))
                                       <label><b>CNIC Expire Date:</b></label>
                                         <input type="date" required name="expdate" class="form-control" value="<?php echo date('Y-m-d',strtotime($getAll['exp_date'])) ?>">
                                     </div>
-                                    <div class="form-group col-md-4 m-t-10">
-                                      <label><b>Select Batch:</b></label>
-                                        <select class="form-control" required name="batch">
-                                          <option value="<?php echo $getAll['batch_id']; ?>"><?php
-                                          $ba_id = $getAll['batch_id'];
-                                          $letter=$st->getAllRecord($ba_id,'batch');
-                                          $data=$letter->fetch_assoc();
-
-                                           echo $data['batch_name']; ?></option>
-                                          <?php
-                                              $bat=$st->getAllRecords('batch');
-                                              if($bat)
-                                              {
-                                                  while ($data1=$bat->fetch_assoc())
-                                                  {
-                                                    if($data1['id'] != $ba_id){
-                                          ?>
-                                          <option value="<?php echo $data1['id'] ?>"><?php echo $data1['batch_name']; ?></option>
-                                        <?php }}} ?>
-                                        </select> 
-                                    </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-3">
                                       <label><b>Date of Birth:</b></label>
                                         <input name="dob" required class="form-control"  type="date" value="<?php echo date('Y-m-d',strtotime($getAll['dob'])) ?>" />
                                     </div>
@@ -354,39 +338,65 @@ if(isset($_GET['del']))
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
-                                      <label><b>Qualification:</b></label>
-                                        <input type="text" name="qualif" class="form-control" value="<?php echo $getAll['qualif']; ?>">
-                                    </div>
-
-                                    <div class="form-group col-md-4">
-                                      <label><b>Upload Cnic:</b></label>
-                                        <input type="file" name="id_pic" class="form-control" value="<?php echo $getAll['id_pic']; ?>">
+                                      <label><b>Test Date:</b></label>
+                                        <input type="date" name="testdate" class="form-control" value="<?php echo date('Y-m-d',strtotime($getAll['testdate'])) ?>" />
                                     </div>
                                     <div class="form-group col-md-4">
-                                      <label><b>Course Fee:</b></label>
-                                        <input type="text" required name="fee" class="form-control" value="<?php echo $getAll['fee']; ?>">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                      <label><b>Course:</b></label>
-                                        <select name="course" required class="form-control">
-                                          <option value="<?php echo $getAll['course']; ?>"><?php echo $getAll['course']; ?></option>
+                                      <label><b>Test Type:</b></label>
+                                        <select name="testtype" required class="form-control">
+                                          <option value="<?php echo $getAll['testtype']; ?>"><?php echo $getAll['testtype']; ?></option>
+                                          <?php if($getAll['testtype'] == "IELTS"){ ?>
+                                            <option value="IELTSUKVI">IELTS UKVI</option>
+                                          <option value="lifeskills">Life Skills</option>
+                                          <?php  }elseif($getAll['testtype'] == "IELTSUKVI"){ ?>
                                           <option value="IELTS">IELTS</option>
-                                          <option value="german">German</option>
-                                          <option value="spanish">Spanish</option>
-                                          <option value="norweigen">Norweigen</option>
-                                          <option value="italian">Italian</option>
-                                          <option value="danish">Danish</option>
-                                          <option value="swedish">Swedish</option>
-                                          <option value="spoken">Spoken English</option>
+                                          <option value="lifeskills">Life Skills</option>
+                                          <?php }elseif($getAll['testtype'] == "lifeskills"){ ?>
+                                          <option value="IELTS">IELTS</option>
+                                          <option value="IELTSUKVI">IELTS UKVI</option>
+                                          <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
-                                      <label><b>Course Start Date:</b></label>
-                                        <input type="date" required name="strdate" class="form-control" value="<?php echo date('Y-m-d',strtotime($getAll['start_date'])) ?>">
+                                      <label><b>Organization:</b></label>
+                                        <select name="org" required class="form-control">
+                                          <option value="<?php echo $getAll['org']; ?>"><?php if ($getAll['org'] == "british") {
+                                            echo $getAll['org'].' Council';
+                                          }else{
+                                            echo $getAll['org'];
+                                          }  ?></option>
+                                          <?php if($getAll['org'] == "AEO"){
+                                            echo '<option value="british">British Council</option>';
+                                          }else{ ?>
+                                          <option value="AEO">AEO</option>
+                                        <?php } ?>
+                                        </select>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label><b>Address</b></label>
-                                        <textarea class="form-control" name="address" rows="2"><?php echo $getAll['address']; ?></textarea>
+                                      <label><b>Payment:</b></label>
+                                        <select name="payment" required class="form-control">
+                                          <option value="<?php echo $getAll['payment']; ?>">
+                                            <?php echo $getAll['payment']; ?>
+                                          </option>
+                                          
+                                          <?php if($getAll['payment'] == "yes"){
+                                            echo '<option value="no">No</option>';
+                                            }else{ ?>
+                                          <option value="yes">Yes</option>
+                                          <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Registration Date:</b></label>
+                                        <input type="date" name="regdate" class="form-control" value="<?php echo date('Y-m-d',strtotime($getAll['regdate'])) ?>" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label><b>Reference No:</b></label>
+                                        <input type="type" required name="ref" class="form-control" value="<?php echo $getAll['ref']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label><b>Email</b></label>
+                                        <textarea class="form-control" name="email" rows="2"><?php echo $getAll['email']; ?></textarea>
                                     </div>
                                     <div class="col-md-12 text-center">
                                         <!-- <input type="reset" class="btn btn-secondary" > -->
@@ -423,7 +433,7 @@ if(isset($_GET['del']))
                           <th>Name</th>
                           <th>CNIC</th>
                           <th>Test Date</th>
-                          <!-- <th class="text-nowrap">Action</th> -->
+                          <th class="text-nowrap">Action</th>
                         </tr>
                       </thead>
                       <tfoot>
@@ -433,7 +443,7 @@ if(isset($_GET['del']))
                           <th>CNIC</th>
                           <th>Contact No</th>
                           <th>Test Date</th>
-                          <!-- <th class="text-nowrap">Action</th> -->
+                          <th class="text-nowrap">Action</th>
                         </tr>
                       </tfoot>
                       <tbody>
@@ -456,9 +466,9 @@ if(isset($_GET['del']))
                           <td><?php echo $getAll['cnic']; ?></td>
                           <td><?php echo $getAll['contact']; ?></td>
                           <td><?php echo $getAll['testdate']; ?></td>
-                          <!-- <td class="text-nowrap">
+                          <td class="text-nowrap">
                             <a
-                              href="students.php?edit=<?php echo $getAll['id']; ?>"
+                              href="booking.php?edit=<?php echo $getAll['id']; ?>"
                               data-original-title="Edit"
                               data-toggle="tooltip"
                               data-target="#editOrder"
@@ -466,13 +476,13 @@ if(isset($_GET['del']))
                               <i class="fa fa-pencil text-inverse m-r-10"></i>
                             </a>
                             <a
-                              onclick="return confirm('Are you sure to delete!')" href="students.php?del=<?php echo $getAll['id'];?>"
+                              onclick="return confirm('Are you sure to delete!')" href="booking.php?del=<?php echo $getAll['id'];?>"
                               data-toggle="tooltip"
                               data-original-title="Delete Student"
                             >
                               <i class="fa fa-close text-danger"></i>
                             </a>
-                          </td> -->
+                          </td>
                         </tr>
                         <?php }} ?>
                       </tbody>
