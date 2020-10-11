@@ -153,12 +153,7 @@ if(isset($_GET['del']))
                         ?>
                         <tr>
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
-                          <td>
-                            <a                              
-                              href="batch.php?edit=<?php echo $getAll['id']; ?>">
-                              <?php echo $getAll['batch_name']; ?>
-                            </a>
-                          </td>
+                          <td><?php echo $getAll['batch_name']; ?></td>
                           <td><?php echo $getAll['batch_start']; ?></td>
                           <td class="text-nowrap">
                             <a
