@@ -20,8 +20,8 @@ header {
 =            Media  Querie s Area            =
 =============================================*/
 }
-img{
-     pointer-events: none;
+img {
+  pointer-events: none;
 }
 
 header .top-header {
@@ -73,7 +73,7 @@ header .dropdown-item:hover {
 header nav {
   margin-top: 3%;
   transition: 200ms ease;
-   position: sticky;
+  position: sticky;
 }
 
 header nav a {
@@ -103,7 +103,12 @@ header nav li .nav-link:hover {
 
 .slider-section .carousel-inner img {
   width: 100%;
-  height: auto;
+  height: 550px;
+}
+@media only screen and (max-device-width: 768px) {
+  .slider-section .carousel-inner img {
+    height: auto;
+  }
 }
 
 .slider-section .carousel-caption span {
@@ -190,10 +195,17 @@ header nav li .nav-link:hover {
 }
 
 .messege .pgc {
-  box-shadow: 2px 2px #c2c2c2;
+  /* box-shadow: 2px 2px #c2c2c2; */
+
+  border: 1px solid #d4d4e3;
   border-radius: 5px;
-  background-color: #074582;
+  background-color: #f2f2fc;
   padding: 2%;
+  transition: all 0.3s ease;
+}
+
+.messege .pgc:hover {
+  box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
 }
 
 .messege .pgc .pp {
@@ -211,7 +223,7 @@ header nav li .nav-link:hover {
 }
 
 .messege .row .Chairman {
-  margin-top: 50px;
+  margin-top: 20px;
   color: white;
   font-size: 14px;
 }
@@ -219,6 +231,7 @@ header nav li .nav-link:hover {
 .messege .row .Chairman h3 {
   font-size: 18px;
   font-family: "Lato", sans-serif;
+  color: #302e4d;
 }
 
 .messege .row .Chairman a {
@@ -230,7 +243,7 @@ header nav li .nav-link:hover {
   quotes: "“" "”" "‘" "’";
   padding: 0 12px;
   line-height: 1.4;
-  color: #fff;
+  color: #504370;
 }
 
 .messege .quotation:before {
@@ -263,7 +276,14 @@ header nav li .nav-link:hover {
 .messege .col-md-9 .Read {
   float: right;
 }
-
+@media only screen and (max-device-width: 768px) {
+  .messege .pgc {
+    width: 90%;
+  }
+  .messege .pgc .pp img {
+    width: 50%;
+  }
+}
 /*=============================================
 =            About Adler         =
 =============================================*/
@@ -341,7 +361,7 @@ header nav li .nav-link:hover {
 =            courses         =
 =============================================*/
 .course {
-  background-color: #f7fbff;
+  background-color: #f5f6fa;
   padding: 30px 0;
 }
 
@@ -360,14 +380,14 @@ header nav li .nav-link:hover {
   border-top-left-radius: 10px;
   height: 130px;
   width: 100%;
-  display:block;
+  display: block;
 }
 .course .box a {
-    text-decoration: none;
+  text-decoration: none;
 }
 .course .box span {
   margin: 0;
-  
+
   border-top: 10px solid #f7fbff;
   padding: 5px 0;
   display: block;
@@ -444,7 +464,7 @@ header nav li .nav-link:hover {
 =            gallary         =
 =============================================*/
 .gallary {
-  background-color: #f7fbff;
+  background-color: #f5f6fa;
   padding: 30px 0;
 }
 
@@ -493,6 +513,67 @@ header nav li .nav-link:hover {
   transform: scale(1.03);
 }
 
+.main-section {
+  background: #f2f2fc;
+  margin: 0 auto;
+  padding-top: 20px;
+  margin-top: 40px;
+  box-shadow: 0 0 10px #dad8d8;
+  border-radius: 10px;
+}
+
+.fa-star,
+.fa-star-o,
+.fa-star-half-o {
+  color: #fdc91b;
+  font-size: 25px !important;
+}
+
+.user-img img {
+  height: 80px;
+  width: 80px;
+  border: 1px solid #074582;
+  border-radius: 50%;
+}
+.user-img {
+  float: left;
+  margin-left: 15%;
+}
+.user-text {
+  float: right;
+  margin-right: 15%;
+}
+.user-text h4,
+.user-text p {
+  margin: 0px 0px 5px 0px;
+}
+.user-text p {
+  font-size: 20px;
+  font-weight: bold;
+}
+.user-text h4,
+.user-text span {
+  color: #b3b5b4;
+}
+@media only screen and (max-width: 768px) {
+  .main-section {
+    width: 90%;
+  }
+  .user-img {
+    margin-left: 5%;
+  }
+  .user-text {
+    margin-right: 5%;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .user-img {
+    margin-left: 0 !important;
+  }
+  .user-text {
+    margin-right: 0 !important;
+  }
+}
 /*=============================================
 =            Register page design            =
 =============================================*/

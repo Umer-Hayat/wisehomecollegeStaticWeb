@@ -12,10 +12,10 @@ $st=new StudentManagement();
 
               <?php
               if(isset($_POST['batchNext'])){
-                $batch = $_POST['batch'];
+                // $batch = $_POST['batch'];
                 $from = $_POST['from'];
                 $to = $_POST['to'];
-                echo '<script>window.location.replace("batchreport.php?batch='.$batch.'&from='.$from.'&to='.$to.'")</script>';
+                echo '<script>window.location.replace("batchreport.php?from='.$from.'&to='.$to.'")</script>';
               }
 
               if(isset($_POST['expenseNext'])){
@@ -59,7 +59,7 @@ $st=new StudentManagement();
                                       <h3 class="card-title text-center"><b>Batch Fee Report</b></h3>
                                       <form class="form-material m-t-20 row" method="post">
                                         
-                                          <div class="form-group col-md-12 m-t-10">
+                                          <!-- <div class="form-group col-md-12 m-t-10">
                                             <label><b>Select Batch:</b></label>
                                               <select class="form-control" required name="batch">
                                                 <option value="">Select Batch</option>
@@ -73,7 +73,7 @@ $st=new StudentManagement();
                                                 <option value="<?php echo $getAll['id'] ?>"><?php echo $getAll['batch_name']; ?></option>
                                               <?php }} ?>
                                               </select> 
-                                          </div>
+                                          </div> -->
                                           <div class="form-group col-md-12">
                                             <label><b>From:</b></label>
                                               <input type="date" name="from" class="form-control form-control-line"> 

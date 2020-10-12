@@ -3,17 +3,9 @@
 
 <?php include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
-$batch_id = $_GET['batch'];
+// $batch_id = $_GET['batch'];
 $from = $_GET['from'];
 $to = $_GET['to'];
-if(isset($_GET['del']))
-{
-    $result=$st->deleteStudent($_GET['del']);
-    if($result){
-      // echo " <script>alert('Student Deleted Successfully');</script>";
-      echo '<script>window.location.replace("students.php")</script>';
-    }
-}
 
 ?>
       <div class="page-wrapper">
@@ -51,8 +43,7 @@ if(isset($_GET['del']))
                       </tfoot>
                       <tbody>
                          <?php
-                         $query1 = "SELECT * FROM fee WHERE batch_id='$batch_id' and 'date' BETWEEN '$from' AND '$to'";
-                         $query = "SELECT * FROM fee WHERE batch_id='$batch_id' and date BETWEEN '$from' AND '$to'";
+                         $query = "SELECT * FROM fee WHERE date BETWEEN '$from' AND '$to'";
                                 $student=$st->getAllRecordByQuery($query);
                             
                             if($student)

@@ -203,6 +203,13 @@ class StudentManagement
         return $result;
     }
 
+    public function getAllStudentsByStatus($table,$status)
+    {
+        $query="select * from $table where status='$status'";
+        $result=$this->db->select($query);
+        return $result;
+    }
+
     public function getAllRecordByQuery($query)
     {
         $query="$query";

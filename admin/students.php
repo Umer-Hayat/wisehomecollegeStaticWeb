@@ -413,7 +413,7 @@ if(isset($_GET['del']))
                       </tfoot>
                       <tbody>
                          <?php
-                            $letter=$st->getAllRecords('students');
+                            $letter=$st->getAllStudentsByStatus('students','1');
                             if($letter)
                             {
                               $i=1;
