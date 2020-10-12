@@ -26,7 +26,12 @@ if(isset($_GET['del']))
             if(isset($_POST['submit'])){
               $stu_id = $_POST['name'];
               $amount = $_POST['amount'];
-              echo '<script>window.location.replace("feesmanagement.php?batch='.$batch_id.'")</script>';
+              $check = $st->refundFee($stu_id,$amount);
+            if ($check == "Data Updated") {
+                echo '<script>window.location.replace("feesmanagement.php?batch='.$batch_id.'")</script>';
+            }
+
+              
             }
 
            ?>
@@ -98,7 +103,7 @@ if(isset($_GET['del']))
                         <tr>
                           <th>No#</th>
                           <th>Name</th>
-                          <th>Father Name</th>
+                          <th>CNIC</th>
                           <th>Fees</th>
                           <th>Fee Status</th>
                           <th>Contact No</th>
@@ -109,7 +114,7 @@ if(isset($_GET['del']))
                         <tr>
                           <th>No#</th>
                           <th>Name</th>
-                          <th>Father Name</th>
+                          <th>CNIC</th>
                           <th>Fees</th>
                           <th>Fee Status</th>
                           <th>Contact No</th>
@@ -129,7 +134,7 @@ if(isset($_GET['del']))
                         <tr>
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
                           <td><?php echo $getAll['name']; ?></td>
-                          <td><?php echo $getAll['fname']; ?></td>
+                          <td><?php echo $getAll['cnic']; ?></td>
                           <td><?php echo $getAll['fee']; ?></td>
                           <td>
                             <?php
@@ -137,8 +142,12 @@ if(isset($_GET['del']))
                                 <div class="label label-table label-success">
                                   <?php echo $getAll['fee_status']; ?>
                                 </div>
-                            <?php }else{ ?>
+                            <?php }elseif($getAll['fee_status'] == 'unpaid'){ ?>
                                 <div class="label label-table label-warning">
+                                  <?php echo $getAll['fee_status']; ?>
+                                </div>
+                            <?php }else{ ?>
+                                <div class="label label-table label-primary">
                                   <?php echo $getAll['fee_status']; ?>
                                 </div>
                             <?php } ?>

@@ -220,6 +220,63 @@ class StudentManagement
         $result=$this->db->select($query);
         return $result;
     }
+
+    public function refundFee($id,$amount){
+        $query="select * from fee where student_id='$id' ORDER BY id DESC";
+        $result=$this->db->select($query);
+        if ($result) {
+            $data=$result->fetch_assoc();
+
+            $fee_id = $data['id'];
+            $fee_amount = $data['amount'];
+            if ($fee_amount>0) {
+                if ($amount ==$fee_amount) {
+                    $query1="UPDATE fee SET amount='0' WHERE id='$fee_id'";
+                    $result1=$this->db->update($query1);
+
+                    $query2="UPDATE students SET fee_status='refunded' WHERE id='$id'";
+                    $result2=$this->db->update($query2);
+
+                    if ($result2) {
+                        $msg = "Data Updated";
+                        return $msg;
+                    }else{
+                        $msg = "Data Not Updated";
+                        return $msg;
+                    }
+                }elseif($amount < $fee_amount){
+                    $amount = $fee_amount - $amount;
+                    $query1="UPDATE fee SET amount='$amount' WHERE id='$fee_id'";
+                    $result1=$this->db->update($query1);
+
+                    $query2="UPDATE students SET fee_status='refunded' WHERE id='$id'";
+                    $result2=$this->db->update($query2);
+
+                    if ($result2) {
+                        $msg = "Data Updated";
+                        return $msg;
+                    }else{
+                        $msg = "Data Not Updated";
+                        return $msg;
+                    }
+                }
+                else{
+                    $msg = "The amount is greater then Student Fee";
+                    return $msg;
+                }
+                
+            }else{
+                $msg = "Student already Refunded";
+                return $msg;
+            }
+            
+
+        }else{
+            $msg = "Student did not Pay any fee Before";
+            return $msg;
+        }
+        
+    }
     
 
     public function addBatch($name,$start_date){
