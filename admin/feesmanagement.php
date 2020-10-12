@@ -21,17 +21,20 @@ if(isset($_GET['del']))
         <br />
         <div class="container-fluid">
           <?php
-          if(isset($_GET['edit']))
+          if(isset($_GET['refund']))
           {
             if(isset($_POST['submit'])){
-              echo '<script>window.location.replace("feesmanagement.php")</script>';
+              $stu_id = $_POST['name'];
+              $amount = $_POST['amount'];
+              echo '<script>window.location.replace("feesmanagement.php?batch='.$batch_id.'")</script>';
             }
 
            ?>
 
           <div class="row">
             <!-- column -->
-            <div class="col-12">
+            <div class="col-4"></div>
+            <div class="col-4">
               <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title text-center">Update Fees of Student</h3>
@@ -45,39 +48,28 @@ if(isset($_GET['del']))
                                            ?>
                                     </div>
                                    </div>
-                                    <div class="form-group col-md-3 m-t-10">
-                                      <label>Student Name:</label>
-                                <!-- <select class="form-control" required name="RoomNo"> -->
-                                    <!-- <option value="">Select Student</option> -->
+                                    <div class="form-group col-md-12 m-t-10">
+                                      <label><b>Student Name:</b></label>
+                                <select class="form-control" required name="name">
+                                    <option value="">Select Student</option>
                                 <?php
-                                $id = $_GET['edit'];
-                                $student=$st->getAllRecordByQuery("select * from students where status='active' and id='$id'");
-                                if($student)
-                                {
-                                while ($getAll=$student->fetch_assoc()) {
-                                    ?>
-                                    <!-- <option value="<?php echo $getAll['id']; ?>"><?php echo $getAll['name']; ?></option> -->
-                                    <input type="text" name="fname" readonly class="form-control form-control-line" value="<?php echo $getAll['name']; ?>"> 
+                                $student=$st->getAllRecordsByStatus($batch_id,'1');
+                            
+                                    if($student)
+                                    {
+                                      $i=1;
+                                      while ($getAll=$student->fetch_assoc())
+                                      {
+                                ?>
+                                    <option value="<?php echo $getAll['id']; ?>"><?php echo $getAll['name']; ?></option>
                                     <?php
                                 }}
                                 ?>
-                                <!-- </select> -->
+                                </select>
                                     </div>
-                                    <div class="form-group col-md-3 m-t-10">
-                                      <label>Payment Type:</label>
-                                      <select class="form-control" required name="Paymenttype">
-                                    <option value="">Select Payment type</option>
-                                    <option value="">Installment</option>
-                                    <option value="">Full</option>
-                                  </select>
-                                        <!-- <input type="text" name="fname" class="form-control form-control-line" placeholder="Enter Student Father Name">  -->
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-10">
-                                        <input type="number" name="cnic" class="form-control" placeholder="Enter CNIC Number">
-                                    </div>
-                                    <div class="form-group col-md-4 m-t-10">
-                                        <label>Class Starting Date:</label>
-                                        <input type="date" name="expdate" class="form-control" placeholder="Enter CNIC Number">
+                                    <div class="form-group col-md-12 m-t-10">
+                                      <label><b>Amount:</b></label>
+                                        <input type="number" name="amount" class="form-control" placeholder="Enter Amount">
                                     </div>
                                     <div class="col-md-12 m-t-10 text-center">
                                         <input type="reset" class="btn btn-secondary" >
@@ -97,6 +89,8 @@ if(isset($_GET['del']))
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title"><b>Fees Management</b></h4>
+                  <a  href="feesmanagement.php?batch=<?php echo $batch_id ?>&refund" class="btn btn-danger float-right">Refund Fee</a>
+                    <br>
                   <hr />
                   <div class="table-responsive m-t-10">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
