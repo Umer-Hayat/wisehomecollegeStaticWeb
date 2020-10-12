@@ -6,10 +6,10 @@ $st=new StudentManagement();
 $batch_id = $_GET['batch'];
 if(isset($_GET['del']))
 {
-    $result=$st->deleteStudent($_GET['del']);
+    $result=$st->terminateStudent($_GET['del']);
     if($result){
       // echo " <script>alert('Student Deleted Successfully');</script>";
-      echo '<script>window.location.replace("students.php")</script>';
+      echo '<script>window.location.replace("feesmanagement.php?batch='.$batch_id.'")</script>';
     }
 }
 
@@ -164,7 +164,20 @@ if(isset($_GET['del']))
                                   <!-- <i class='fa fa-print'></i> -->
                                   Add Payment
                                 </a>
+                                <a style="font-size: 14px;" 
+                                onclick="return confirm('Are you sure to Terminate Student!')"
+                                class="label label-table label-danger" 
+                                data-toggle="tooltip"
+                                data-original-title="Terminate Student"
+                                href='feesmanagement.php?batch=<?php echo $batch_id; ?>&del=<?php echo $getAll['id']; ?>'
+                                  >
+                                  <!-- <i class='fa fa-print'></i> -->
+                                  Terminate 
+                                </a>
+
                             <?php } ?>
+
+                            
 
                           
                           </td>
