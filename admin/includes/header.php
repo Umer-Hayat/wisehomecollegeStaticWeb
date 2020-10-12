@@ -142,7 +142,7 @@ if($res){
                     <ul class="dropdown-user">
                       <li role="separator" class="divider"></li>
                       <li>
-                        <a href="?action=logout"><i class="fa fa-power-off"></i> Logout</a>
+                        <a href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
                       </li>
                             <?php
                             if (isset($_GET['action']) && $_GET['action']=="logout") {

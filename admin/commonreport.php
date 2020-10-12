@@ -55,7 +55,7 @@ if(isset($_GET['year']))
                   <div class="table-responsive m-t-10">
                                     <table id="example23" class="display nowrap table table-hover table-striped " cellspacing="0" width="100%">
                       <thead>
-                        <tr class="text-center">
+                        <!-- <tr class="text-center">
                           <th><b><?php if (isset($_GET['daily'])) {
                               echo "Daily";
                             }elseif (isset($_GET['month'])) {
@@ -64,7 +64,7 @@ if(isset($_GET['year']))
                               echo "Yearly";
                             } ?> Report</b>
                           </th>
-                        </tr>
+                        </tr> -->
                         <tr>
                           <th>Title</th>
                           <th>Amount</th>

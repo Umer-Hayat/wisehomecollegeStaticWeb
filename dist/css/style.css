@@ -47,7 +47,7 @@ header .top-header a {
 
 header .logo {
   margin: 10px 0;
-  width: 65%;
+  width: 50%;
 }
 
 header .dropdown:hover > .dropdown-menu {

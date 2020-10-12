@@ -26,7 +26,7 @@ $slide=new StudentManagement();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
     <link rel="stylesheet" href="dist/css/cards-gallery.css">
     <link rel="stylesheet" href="dist/css/style.css" />
-    <link rel="icon" href="img/logo.jpg" type="image/gif" sizes="16x16">
+    <link rel="icon" href="img/logo111.jpg" type="image/gif" sizes="16x16">
     <meta name="description" content="Wise Home College - Wise Home College is a educational network that is a welfare organization and aims to promote learning. ">
     <meta name="keywords" content="Wise Home College, kharian, kharian campus">
       <title>Wise Home College Kharian</title>
@@ -61,7 +61,7 @@ $slide=new StudentManagement();
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <a href="#"><img src="img/logo12.png" class="img-fluid logo" alt="" /></a> 
+            <a href="#"><img src="img/logo111.jpg" class="img-fluid logo" alt="" /></a> 
           </div>
           <div class="col-md-9">
             <!-- Start NavBar -->
