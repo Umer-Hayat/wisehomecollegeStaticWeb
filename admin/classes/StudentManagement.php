@@ -67,6 +67,8 @@ class StudentManagement
 
     public function deleteSlide($id)
     {
+        $id=$this->fm->validation($id);
+
         $query = "SELECT * FROM slider WHERE id=$id";
         $result=$this->db->select($query);
         $data=$result->fetch_assoc();
@@ -83,6 +85,22 @@ class StudentManagement
     }
 
     public function updatestudent($name,$fname,$cnic,$exp_date,$batch_id,$dob,$fee,$course,$start_date,$contact,$address,$qualif,$id_pic,$id){
+
+        $name=$this->fm->validation($name);
+        $fname=$this->fm->validation($fname);
+        $cnic=$this->fm->validation($cnic);
+        $batch_id=$this->fm->validation($batch_id);
+        $exp_date=$this->fm->validation($exp_date);
+        $dob=$this->fm->validation($dob);
+        $fee=$this->fm->validation($fee);
+        $course=$this->fm->validation($course);
+        $start_date=$this->fm->validation($start_date);
+        $contact=$this->fm->validation($contact);
+        $address=$this->fm->validation($address);
+        $qualif=$this->fm->validation($qualif);
+        $id_pic=$this->fm->validation($id_pic);
+        $id=$this->fm->validation($id);
+
         $query = "update students set name='$name',fname='$fname',cnic='$cnic',exp_date='$exp_date',batch_id='$batch_id',dob='$dob',fee='$fee',course='$course',start_date='$start_date',contact='$contact',address='$address',qualif='$qualif',id_pic='$id_pic' where id='$id'";
         $result = $this->db->update($query);
         if ($result) {
@@ -94,33 +112,38 @@ class StudentManagement
             }
     }
 
-	public function addBadge($badge)
-    {
+	// public function addBadge($badge)
+ //    {
+ //        $badge=$this->fm->validation($badge);
 
-        $query="INSERT INTO student_badge(badge) VALUES('$badge')";
-        $result=$this->db->insert($query);
-        if ($result) {
-            $msg = "Data Inserted";
-            return $msg;
-        } else {
-            $msg = "Data Not Inserted";
-            return $msg;
-        }
 
-    }
+ //        $query="INSERT INTO student_badge(badge) VALUES('$badge')";
+ //        $result=$this->db->insert($query);
+ //        if ($result) {
+ //            $msg = "Data Inserted";
+ //            return $msg;
+ //        } else {
+ //            $msg = "Data Not Inserted";
+ //            return $msg;
+ //        }
 
-    public function updateBadge($badge,$id)
-    {
-        $query = "update student_badge set badge='$badge' where id='$id'";
-        $result = $this->db->update($query);
-        if ($result) {
-            $msg = "Data Updated";
-            return $msg;
-        } else {
-            $msg = "Data Not Updated";
-            return $msg;
-        }
-    }
+ //    }
+
+    // public function updateBadge($badge,$id)
+    // {
+    //     $badge=$this->fm->validation($badge);
+    //     $id=$this->fm->validation($id);
+
+    //     $query = "update student_badge set badge='$badge' where id='$id'";
+    //     $result = $this->db->update($query);
+    //     if ($result) {
+    //         $msg = "Data Updated";
+    //         return $msg;
+    //     } else {
+    //         $msg = "Data Not Updated";
+    //         return $msg;
+    //     }
+    // }
 
 
 
@@ -163,6 +186,8 @@ class StudentManagement
 
     public function deleteitem($id,$table)
     {
+        $id=$this->fm->validation($id);
+
         $query="delete from $table where id='$id'";
         $result=$this->db->delete($query);
         return $result;
@@ -171,11 +196,17 @@ class StudentManagement
 
     public function deleteStudent($id)
     {
+        $id=$this->fm->validation($id);
+
         $query="delete from students where id='$id'";
         $result=$this->db->delete($query);
         return $result;
     }
-    public function terminateStudent($id){
+    public function terminateStudent($id)
+    {
+        $id=$this->fm->validation($id);
+
+
         $query="UPDATE students SET status='0' WHERE id='$id'";
         $result=$this->db->update($query);
         if ($result) {
@@ -189,6 +220,16 @@ class StudentManagement
 
     public function updatehomedata($dir_msg,$vision,$goals,$mission,$achieve,$about,$phone1,$phone2,$email)
     {
+        $dir_msg=$this->fm->validation($dir_msg);
+        $vision=$this->fm->validation($vision);
+        $goals=$this->fm->validation($goals);
+        $mission=$this->fm->validation($mission);
+        $achieve=$this->fm->validation($achieve);
+        $about=$this->fm->validation($about);
+        $phone1=$this->fm->validation($phone1);
+        $phone2=$this->fm->validation($phone2);
+        $email=$this->fm->validation($email);
+
         $query="UPDATE homepagedata SET dir_msg='$dir_msg', vision='$vision',goals='$goals', mission='$mission',achieve='$achieve', about='$about',phone1='$phone1', phone2='$phone2',email='$email'";
         $result=$this->db->update($query);
         if ($result) {
@@ -199,7 +240,9 @@ class StudentManagement
             return $msg;
         }
     }
-    public function updateFeeStatus($id){
+    public function updateFeeStatus($id)
+    {
+        $id=$this->fm->validation($id);
 
         // $d=strtotime("-1 Month");
         $date = date("y-m-d");
@@ -221,7 +264,11 @@ class StudentManagement
         return $result;
     }
 
-    public function refundFee($id,$amount){
+    public function refundFee($id,$amount)
+    {
+        $id=$this->fm->validation($id);
+        $amount=$this->fm->validation($amount);
+
         $query="select * from fee where student_id='$id' ORDER BY id DESC";
         $result=$this->db->select($query);
         if ($result) {
@@ -279,7 +326,10 @@ class StudentManagement
     }
     
 
-    public function addBatch($name,$start_date){
+    public function addBatch($name,$start_date)
+    {
+        $name=$this->fm->validation($name);
+        $start_date=$this->fm->validation($start_date);
 
         $query = "INSERT INTO batch(batch_name,batch_start) VALUES('$name','$start_date')";
             $result = $this->db->insert($query);
@@ -291,7 +341,12 @@ class StudentManagement
                 return $msg;
             }
     }
-    public function updatebatch($name,$batch_start,$id){
+    public function updatebatch($name,$batch_start,$id)
+    {
+        $name=$this->fm->validation($name);
+        $batch_start=$this->fm->validation($batch_start);
+        $id=$this->fm->validation($id);
+
         $query="UPDATE batch SET batch_name='$name', batch_start='$batch_start' WHERE id='$id'";
         $result=$this->db->update($query);
         if ($result) {
@@ -305,18 +360,33 @@ class StudentManagement
 
     public function deleteBatch($id)
     {
+        $id=$this->fm->validation($id);
+
         $query="delete from batch where id='$id'";
         $result=$this->db->delete($query);
         return $result;
     }
 
-    public function selectBatch($batch_id,$Paymenttype){
+    public function selectBatch($batch_id,$Paymenttype)
+    {
+        $batch_id=$this->fm->validation($batch_id);
+        $Paymenttype=$this->fm->validation($Paymenttype);
+
+
         $query="select * from students where batch_id='$batch_id' and fee_status='$Paymenttype'";
         $result=$this->db->select($query);
         return $result;
     }
 
-    public function payFee($id,$batch_id,$type,$amount,$rno){
+    public function payFee($id,$batch_id,$type,$amount,$rno)
+    {
+        $id=$this->fm->validation($id);
+        $batch_id=$this->fm->validation($batch_id);
+        $type=$this->fm->validation($type);
+        $amount=$this->fm->validation($amount);
+        $rno=$this->fm->validation($rno);
+
+
         $query="select * from fee where student_id='$id' ORDER BY id DESC";
         $result4=$this->db->select($query);
         if ($result4) {
@@ -345,7 +415,11 @@ class StudentManagement
             }
     }
 
-    public function addExpense($title,$amount){
+    public function addExpense($title,$amount)
+    {
+        $title=$this->fm->validation($title);
+        $amount=$this->fm->validation($amount);
+
         // $date = date("y-m-d");
         $query = "INSERT INTO expense(title,amount,date) VALUES('$title','$amount',now())";
         $result = $this->db->insert($query);
@@ -358,7 +432,12 @@ class StudentManagement
             }
     }
 
-    public function updateExpense($title,$amount,$id){
+    public function updateExpense($title,$amount,$id)
+    {
+        $title=$this->fm->validation($title);
+        $amount=$this->fm->validation($amount);
+        $id=$this->fm->validation($id);
+
         $query = "UPDATE expense SET title='$title',amount='$amount' WHERE id='$id'";
         $result = $this->db->update($query);
         if ($result) {
@@ -372,12 +451,27 @@ class StudentManagement
 
     public function deleteExpense($id)
     {
+        $id=$this->fm->validation($id);
+
         $query="delete from expense where id='$id'";
         $result=$this->db->delete($query);
         return $result;
     }
 
-    public function addBooking($name,$cnic,$exp_date,$dob,$contact,$testdate,$testtype,$org,$payment,$regdate,$ref,$email){
+    public function addBooking($name,$cnic,$exp_date,$dob,$contact,$testdate,$testtype,$org,$payment,$regdate,$ref,$email)
+    {
+        $name=$this->fm->validation($name);
+        $cnic=$this->fm->validation($cnic);
+        $exp_date=$this->fm->validation($exp_date);
+        $dob=$this->fm->validation($dob);
+        $contact=$this->fm->validation($contact);
+        $testdate=$this->fm->validation($testdate);
+        $testtype=$this->fm->validation($testtype);
+        $org=$this->fm->validation($org);
+        $payment=$this->fm->validation($payment);
+        $regdate=$this->fm->validation($regdate);
+        $ref=$this->fm->validation($ref);
+        $email=$this->fm->validation($email);
 
         $query = "INSERT INTO booking(name,cnic,exp_date,dob,contact,testdate,testtype,org,payment,regdate,ref,email) VALUES('$name','$cnic','$exp_date','$dob','$contact','$testdate','$testtype','$org','$payment','$regdate','$ref','$email')";
         $result = $this->db->insert($query);
@@ -392,6 +486,20 @@ class StudentManagement
 
     public function updateBooking($name,$cnic,$exp_date,$dob,$contact,$testdate,$testtype,$org,$payment,$regdate,$ref,$email,$id)
     {
+        $name=$this->fm->validation($name);
+        $cnic=$this->fm->validation($cnic);
+        $exp_date=$this->fm->validation($exp_date);
+        $dob=$this->fm->validation($dob);
+        $contact=$this->fm->validation($contact);
+        $testdate=$this->fm->validation($testdate);
+        $testtype=$this->fm->validation($testtype);
+        $org=$this->fm->validation($org);
+        $payment=$this->fm->validation($payment);
+        $regdate=$this->fm->validation($regdate);
+        $ref=$this->fm->validation($ref);
+        $email=$this->fm->validation($email);
+        $id=$this->fm->validation($id);
+
         $query = "UPDATE booking SET name='$name',cnic='$cnic',exp_date='$exp_date',dob='$dob',contact='$contact',testdate='$testdate',testtype='$testtype',org='$org',payment='$payment',regdate='$regdate',ref='$ref',email='$email' WHERE id='$id'";
         $result = $this->db->update($query);
         if ($result) {
