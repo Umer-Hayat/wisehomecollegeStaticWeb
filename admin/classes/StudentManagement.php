@@ -511,6 +511,25 @@ class StudentManagement
         }
     }
 
+    public function addFeedback($name,$gender,$star,$msg){
+        $name=$this->fm->validation($name);
+        $gender=$this->fm->validation($gender);
+        $star=$this->fm->validation($star);
+        $msg=$this->fm->validation($msg);
+
+         $date = date("y-m-d");
+
+        $query = "INSERT INTO feedback(name,gender,date,star,msg) VALUES('$name','$gender','$date','$star','$msg')";
+        $result = $this->db->insert($query);
+            if ($result) {
+                $msg = "Data Inserted";
+                return $msg;
+            } else {
+                $msg = "Data Not Inserted";
+                return $msg;
+            }
+    }
+
 }
 
 

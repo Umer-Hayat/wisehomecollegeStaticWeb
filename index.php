@@ -239,190 +239,91 @@ $slide=new StudentManagement();
             <h3 class="underline-green">Student Feedback</h3>
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="col-md-4">
-            <div class="frame-box">
-              <a href="img/feedback/f1.jpeg">
-            <img src="img/feedback/f1.jpeg" class="img-fluid" alt="">
-            </a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="frame-box">
-            <a href="img/feedback/f2.jpeg">
-            <img src="img/feedback/f2.jpeg" class="img-fluid" alt="">
-            </a>
-          </div>
-          </div>
-          <div class="col-md-4">
-            <div class="frame-box">
-            <a href="img/feedback/f3.jpeg">
-            <img src="img/feedback/f3.jpeg" class="img-fluid" alt="">
-            </a>
-          </div>
-          </div>
-        </div> -->
       </div>
 
 
-      <div class="main-section container">
-    <!-- <div class="hedding-title"><h1>Star Rating System</h1></div>  -->
-    <div class="rating-part">
-      <!-- <div class="row">
-        <div class="col-md-4">
-            <div class="average-rating">
-              <h2>2.5</h2>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i class="fa fa-star-half-o" aria-hidden="true"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <p>Average Rating</p>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="loder-ratimg">
-              <div class="progress"></div>
-              <div class="progress-2"></div>
-              <div class="progress-3"></div>
-              <div class="progress-4"></div>
-              <div class="progress-5"></div>
-            </div>
-            <div class="start-part">
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <span>80%</span><br>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <span>60%</span><br>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <span>40%</span><br>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <span>20%</span><br>
-              <i aria-hidden="true" class="fa fa-star"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <i aria-hidden="true" class="fa fa-star-o"></i>
-              <span>10%</span>
-            </div>
-        </div>
-      </div> -->
-      
-      
-      <!-- <div class="reviews"><h1>Reviews</h1></div> -->
-        <div class="comment-part">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="user-img-part">
-                <div class="user-img">
-                  <img src="img/maleavatar.png">
-                </div>
-                <div class="user-text">
-                  <!-- <h4>3 year ago</h4> -->
-                  <p>Tom kok</p>
-                  <span>Feedback</span><br />
-                  <span>Date: 2/3/2020</span>
-                </div>
-          </div>
-            </div>
-            <div class="col-md-8">
-                <div class="comment">
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr />
+  <div class="main-section container">
+              <div class="rating-part">
 
-        <div class="comment-part">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="user-img-part">
-                <div class="user-img">
-                  <img src="img/maleavatar.png">
-                </div>
-                <div class="user-text">
-                  <!-- <h4>8 days ago</h4> -->
-                  <p>Tom kok</p>
-                  <span>Feedback</span><br />
-                  <span>Date: 2/3/2020</span>
-                </div>
-          </div>
-            </div>
-            <div class="col-md-8">
-                <div class="comment">
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star-o"></i>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div class="comment-part">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="user-img-part">
-                <div class="user-img">
-                  <img src="img/maleavatar.png">
-                </div>
-                <div class="user-text">
-                  <!-- <h4>8 days ago</h4> -->
-                  <p>Tom kok</p>
-                  <span>Feedback</span><br />
-                  <span>Date: 2/3/2020</span>
-                </div>
-          </div>
-            </div>
-            <div class="col-md-8">
-                <div class="comment">
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star"></i>
-                <i aria-hidden="true" class="fa fa-star-o"></i>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr />
+                <?php
 
-    </div>
-  </div>
+                $query = "select * from feedback ORDER BY id DESC LIMIT 3";
+                $data=$slide->getAllRecordByQuery($query);
+                if($data)
+                {
+                    while ($getAll=$data->fetch_assoc())
+                    {
+                 ?>
+                  <div class="comment-part">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="user-img-part">
+                          <div class="user-img">
+                            <?php if ($getAll['gender'] == 'male') {
+                              echo '<img src="img/maleavatar.png">';
+                            }elseif ($getAll['gender'] == 'female') {
+                              echo '<img src="img/femaleavatar.jpg">';
+                            } ?>
+                            
+                          </div>
+                          <div class="user-text">
+                            <!-- <h4>3 year ago</h4> -->
+                            <p><?php echo $getAll['name']; ?></p>
+                            <span>Feedback</span><br />
+                            <span><?php echo $getAll['date']; ?></span>
+                          </div>
+                    </div>
+                      </div>
+                      <div class="col-md-8">
+                          <div class="comment">
+                            <?php if ($getAll['star'] == '5') { ?>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                            <?php }elseif ($getAll['star'] == '4') { ?>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star-o"></i>
+                            <?php }elseif ($getAll['star'] == '3') { ?>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star-o"></i>
+                              <i aria-hidden="true" class="fa fa-star-o"></i>
+                            <?php }elseif ($getAll['star'] == '2') { ?>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star-o"></i>
+                              <i aria-hidden="true" class="fa fa-star-o"></i>
+                              <i aria-hidden="true" class="fa fa-star-o"></i>
+                            <?php }else { ?>
+                              <i aria-hidden="true" class="fa fa-star"></i>
+                              <i aria-hidden="true" class="fa fa-star-0"></i>
+                              <i aria-hidden="true" class="fa fa-star-o"></i>
+                              <i aria-hidden="true" class="fa fa-star-o"></i>
+                              <i aria-hidden="true" class="fa fa-star-o"></i>
+                            <?php } ?>
+                          <p><?php echo $getAll['msg']; ?></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                <?php }} ?>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <!-- <button class="btn btn-primary"> -->
+                  <a href="feedbacks.php" class="btn feed-btn">View All >></a>
+                  <a href="givefeedback.php" class="btn feed-btn">Give FeedBack</a>
+                <!-- </button> -->
+              </div>
+            </div>
 </section>
 
 

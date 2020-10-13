@@ -709,6 +709,19 @@ header nav li .nav-link:hover {
   color: black;
 }
 
+.feed-btn {
+  background-color: #f2f2fc;
+  text-decoration: none;
+  color: #302e4d;
+  outline: none;
+  border-radius: 50px;
+  border: 1px solid #d4d4e3;
+  transition: all 0.3s ease;
+}
+.feed-btn:hover {
+  box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+
 /*=============================================
 =            ComPuter Lab         =
 =============================================*/
