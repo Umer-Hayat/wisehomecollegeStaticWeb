@@ -166,30 +166,25 @@ $slide=new StudentManagement();
           </div>
         </div>
         <div class="row">
+           <?php
+
+                $query = "select * from certificate ORDER BY id DESC LIMIT 4";
+                $data=$slide->getAllRecordByQuery($query);
+                if($data)
+                {
+                    while ($getAll=$data->fetch_assoc())
+                    {
+                 ?>
           <div class="col-md-3">
             <div class="img-box">
-              <img src="img/scan0001.jpg" class="img-fluid" alt="">
+              <img src="images/certificateImages/<?php echo $getAll['image'] ?>" class="img-fluid" alt="">
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="img-box">
-              <img src="img/scan0001.jpg" class="img-fluid" alt="">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="img-box">
-              <img src="img/scan0001.jpg" class="img-fluid" alt="">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="img-box">
-              <img src="img/scan0001.jpg" class="img-fluid" alt="">
-            </div>
-          </div>
+        <?php }} ?>
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
-            <button class="btn btn-primary view-btn"><a href="certificates.php">View More Certificates >></a></button>
+            <a class="btn btn feed-btn mt-2" href="certificates.php">View All >></a>
           </div>
         </div>
       </div>
@@ -205,26 +200,29 @@ $slide=new StudentManagement();
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
-            <div class="img-box">
-              <a href="img/gallary/pic1.jpg">
-            <img src="img/gallary/pic1.jpg" class="img-fluid" alt="">
-            </a>
+
+          <?php
+
+                $query = "select * from gallary ORDER BY id DESC LIMIT 3";
+                $data=$slide->getAllRecordByQuery($query);
+                if($data)
+                {
+                    while ($getAll=$data->fetch_assoc())
+                    {
+                 ?>
+
+            <div class="col-md-4">
+              <div class="img-box">
+                  <a href="images/gallaryImages/<?php echo $getAll['image'] ?>">
+                <img src="images/gallaryImages/<?php echo $getAll['image'] ?>" class="img-fluid" alt="">
+                </a>
+              </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="img-box">
-            <a href="img/gallary/pic2.jpg">
-            <img src="img/gallary/pic2.jpg" class="img-fluid" alt="">
-            </a>
-          </div>
-          </div>
-          <div class="col-md-4">
-            <div class="img-box">
-            <a href="img/gallary/pic3.jpg">
-            <img src="img/gallary/pic3.jpg" class="img-fluid" alt="">
-            </a>
-          </div>
+          <?php }} ?>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <a class="btn btn feed-btn mt-2" style="background-color: white;" href="gallary.php">View All >></a>
           </div>
         </div>
       </div>
@@ -337,30 +335,25 @@ $slide=new StudentManagement();
           </div>
         </div>
         <div class="row">
+           <?php
+
+                $query = "select * from successstory ORDER BY id DESC LIMIT 4";
+                $data=$slide->getAllRecordByQuery($query);
+                if($data)
+                {
+                    while ($getAll=$data->fetch_assoc())
+                    {
+                 ?>
           <div class="col-md-3">
             <div class="img-box">
-              <img src="img/scan0001.jpg" class="img-fluid" alt="">
+              <img src="images/certificateImages/<?php echo $getAll['image'] ?>" class="img-fluid" alt="">
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="img-box">
-              <img src="img/scan0001.jpg" class="img-fluid" alt="">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="img-box">
-              <img src="img/scan0001.jpg" class="img-fluid" alt="">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="img-box">
-              <img src="img/scan0001.jpg" class="img-fluid" alt="">
-            </div>
-          </div>
+        <?php }} ?>
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
-            <button class="btn btn-primary view-btn"><a href="story.php">View More >></a></button>
+            <a href="story.php" class="btn feed-btn mt-2">View All >></a>
           </div>
         </div>
       </div>

@@ -15,12 +15,23 @@ include_once 'admin/classes/StudentManagement.php';
     }
   }
 ?>
-<!-- <br> -->
+<style type="text/css">
+  @media only screen and (max-device-width: 768px) {
+  .heading{
+    font-size: 24px !important; 
+  }
+  .card-title{
+    font-size: 20px !important; 
+
+  }
+}
+  
+</style>
     <section class="bg">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h3>Give FeedBack</h3>
+            <h3 class="heading">Give Feedback</h3>
           </div>
         </div>
       </div>

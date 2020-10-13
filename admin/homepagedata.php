@@ -6,12 +6,12 @@ include_once 'classes/StudentManagement.php';
   $st=new StudentManagement();
 
   if(isset($_GET['del']))
-{
-    $result=$st->deleteSlide($_GET['del']);
-    if($result){
-      echo '<script>window.location.replace("homepagedata.php")</script>';
-    }
-}
+  {
+      $result=$st->deleteSlide($_GET['del']);
+      if($result){
+        echo '<script>window.location.replace("homepagedata.php")</script>';
+      }
+  }
 
   if (isset($_POST['upload'])) {
     
@@ -114,7 +114,7 @@ include_once 'classes/StudentManagement.php';
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Slides Image</h4>
+                  <h4 class="card-title"><b>Slides Image</b></h4>
 
                     <form method="post" enctype="multipart/form-data">
                       <div class="row text-center">
@@ -156,7 +156,7 @@ include_once 'classes/StudentManagement.php';
                             <a
                               onclick="return confirm('Are you sure to delete!')" href="homepagedata.php?del=<?php echo $getAll['id'];?>"
                               data-toggle="tooltip"
-                              data-original-title="Delete Student"
+                              data-original-title="Delete Slide"
                             >
                               <i class="fa fa-close text-danger"></i>
                             </a>
@@ -170,6 +170,275 @@ include_once 'classes/StudentManagement.php';
               </div>
             </div>
           </div>
+
+
+          <?php
+
+          if(isset($_GET['delCert']))
+          {
+              $result=$st->deleteCertificate($_GET['delCert']);
+              if($result){
+                echo '<script>window.location.replace("homepagedata.php")</script>';
+              }
+          }
+
+          if (isset($_POST['uploadCertificate'])) {
+            
+            $target_dir = "../images/certificateImages/";
+            $name1 = $_FILES['image']['name'];
+            $image = $target_dir . basename($_FILES["image"]["name"]);
+
+            move_uploaded_file($_FILES['image']['tmp_name'],$target_dir.$name1);
+
+            $check = $st->uploadCertificateImage($name1);
+            if($check){
+                echo '<script>window.location.replace("homepagedata.php")</script>';
+              }
+          }
+
+           ?>
+          <div class="row">
+            <!-- column -->
+
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title"><b>Certificate Image</b></h4>
+
+                    <form method="post" enctype="multipart/form-data">
+                      <div class="row text-center">
+                         <div style="color:red; margin-left: 20px; font-size:16px;"><?php
+                             if (isset($_POST['uploadCertificate'])) {
+                                 echo "$check";
+                             }
+                             ?>
+                      </div>
+                     </div>
+                      <input type="file" name="image" > 
+                      <input type="submit" name="uploadCertificate" value="Upload" class="btn btn-primary"> 
+                    </form>
+                    <br>
+                  <hr />
+                  <div class="table-responsive m-t-10">
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>Certificate Image</th>
+                          <th class="text-nowrap">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         <?php
+                            $letter=$st->getAllRecords('certificate');
+                            if($letter)
+                            {
+                                while ($getAll=$letter->fetch_assoc())
+                                {
+                        ?>
+                        <tr>
+                          <td>
+                              <img height="100" width="150" src="../images/certificateImages/<?php echo $getAll['image'] ?>">
+                            
+                          </td>
+                          <td class="text-nowrap">
+                            
+                            <a
+                              onclick="return confirm('Are you sure to delete!')" href="homepagedata.php?delCert=<?php echo $getAll['id'];?>"
+                              data-toggle="tooltip"
+                              data-original-title="Delete Certificate"
+                            >
+                              <i class="fa fa-close text-danger"></i>
+                            </a>
+                          </td>
+                        </tr>
+                        <?php }} ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <?php
+
+          if(isset($_GET['delStory']))
+          {
+              $result=$st->deleteStory($_GET['delStory']);
+              if($result){
+                echo '<script>window.location.replace("homepagedata.php")</script>';
+              }
+          }
+
+          if (isset($_POST['uploadStory'])) {
+            
+            $target_dir = "../images/storyImage/";
+            $name1 = $_FILES['image']['name'];
+            $image = $target_dir . basename($_FILES["image"]["name"]);
+
+            move_uploaded_file($_FILES['image']['tmp_name'],$target_dir.$name1);
+
+            $check = $st->uploadStoryImage($name1);
+            if($check){
+                echo '<script>window.location.replace("homepagedata.php")</script>';
+              }
+          }
+
+           ?>
+          <div class="row">
+            <!-- column -->
+
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title"><b>Success Story Image</b></h4>
+
+                    <form method="post" enctype="multipart/form-data">
+                      <div class="row text-center">
+                         <div style="color:red; margin-left: 20px; font-size:16px;"><?php
+                             if (isset($_POST['uploadCertificate'])) {
+                                 echo "$check";
+                             }
+                             ?>
+                      </div>
+                     </div>
+                      <input type="file" name="image" > 
+                      <input type="submit" name="uploadStory" value="Upload" class="btn btn-primary"> 
+                    </form>
+                    <br>
+                  <hr />
+                  <div class="table-responsive m-t-10">
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>Suceess Story Image</th>
+                          <th class="text-nowrap">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         <?php
+                            $letter=$st->getAllRecords('successstory');
+                            if($letter)
+                            {
+                                while ($getAll=$letter->fetch_assoc())
+                                {
+                        ?>
+                        <tr>
+                          <td>
+                              <img height="100" width="150" src="../images/storyImage/<?php echo $getAll['image'] ?>">
+                            
+                          </td>
+                          <td class="text-nowrap">
+                            
+                            <a
+                              onclick="return confirm('Are you sure to delete!')" href="homepagedata.php?delStory=<?php echo $getAll['id'];?>"
+                              data-toggle="tooltip"
+                              data-original-title="Delete Story"
+                            >
+                              <i class="fa fa-close text-danger"></i>
+                            </a>
+                          </td>
+                        </tr>
+                        <?php }} ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <?php
+
+          if(isset($_GET['delGall']))
+          {
+              $result=$st->deleteGallary($_GET['delGall']);
+              if($result){
+                echo '<script>window.location.replace("homepagedata.php")</script>';
+              }
+          }
+
+          if (isset($_POST['uploadGallary'])) {
+            
+            $target_dir = "../images/gallaryImages/";
+            $name1 = $_FILES['image']['name'];
+            $image = $target_dir . basename($_FILES["image"]["name"]);
+
+            move_uploaded_file($_FILES['image']['tmp_name'],$target_dir.$name1);
+
+            $check = $st->uploadGallaryImage($name1);
+            if($check){
+                echo '<script>window.location.replace("homepagedata.php")</script>';
+              }
+          }
+
+           ?>
+          <div class="row">
+            <!-- column -->
+
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title"><b>Gallary Images</b></h4>
+
+                    <form method="post" enctype="multipart/form-data">
+                      <div class="row text-center">
+                         <div style="color:red; margin-left: 20px; font-size:16px;"><?php
+                             if (isset($_POST['uploadGallary'])) {
+                                 echo "$check";
+                             }
+                             ?>
+                      </div>
+                     </div>
+                      <input type="file" name="image" > 
+                      <input type="submit" name="uploadGallary" value="Upload" class="btn btn-primary"> 
+                    </form>
+                    <br>
+                  <hr />
+                  <div class="table-responsive m-t-10">
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>Gallary Image</th>
+                          <th class="text-nowrap">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         <?php
+                            $letter=$st->getAllRecords('gallary');
+                            if($letter)
+                            {
+                                while ($getAll=$letter->fetch_assoc())
+                                {
+                        ?>
+                        <tr>
+                          <td>
+                              <img height="100" width="150" src="../images/gallaryImages/<?php echo $getAll['image'] ?>">
+                            
+                          </td>
+                          <td class="text-nowrap">
+                            
+                            <a
+                              onclick="return confirm('Are you sure to delete!')" href="homepagedata.php?delGall=<?php echo $getAll['id'];?>"
+                              data-toggle="tooltip"
+                              data-original-title="Delete Story"
+                            >
+                              <i class="fa fa-close text-danger"></i>
+                            </a>
+                          </td>
+                        </tr>
+                        <?php }} ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
         </div>
         <!-- <footer class="footer">
           © 2020 Alrights Reserved

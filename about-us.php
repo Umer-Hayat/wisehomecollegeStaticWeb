@@ -7,16 +7,23 @@ include_once 'admin/classes/StudentManagement.php';
   $data=$slide->getAllRecordByQuery($query);
   $getdata=$data->fetch_assoc();
 ?>
+<style type="text/css">
+  @media only screen and (max-device-width: 768px) {
+  .heading{
+    font-size: 24px !important; 
+  }
+}
+  
+</style>
     <section class="bg">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h3>About Us</h3>
+            <h3 class="heading">About Us</h3>
           </div>
         </div>
       </div>
     </section>
-    <br>
 
 <!-- About BS--->
 <section class="adler">

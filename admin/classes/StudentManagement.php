@@ -530,6 +530,116 @@ class StudentManagement
             }
     }
 
+
+    public function uploadCertificateImage($name)
+    {
+        $name=$this->fm->validation($name);
+
+        $query = "INSERT INTO certificate(image) VALUES('$name')";
+        $result = $this->db->insert($query);
+        if ($result) {
+            $msg = "Image Uploaded";
+            return $msg;
+        } else {
+            $msg = "Image Not Uploaded";
+            return $msg;
+        }
+
+    }
+
+
+    public function deleteCertificate($id)
+    {
+        $id=$this->fm->validation($id);
+
+        $query = "SELECT * FROM certificate WHERE id=$id";
+        $result=$this->db->select($query);
+        $data=$result->fetch_assoc();
+        $image = $data['image'];
+
+        if ($image) {
+            unlink('./../images/certificateImages/'.$image);
+        
+
+        $query="delete from certificate where id='$id'";
+        $result=$this->db->delete($query);
+        return $result;
+        }
+    }
+
+    public function uploadStoryImage($name)
+    {
+        $name=$this->fm->validation($name);
+
+        $query = "INSERT INTO successStory(image) VALUES('$name')";
+        $result = $this->db->insert($query);
+        if ($result) {
+            $msg = "Image Uploaded";
+            return $msg;
+        } else {
+            $msg = "Image Not Uploaded";
+            return $msg;
+        }
+
+    }
+
+
+    public function deleteStory($id)
+    {
+        $id=$this->fm->validation($id);
+
+        $query = "SELECT * FROM successStory WHERE id=$id";
+        $result=$this->db->select($query);
+        $data=$result->fetch_assoc();
+        $image = $data['image'];
+
+        if ($image) {
+            unlink('./../images/storyImage/'.$image);
+        
+
+        $query="delete from successStory where id='$id'";
+        $result=$this->db->delete($query);
+        return $result;
+        }
+    }
+
+    public function uploadGallaryImage($name)
+    {
+        $name=$this->fm->validation($name);
+
+        $query = "INSERT INTO gallary(image) VALUES('$name')";
+        $result = $this->db->insert($query);
+        if ($result) {
+            $msg = "Image Uploaded";
+            return $msg;
+        } else {
+            $msg = "Image Not Uploaded";
+            return $msg;
+        }
+
+    }
+
+
+    public function deleteGallary($id)
+    {
+        $id=$this->fm->validation($id);
+
+        $query = "SELECT * FROM gallary WHERE id=$id";
+        $result=$this->db->select($query);
+        $data=$result->fetch_assoc();
+        $image = $data['image'];
+
+        if ($image) {
+            unlink('./../images/gallaryImage/'.$image);
+        
+
+        $query="delete from gallary where id='$id'";
+        $result=$this->db->delete($query);
+        return $result;
+        }
+    }
+
+
 }
 
 
