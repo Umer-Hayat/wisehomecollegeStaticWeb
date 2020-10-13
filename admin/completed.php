@@ -382,12 +382,7 @@ if(isset($_GET['del']))
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="card-title"><b>Students</b></h3>
-                  <?php
-                  if (!isset($_GET['add'])) { ?>
-                  <a href="students.php?add" class="btn btn-primary">Add New Student</a>
-                    <br>
-                  <?php } ?>
+                  <h3 class="card-title"><b>Course Completed Students</b></h3>
                   <hr />
                   <div class="table-responsive m-t-10">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
@@ -416,7 +411,7 @@ if(isset($_GET['del']))
                       </tfoot>
                       <tbody>
                          <?php
-                            $letter=$st->getAllStudentsByStatus('students','1');
+                            $letter=$st->getAllStudentsByStatus('students','0');
                             if($letter)
                             {
                               $i=1;
@@ -427,7 +422,7 @@ if(isset($_GET['del']))
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
                           <td>
                             <a                              
-                              href="students.php?view=<?php echo $getAll['id']; ?>">
+                              href="completed.php?view=<?php echo $getAll['id']; ?>">
                               <?php echo $getAll['name']; ?>
                             </a>
                           </td>

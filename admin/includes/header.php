@@ -201,7 +201,16 @@ if($res){
                     ><span class="hide-menu">Students</span></a
                   >
                 </li>
-                
+                <li>
+                  <a
+                    style="background-color: transparent;"
+                    class="waves-effect waves-dark"
+                    href="completed.php"
+                    aria-expanded="false"
+                    ><i class="fa fa-flag-checkered"></i
+                    ><span class="hide-menu">Course Completed</span></a
+                  >
+                </li>
                 <li>
                   <a
                     style="background-color: transparent;"
