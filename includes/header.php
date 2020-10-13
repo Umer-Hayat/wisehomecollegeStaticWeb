@@ -27,8 +27,8 @@ $slide=new StudentManagement();
     <link rel="stylesheet" href="dist/css/cards-gallery.css">
     <link rel="stylesheet" href="dist/css/style.css" />
     <link rel="icon" href="img/logo111.jpg" type="image/gif" sizes="16x16">
-    <meta name="description" content="Wise Home College - Wise Home College is a educational network that is a welfare organization and aims to promote learning. ">
-    <meta name="keywords" content="Wise Home College, kharian, kharian campus">
+    <meta name="description" content="WISE HOME COLLEGE was founded to welcome the individuals improve their current Communication Level, either planning to study or settle abroad. We aim to provide the quality education with a variety of levels, ranging from Beginner to Advanced. It is a center dedicated to the enhancement of learning, recognizing potential and above all to achieve excellence.">
+    <meta name="keywords" content="Wise Home College, kharian, kharian campus, ielts in kharian, german in karian, modern languages in kharian, ielts, learn german, learn ielts">
       <title>Wise Home College Kharian</title>
   </head>
   <body>
@@ -60,10 +60,10 @@ $slide=new StudentManagement();
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-md-3">
-            <a href="#"><img src="img/logo111.jpg" class="img-fluid logo" alt="" /></a> 
+          <div class="col-md-2">
+            <a href="#"><img src="img/logo111.jpg" class="img-fluid logo" style="width:90%" alt="" /></a> 
           </div>
-          <div class="col-md-9">
+          <div class="col-md-10">
             <!-- Start NavBar -->
             <nav class="navbar navbar-expand-lg navbar-light">
               <button
@@ -108,7 +108,7 @@ $slide=new StudentManagement();
                     <a class="nav-link" href="#certificate">Certificates</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#gallary">Gallary</a>
+                    <a class="nav-link" href="#story">Success Story</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#feedback">Feedbacks</a>

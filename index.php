@@ -424,6 +424,46 @@ $slide=new StudentManagement();
     </div>
   </div>
 </section>
+
+
+<!-- Stories -->
+
+   <section class="certificate" id="story">
+      <div class="container">
+        <div class="row mb-3">
+          <div  class="col-md-12 text-center">
+            <h3 class="underline-green">Success Story</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="img-box">
+              <img src="img/scan0001.jpg" class="img-fluid" alt="">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-box">
+              <img src="img/scan0001.jpg" class="img-fluid" alt="">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-box">
+              <img src="img/scan0001.jpg" class="img-fluid" alt="">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-box">
+              <img src="img/scan0001.jpg" class="img-fluid" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button class="btn btn-primary view-btn"><a href="story.php">View More >></a></button>
+          </div>
+        </div>
+      </div>
+   </section>
     <!-- footer -->
 
  <?php include("includes/footer.php"); ?>
