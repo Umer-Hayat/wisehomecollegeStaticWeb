@@ -122,8 +122,6 @@ if(isset($_GET['del']))
                         </div>
             </div>
           </div>
-
-            ?>
            <?php } ?>
 
 

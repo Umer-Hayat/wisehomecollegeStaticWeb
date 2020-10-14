@@ -205,9 +205,10 @@ class StudentManagement
     public function terminateStudent($id)
     {
         $id=$this->fm->validation($id);
+        $date = date("y-m-d");
 
 
-        $query="UPDATE students SET status='0' WHERE id='$id'";
+        $query="UPDATE students SET status='0',end_date='$date' WHERE id='$id'";
         $result=$this->db->update($query);
         if ($result) {
             $msg = "Data Updated";
@@ -278,7 +279,7 @@ class StudentManagement
             $fee_amount = $data['amount'];
             if ($fee_amount>0) {
                 if ($amount ==$fee_amount) {
-                    $query1="UPDATE fee SET amount='0' WHERE id='$fee_id'";
+                    $query1="UPDATE fee SET amount='0',refund_amount='$amount' WHERE id='$fee_id'";
                     $result1=$this->db->update($query1);
 
                     $query2="UPDATE students SET fee_status='refunded' WHERE id='$id'";
@@ -292,8 +293,8 @@ class StudentManagement
                         return $msg;
                     }
                 }elseif($amount < $fee_amount){
-                    $amount = $fee_amount - $amount;
-                    $query1="UPDATE fee SET amount='$amount' WHERE id='$fee_id'";
+                    $b_amount = $fee_amount - $amount;
+                    $query1="UPDATE fee SET amount='$b_amount',refund_amount='$amount' WHERE id='$fee_id'";
                     $result1=$this->db->update($query1);
 
                     $query2="UPDATE students SET fee_status='refunded' WHERE id='$id'";
@@ -331,7 +332,7 @@ class StudentManagement
         $name=$this->fm->validation($name);
         $start_date=$this->fm->validation($start_date);
 
-        $query = "INSERT INTO batch(batch_name,batch_start) VALUES('$name','$start_date')";
+        $query = "INSERT INTO batch(batch_name,batch_start,status) VALUES('$name','$start_date','1')";
             $result = $this->db->insert($query);
             if ($result) {
                 $msg = "Data Inserted";
@@ -357,6 +358,21 @@ class StudentManagement
             return $msg;
         }
     }
+    public function endBatch($id)
+    {
+        $id=$this->fm->validation($id);
+        $date = date("y-m-d");
+
+        $query="UPDATE batch SET batch_end='$date', status='0' WHERE id='$id'";
+        $result=$this->db->update($query);
+        if ($result) {
+            $msg = "Data Updated";
+            return $msg;
+        } else {
+            $msg = "Data Not Updated";
+            return $msg;
+        }
+    }
 
     public function deleteBatch($id)
     {
@@ -364,6 +380,15 @@ class StudentManagement
 
         $query="delete from batch where id='$id'";
         $result=$this->db->delete($query);
+        return $result;
+    }
+    public function getBatchByStatus($status)
+    {
+        $status=$this->fm->validation($status);
+
+
+        $query="select * from batch where status='$status'";
+        $result=$this->db->select($query);
         return $result;
     }
 

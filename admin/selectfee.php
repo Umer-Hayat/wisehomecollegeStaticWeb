@@ -34,7 +34,7 @@ $st=new StudentManagement();
                                         <select class="form-control" required name="batch">
                                           <option value="">Select Batch</option>
                                           <?php
-                                              $bat=$st->getAllRecords('batch');
+                                              $bat=$st->getBatchByStatus('1');
                                               if($bat)
                                               {
                                                   while ($getAll=$bat->fetch_assoc())

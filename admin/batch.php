@@ -11,6 +11,15 @@ if(isset($_GET['del']))
       echo '<script>window.location.replace("batch.php")</script>';
     }
 }
+
+if(isset($_GET['end']))
+{
+    $result=$st->endBatch($_GET['end']);
+    if($result){
+      // echo " <script>alert('Student Deleted Successfully');</script>";
+      echo '<script>window.location.replace("batch.php")</script>';
+    }
+}
 ?>
       <div class="page-wrapper">
         <br />
@@ -139,6 +148,7 @@ if(isset($_GET['del']))
                           <th>No#</th>
                           <th>Name</th>
                           <th>Batch Starting Date</th>
+                          <th>Batch End Date</th>
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </thead>
@@ -155,6 +165,11 @@ if(isset($_GET['del']))
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
                           <td><?php echo $getAll['batch_name']; ?></td>
                           <td><?php echo $getAll['batch_start']; ?></td>
+                          <td><?php if (isset($getAll['batch_end'])) {
+                            echo $getAll['batch_end'];
+                          }else{
+                            echo "--";
+                          }  ?></td>
                           <td class="text-nowrap">
                             <a
                               href="batch.php?edit=<?php echo $getAll['id']; ?>"
@@ -171,6 +186,18 @@ if(isset($_GET['del']))
                             >
                               <i class="fa fa-close text-danger"></i>
                             </a>
+                            <?php if (!isset($getAll['batch_end'])) { ?>
+                          
+                            <a style="font-size: 14px; margin-left: 5px;" 
+                                onclick="return confirm('Are you sure to End Batch!')"
+                                class="label label-table label-danger" 
+                                data-toggle="tooltip"
+                                data-original-title="End Batch"
+                                href='batch.php?end=<?php echo $getAll['id']; ?>'
+                                  >
+                                  End Batch 
+                                </a>
+                                <?php }  ?>
                           </td>
                         </tr>
                         <?php }} ?>

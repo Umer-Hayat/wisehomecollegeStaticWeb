@@ -11,6 +11,15 @@ if(isset($_GET['del']))
       echo '<script>window.location.replace("students.php")</script>';
     }
 }
+
+if(isset($_GET['ter']))
+{
+    $result=$st->terminateStudent($_GET['ter']);
+    if($result){
+      echo '<script>window.location.replace("students.php")</script>';
+    }
+}
+
 ?>
       <div class="page-wrapper">
         <br />
@@ -461,6 +470,15 @@ if(isset($_GET['del']))
                             >
                               <i class="fa fa-close text-danger"></i>
                             </a>
+                            <a style="font-size: 14px; margin-left: 5px;" 
+                                onclick="return confirm('Are you sure to Terminate Student!')"
+                                class="label label-table label-danger" 
+                                data-toggle="tooltip"
+                                data-original-title="Terminate Student"
+                                href='students.php?ter=<?php echo $getAll['id']; ?>'
+                                  >
+                                  Terminate 
+                                </a>
                           </td>
                         </tr>
                         <?php }} ?>
