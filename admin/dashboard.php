@@ -98,7 +98,7 @@ $st=new StudentManagement();
                                 $student=$st->getAllRecordofFees();
                                 if($student)
                                 {
-                                  $i=1;
+                                  $i=1 $i++;
                                   while ($getAll=$student->fetch_assoc())
                                   {
                                     $S_id = $getAll['id'];
