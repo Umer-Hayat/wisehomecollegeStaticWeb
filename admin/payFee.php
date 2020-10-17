@@ -30,7 +30,6 @@ $batch_id = $_GET['batch'];
                 }
             }
                 $check = "Reciept Already Exit";
-            
           }
           ?>
             <div class="row">

@@ -13,8 +13,6 @@ if(isset($_GET['del']))
 }
 
 ?>
-
-
       <div class="page-wrapper">
         <br />
         <br />
