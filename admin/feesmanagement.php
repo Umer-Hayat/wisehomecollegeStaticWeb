@@ -1,4 +1,3 @@
-
 <?php include("includes/header.php"); ?>
 
 <?php include_once 'classes/StudentManagement.php';
@@ -106,7 +105,7 @@ if(isset($_GET['del']))
                           <th>CNIC</th>
                           <th>Fees</th>
                           <th>Installment Status</th>
-                          <th>Fee Status</th>
+                          <!-- <th>Fee Status</th> -->
                           <th>Contact No</th>
                           <th class="text-nowrap">Action</th>
                         </tr>
@@ -117,7 +116,8 @@ if(isset($_GET['del']))
                           <th>Name</th>
                           <th>CNIC</th>
                           <th>Fees</th>
-                          <th>Fee Status</th>
+                          <th>Installment Status</th>
+                          <!-- <th>Fee Status</th> -->
                           <th>Contact No</th>
                           <th class="text-nowrap">Action</th>
                         </tr>
@@ -164,7 +164,7 @@ if(isset($_GET['del']))
                                 </div>
                             <?php } ?>
                           </td>
-                          <td>
+                          <!-- <td>
                             <?php
                               if($getAll['fee_status'] == 'paid'){ ?>
                                 <div class="label label-table label-success">
@@ -179,7 +179,7 @@ if(isset($_GET['del']))
                                   <?php echo $getAll['fee_status']; ?>
                                 </div>
                             <?php } ?>
-                          </td>
+                          </td> -->
                           <td>
                             <a target="blank"
                                     href="https://api.whatsapp.com/send?phone=<?php echo $getAll['contact']; ?>&text=Message From Wise Home College!! Dear Student, Today is your Due Date Please Pay your fee as soon as possible!"><?php echo $getAll['contact']; ?>

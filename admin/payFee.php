@@ -19,17 +19,18 @@ $batch_id = $_GET['batch'];
             $rno = $_POST['rno'];
 
             // $installments = $_POST['installment'];
-            foreach ($_POST['installment'] as $installment){
+            $check = $st->checkReciept($rno);
+            if (!$check) {
+                foreach ($_POST['installment'] as $installment){
                 // echo $installment."\n";
-                $check = $st->payFee($stu_id,$batch_id,$installment,$amount,$rno);
+                $checkR = $st->payFee($stu_id,$batch_id,$installment,$amount,$rno);
+                }
+                if ($checkR) {
+                    echo '<script>window.location.replace("feesmanagement.php?batch='.$batch_id.'")</script>';
+                }
             }
-            // echo $type;
-            // die();
-
+                $check = "Reciept Already Exit";
             
-            if ($check) {
-                echo '<script>window.location.replace("feesmanagement.php?batch='.$batch_id.'")</script>';
-            }
           }
           ?>
             <div class="row">
@@ -40,7 +41,17 @@ $batch_id = $_GET['batch'];
                             <div class="card-body">
                                 <h3 class="card-title text-center"><b>Fee Payment</b></h3>
                                 <form class="form-material m-t-20 row" method="post">
-                                  
+                                    
+                                   <div class="form-group col-md-12 m-t-10">
+                                          <div class="row text-center" style="margin-right: -5px;">
+                                       <div style="color:red; margin-left: 20px; font-size:16px;"><?php
+                                           if (isset($_POST['submit'])) {
+                                               echo "$check";
+                                           }
+                                           ?>
+                                    </div>
+                                   </div>
+                                    </div>
                                     <div class="form-group col-md-6 m-t-10">
                                           <?php
                                               $student=$st->getAllRecord($stu_id,'students');

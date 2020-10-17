@@ -432,6 +432,15 @@ class StudentManagement
             }
     }
 
+    public function checkReciept($rno){
+        $query="select * from fee where rno='$rno'";
+        $result=$this->db->select($query);
+        if ($result) {
+            return true;
+        }
+        return false;
+    }
+
     public function addExpense($title,$amount)
     {
         $title=$this->fm->validation($title);
