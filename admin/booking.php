@@ -430,6 +430,7 @@ if(isset($_GET['del']))
                           <th>No#</th>
                           <th>Name</th>
                           <th>CNIC</th>
+                          <th>Contact No</th>
                           <th>Test Date</th>
                           <th class="text-nowrap">Action</th>
                         </tr>
