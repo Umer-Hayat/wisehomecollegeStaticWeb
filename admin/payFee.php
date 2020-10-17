@@ -14,10 +14,19 @@ $batch_id = $_GET['batch'];
 
           <?php
           if(isset($_POST['submit'])){
-            $type = $_POST['type'];
+            // $type = $_POST['type'];
             $amount = $_POST['amount'];
             $rno = $_POST['rno'];
-            $check = $st->payFee($stu_id,$batch_id,$type,$amount,$rno);
+
+            // $installments = $_POST['installment'];
+            foreach ($_POST['installment'] as $installment){
+                // echo $installment."\n";
+                $check = $st->payFee($stu_id,$batch_id,$installment,$amount,$rno);
+            }
+            // echo $type;
+            // die();
+
+            
             if ($check) {
                 echo '<script>window.location.replace("feesmanagement.php?batch='.$batch_id.'")</script>';
             }
@@ -42,10 +51,32 @@ $batch_id = $_GET['batch'];
                                     </div>
                                     <div class="form-group col-md-6 m-t-10">
                                       <label><b>Payment Type:</b></label>
-                                        <select class="form-control" required name="type">
-                                            <option value="">Select Payment Type</option>
-                                            <option value="full">Full</option>
-                                            <option value="installment">Installment</option>
+                                        <select class="form-control" required name="installment[]" multiple="multiple">
+                                            <!-- <option value="">Select Installment</option> -->
+                                            <!-- <option value="full">Full</option> -->
+                                            <?php
+                                              $std=$st->getAllRecordFeeById($stu_id,'fee');
+                                              if ($std) {
+                                              $get=$std->fetch_assoc();
+                                              
+                                                  // if ($get['installment']) {
+                                                  for ($i=1; $i < 7; $i++) { 
+                                                      if (($get['installment']+1) == $i) {
+                                                        echo "<option selected value='".$i."'>Installment ".$i."</option>";
+                                                      }else{
+                                                        echo "<option value='".$i."'>Installment ".$i."</option>";
+                                                      }
+                                                  }
+                                                // }
+                                              }else{   
+                                          ?>
+                                            <option selected value="1">Installment 1</option>
+                                            <option value="2">Installment 2</option>
+                                            <option value="3">Installment 3</option>
+                                            <option value="4">Installment 4</option>
+                                            <option value="5">Installment 5</option>
+                                            <option value="6">Installment 6</option>
+                                        <?php } ?>
                                         </select>
                                     </div>    
                                     <div class="form-group col-md-6 m-t-10">

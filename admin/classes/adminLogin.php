@@ -21,18 +21,28 @@ class adminlogin
             return $loginmsg;
         }else
         {
-         $query="select *from tb_user where user_name='$adminUser' AND user_pass='$adminPass'";
+         $query="select * from tb_user";
          $result=$this->db->select($query);
          if($result)
          {
-             $_SESSION['login'] = true;
-             header("Location: dashboard.php");
+            while ($data=$result->fetch_assoc()) {
+                if ($data['user_name']==$adminUser AND $data['user_pass']==$adminPass) 
+                {
+                    if ($adminUser == 'admin') {
+                    $_SESSION['login'] = 'admin';
+                    $_SESSION['loginId'] = $data['id'];
+                    header("Location: dashboard.php");
+                    }elseif($adminUser == 'jawad'){
+                        $_SESSION['login'] = 'jawad';
+                        $_SESSION['loginId'] = $data['id'];
+                        header("Location: dashboard.php");
+                    }
+                }  
+            }
+            $loginmsg="Username or Password are Not Valid!";
+            return $loginmsg;  
          }
-         else
-             {
-                 $loginmsg="Username or Password are Not Valid!";
-                 return $loginmsg;
-             }
+         
         }
 
     }

@@ -105,6 +105,7 @@ if(isset($_GET['del']))
                           <th>Name</th>
                           <th>CNIC</th>
                           <th>Fees</th>
+                          <th>Installment Status</th>
                           <th>Fee Status</th>
                           <th>Contact No</th>
                           <th class="text-nowrap">Action</th>
@@ -136,6 +137,33 @@ if(isset($_GET['del']))
                           <td><?php echo $getAll['name']; ?></td>
                           <td><?php echo $getAll['cnic']; ?></td>
                           <td><?php echo $getAll['fee']; ?></td>
+                          <td>
+                            <?php
+                              $student_id=$getAll['id'];
+                              $std=$st->getAllRecordFeeById($student_id,'fee');
+                              if ($std) {
+                                # code...
+                              
+                              $data=$std->fetch_assoc();
+
+
+                              if(isset($data['installment'])){
+                                if($getAll['fee_status'] == 'paid'){
+                               ?>
+                                <div class="label label-table label-success">
+                                  <?php echo $data['installment']." installment Paid"; ?>
+                                </div>
+                            <?php }elseif ($getAll['fee_status'] == 'unpaid') {
+                              ?>
+                                <div class="label label-table label-warning">
+                                  <?php echo ($data['installment']+1)." installment Unpaid"; ?>
+                                </div>
+                            <?php }}}else{ ?>
+                              <div class="label label-table label-warning">
+                                  <?php echo "1 installment Unpaid"; ?>
+                                </div>
+                            <?php } ?>
+                          </td>
                           <td>
                             <?php
                               if($getAll['fee_status'] == 'paid'){ ?>

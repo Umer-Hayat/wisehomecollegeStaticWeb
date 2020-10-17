@@ -1,6 +1,7 @@
-
 <?php include("includes/header.php"); ?>
-
+if ($_SESSION['login'] != 'admin') {
+  echo '<script>window.location.replace("dashboard.php")</script>';
+}
 <?php 
 include_once 'classes/StudentManagement.php';
   $st=new StudentManagement();

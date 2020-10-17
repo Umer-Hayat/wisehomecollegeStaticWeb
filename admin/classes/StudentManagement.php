@@ -112,41 +112,6 @@ class StudentManagement
             }
     }
 
-	// public function addBadge($badge)
- //    {
- //        $badge=$this->fm->validation($badge);
-
-
- //        $query="INSERT INTO student_badge(badge) VALUES('$badge')";
- //        $result=$this->db->insert($query);
- //        if ($result) {
- //            $msg = "Data Inserted";
- //            return $msg;
- //        } else {
- //            $msg = "Data Not Inserted";
- //            return $msg;
- //        }
-
- //    }
-
-    // public function updateBadge($badge,$id)
-    // {
-    //     $badge=$this->fm->validation($badge);
-    //     $id=$this->fm->validation($id);
-
-    //     $query = "update student_badge set badge='$badge' where id='$id'";
-    //     $result = $this->db->update($query);
-    //     if ($result) {
-    //         $msg = "Data Updated";
-    //         return $msg;
-    //     } else {
-    //         $msg = "Data Not Updated";
-    //         return $msg;
-    //     }
-    // }
-
-
-
 
     public function getAllRecords($table)
     {
@@ -164,6 +129,13 @@ class StudentManagement
     public function getAllRecord($id,$table)
     {
         $query="select * from $table where id='$id'";
+        $result=$this->db->select($query);
+        return $result;
+    }
+    
+    public function getAllRecordFeeById($id,$table)
+    {
+        $query="select * from $table where student_id='$id' ORDER BY id DESC";
         $result=$this->db->select($query);
         return $result;
     }
@@ -246,23 +218,40 @@ class StudentManagement
         $id=$this->fm->validation($id);
 
         // $d=strtotime("-1 Month");
-        $date = date("y-m-d");
-        $query1="select * from fee where student_id='$id' and date='$date'";
-        $result1=$this->db->select($query1);
-        if ($result1) {
+        // $date = date("y-m-d");
+        // $query1="select * from fee where student_id='$id' and date='$date'";
+        // $result1=$this->db->select($query1);
+        // if ($result1) {
             $query="UPDATE students SET fee_status='unpaid' WHERE id='$id'";
             $result2=$this->db->update($query);
-        }
+        // }
         
     }
 
     public function getAllRecordofFees(){
 
-        $d=strtotime("-1 Month");
-        $date = date("y-m-d", $d);
-        $query="select * from students where start_date='$date'";
-        $result=$this->db->select($query);
-        return $result;
+        $date = date("y-m-d", strtotime("-1 Month"));
+        $date2 = date("y-m-d", strtotime("-2 Months"));
+        $prev_day = date('Y-m-d', strtotime('-1 Month -1 day'));
+        $prev_day2 = date('Y-m-d', strtotime('-1 Month -2 day'));
+
+        $weekDay = date('w', strtotime($prev_day));
+        $weekDay2 = date('w', strtotime($prev_day2));
+        if($weekDay == 0 || $weekDay == 6 || $weekDay2 == 0 || $weekDay2 == 6)
+        {
+            $query="select * from students where start_date='$date' or start_date='$prev_day' or start_date='$prev_day2' or start_date='$date2' and status='1'";
+            $result=$this->db->select($query);
+            if($result){
+                return $result;
+            }
+        }
+        else{
+            $query="select * from students where start_date='$date' or start_date='$date2'";
+            $result=$this->db->select($query);
+            if($result){
+                return $result;
+            }
+        }
     }
 
     public function refundFee($id,$amount)
@@ -403,35 +392,38 @@ class StudentManagement
         return $result;
     }
 
-    public function payFee($id,$batch_id,$type,$amount,$rno)
+    public function payFee($id,$batch_id,$installment,$amount,$rno)
     {
         $id=$this->fm->validation($id);
         $batch_id=$this->fm->validation($batch_id);
-        $type=$this->fm->validation($type);
+        $installment=$this->fm->validation($installment);
         $amount=$this->fm->validation($amount);
         $rno=$this->fm->validation($rno);
 
-
+        // $installment = 1;
         $query="select * from fee where student_id='$id' ORDER BY id DESC";
         $result4=$this->db->select($query);
         if ($result4) {
             $data=$result4->fetch_assoc();
 
             $totall = $data['totall_payment'] + $amount;
+            // $installment = $data['installment']+1;
         }else{
             $totall = $amount;
         }
-        $query = "INSERT INTO fee(student_id,batch_id,payment_type,amount,date,totall_payment,rno) VALUES('$id','$batch_id','$type','$amount',now(),'$totall','$rno')";
+        $query = "INSERT INTO fee(student_id,batch_id,installment,amount,date,totall_payment,rno) VALUES('$id','$batch_id','$installment','$amount',now(),'$totall','$rno')";
             $result = $this->db->insert($query);
             if ($result) {
-                if ($type == 'full') {
-                    $query1="UPDATE students SET fee_status='paid' WHERE id='$id'";
+                // if ($type == 'full') {
+                //     $query1="UPDATE students SET fee_status='paid' WHERE id='$id'";
+                //     $result2=$this->db->update($query1);
+                // }
+                // if ($type == 'installment') {
+                //     $query2="UPDATE students SET fee_status='installment paid' WHERE id='$id'";
+                //     $result3=$this->db->update($query2);
+                // }
+                $query1="UPDATE students SET fee_status='paid' WHERE id='$id'";
                     $result2=$this->db->update($query1);
-                }
-                if ($type == 'installment') {
-                    $query2="UPDATE students SET fee_status='installment paid' WHERE id='$id'";
-                    $result3=$this->db->update($query2);
-                }
                 $msg = "Data Inserted";
                 return $msg;
             } else {

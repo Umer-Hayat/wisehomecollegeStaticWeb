@@ -98,14 +98,14 @@ $st=new StudentManagement();
                                 $student=$st->getAllRecordofFees();
                                 if($student)
                                 {
-                                  $i=1 $i++;
+                                  $i=1;
                                   while ($getAll=$student->fetch_assoc())
                                   {
                                     $S_id = $getAll['id'];
-                                    $st->updateFeeStatus($S_id);
+                                    // $st->updateFeeStatus($S_id);
                               ?>
                               <tr>
-                                <td><?php echo $i; ?></td>
+                                <td><?php echo $i; $i++; ?></td>
                                 
                                 <td>
                                   <a                              

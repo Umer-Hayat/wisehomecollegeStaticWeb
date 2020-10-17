@@ -79,6 +79,25 @@ if(isset($_GET['del']))
                                                 <br>
                                                 <p class="text-muted"><?php echo $getAll['fee']; ?></p>
                                             </div>
+                                            <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Course End Date</strong>
+                                                <br>
+                                                <p class="text-muted"><?php echo $getAll['end_date']; ?></p>
+                                            </div>
+
+                                            <?php
+
+$date1 = strtotime($getAll['start_date']);  
+$date2 = strtotime($getAll['end_date']);  
+$diff = abs($date2 - $date1);  
+$years = floor($diff / (365*60*60*24));
+$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                                             ?>
+                                             <div class="col-md-4 col-xs-6 m-t-10 b-r"> <strong>Course Duration</strong>
+                                                <br>
+                                                <p class="text-muted"><?php printf("%d months, %d days",$months, 
+             $days);  ?></p>
+                                            </div>
 
                                             
                                         </div>

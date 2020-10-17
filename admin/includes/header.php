@@ -4,7 +4,7 @@ if (!isset($_SESSION['login'])) {
   header("Location:index.php");
 }
 
-include_once 'classes/StudentManagement.php';
+  include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
 
 
@@ -140,9 +140,10 @@ if($res){
                   /></a>
                   <div class="dropdown-menu dropdown-menu-right scale-up">
                     <ul class="dropdown-user">
+                      <li><a href="changepass.php"><i class="fa fa-user fa-fw"></i>Change Password</a>
                       <li role="separator" class="divider"></li>
                       <li>
-                        <a href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
+                        <a href="?action=logout"><i class="fa fa-power-off"></i> Logout</a>
                       </li>
                             <?php
                             if (isset($_GET['action']) && $_GET['action']=="logout") {
@@ -236,20 +237,21 @@ if($res){
                   <a
                     style="background-color: transparent;"
                     class="waves-effect waves-dark"
-                    href="report.php"
-                    aria-expanded="false"
-                    ><i class="fa fa-bar-chart"></i
-                    ><span class="hide-menu">Reports</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    style="background-color: transparent;"
-                    class="waves-effect waves-dark"
                     href="booking.php"
                     aria-expanded="false"
                     ><i class="fa fa-ticket"></i
                     ><span class="hide-menu">Test Booking</span></a
+                  >
+                </li>
+                <?php if ($_SESSION['login']=='admin') { ?>
+                <li>
+                  <a
+                    style="background-color: transparent;"
+                    class="waves-effect waves-dark"
+                    href="report.php"
+                    aria-expanded="false"
+                    ><i class="fa fa-bar-chart"></i
+                    ><span class="hide-menu">Reports</span></a
                   >
                 </li>
                 <li>
@@ -262,6 +264,7 @@ if($res){
                     ><span class="hide-menu">Home Page Data</span></a
                   >
                 </li>
+              <?php } ?>
               </ul>
             </nav>
             <!-- End Sidebar navigation -->
