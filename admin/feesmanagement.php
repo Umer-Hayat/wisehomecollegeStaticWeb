@@ -1,6 +1,6 @@
-<?php include("includes/header.php"); ?>
+<?php include("includes/header.php"); 
 
-<?php include_once 'classes/StudentManagement.php';
+include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
 $batch_id = $_GET['batch'];
 if(isset($_GET['del']))
@@ -13,6 +13,8 @@ if(isset($_GET['del']))
 }
 
 ?>
+
+
       <div class="page-wrapper">
         <br />
         <br />
@@ -122,21 +124,29 @@ if(isset($_GET['del']))
                       </tfoot>
                       <tbody>
                          <?php
+                         $a=1;
                                 $student=$st->getAllRecordsByStatus($batch_id,'1');
                             
                             if($student)
                             {
-                              $i=1;
+                              
                               while ($getAll=$student->fetch_assoc())
                               {
                         ?>
                         <tr>
-                          <td style="text-align: center;"><?php echo $i; $i++?></td>
+                          <td style="text-align: center;"><?php echo $a; $a++; ?></td>
                           <td><?php echo $getAll['name']; ?></td>
                           <td><?php echo $getAll['cnic']; ?></td>
                           <td><?php echo $getAll['fee']; ?></td>
                           <td>
                             <?php
+
+                            $date1 = strtotime($getAll['start_date']);  
+                            $date2 = strtotime(date("y-m-d"));  
+                            $diff = abs($date2 - $date1);  
+                            $years = floor($diff / (365*60*60*24));
+                            $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+
                               $student_id=$getAll['id'];
                               $std=$st->getAllRecordFeeById($student_id,'fee');
                               if ($std) {
@@ -144,23 +154,45 @@ if(isset($_GET['del']))
                               
                               $data=$std->fetch_assoc();
 
-
                               if(isset($data['installment'])){
+                                if ($data['installment'] >= $months ) {
+                                  for ($i=$data['installment']; $i < $months; $i++) { ?>
+                                    <div class="label label-table label-warning">
+                                  <?php echo ($i+1)." installment Unpaid"; ?>
+                                </div><br>
+                                  <?php }
+                                }
                                 if($getAll['fee_status'] == 'paid'){
                                ?>
                                 <div class="label label-table label-success">
                                   <?php echo $data['installment']." installment Paid"; ?>
                                 </div>
-                            <?php }elseif ($getAll['fee_status'] == 'unpaid') {
-                              ?>
+                            <?php }elseif ($getAll['fee_status'] == 'unpaid' ) {
+                              if($months >= 2){
+                                  
+                              
+                              for ($i=$data['installment']; $i <= $months; $i++) { ?>
+                                    <div class="label label-table label-warning">
+                                  <?php echo ($i+1)." installment Unpaid"; ?>
+                                </div><br>
+                                
+                            <?php }}else{ ?>
                                 <div class="label label-table label-warning">
                                   <?php echo ($data['installment']+1)." installment Unpaid"; ?>
-                                </div>
-                            <?php }}}else{ ?>
+                                </div> 
+                            <?php }}}}else{
+                              if ($months >= 2) {
+                                for ($i=1; $i <=$months ; $i++) {  ?>
+                                  <div class="label label-table label-warning">
+                                  <?php echo $i." installment Unpaid"; ?>
+                                </div><br>
+                               <?php }
+                              }else{
+                             ?>
                               <div class="label label-table label-warning">
                                   <?php echo "1 installment Unpaid"; ?>
                                 </div>
-                            <?php } ?>
+                            <?php }} ?>
                           </td>
                           <!-- <td>
                             <?php

@@ -1,7 +1,6 @@
+<?php include("includes/header.php"); 
 
-<?php include("includes/header.php"); ?>
-
-<?php include_once 'classes/StudentManagement.php';
+include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
 if(isset($_GET['del']))
 {
@@ -108,6 +107,97 @@ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))
           <?php }
            ?>
 
+          <?php
+          if (isset($_GET['again'])) {
+            $id = $_GET['again'];
+
+            $std=$st->getAllRecord($id,'students');
+            $getAll=$std->fetch_assoc();
+
+          if(isset($_POST['submit'])){
+            $batch_id = $_POST['batch'];
+            $fee = $_POST['fee'];
+            $course = $_POST['course'];
+            $start_date = $_POST['strdate'];
+
+            $check = $st->joinAgainStudent($batch_id,$fee,$course,$start_date,$id);
+            if ($check == "Data Updated") {
+                echo '<script>window.location.replace("completed.php")</script>';
+            }
+            }
+            
+
+            
+
+           ?>
+            <div class="row">
+            <!-- column -->
+            <div class="col-12">
+              <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title text-center"><b>Add New Course</b></h3>
+                                <form class="form-material m-t-20 row" method="post"  enctype="multipart/form-data">
+                                  <div class="row text-center" style="margin-right: -5px;">
+                                       <div style="color:red; margin-left: 20px; font-size:16px;"><?php
+                                           if (isset($_POST['submit'])) {
+                                               echo "$check";
+                                           }
+                                           ?>
+                                    </div>
+                                   </div>
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Student Name:</b></label>
+                                        <input type="text" required readonly class="form-control" value="<?php echo $getAll['name']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Select Batch:*</b></label>
+                                        <select class="form-control" required name="batch">
+                                          <option value="">Select Batch</option>
+                                          <?php
+                                              $bat=$st->getBatchByStatus('1');
+                                              if($bat)
+                                              {
+                                                  while ($getAll=$bat->fetch_assoc())
+                                                  {
+                                          ?>
+                                          <option value="<?php echo $getAll['id'] ?>"><?php echo $getAll['batch_name']; ?></option>
+                                        <?php }} ?>
+                                        </select> 
+                                    </div>                                    
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Course Fee:*</b></label>
+                                        <input type="number" required name="fee" class="form-control" placeholder="Enter Fee">
+                                    </div>
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Course:*</b></label>
+                                        <select name="course" required class="form-control">
+                                          <option value="">Select course</option>
+                                          <option value="IELTS">IELTS</option>
+                                          <option value="german">German</option>
+                                          <option value="spanish">Spanish</option>
+                                          <option value="norweigen">Norweigen</option>
+                                          <option value="italian">Italian</option>
+                                          <option value="danish">Danish</option>
+                                          <option value="swedish">Swedish</option>
+                                          <option value="spoken">Spoken English</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4 m-t-10">
+                                      <label><b>Course Start Date:*</b></label>
+                                        <input type="date" required name="strdate" class="form-control">
+                                    </div>
+                                    <div class="col-md-12 m-t-10 text-center">
+                                        <input type="reset" class="btn btn-secondary" >
+                                        <input type="submit" name="submit" class="btn btn-primary" >
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+          </div>
+          <?php }
+           ?>
+
 
           <?php
           if (isset($_GET['add'])) {
@@ -176,7 +266,7 @@ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))
                                         <select class="form-control" required name="batch">
                                           <option value="">Select Batch</option>
                                           <?php
-                                              $bat=$st->getAllRecords('batch');
+                                              $bat=$st->getBatchByStatus('1');
                                               if($bat)
                                               {
                                                   while ($getAll=$bat->fetch_assoc())
@@ -326,7 +416,7 @@ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))
 
                                            echo $data['batch_name']; ?></option>
                                           <?php
-                                              $bat=$st->getAllRecords('batch');
+                                              $bat=$st->getBatchByStatus('1');
                                               if($bat)
                                               {
                                                   while ($data1=$bat->fetch_assoc())
@@ -410,10 +500,13 @@ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))
                         <tr>
                           <th>No#</th>
                           <th>Name</th>
-                          
+                          <th>CNIC</th>
                           <th>Batch</th>
-                           <th>CNIC</th> 
-                          <th>Contact No</th>
+                           <th>Course Name</th> 
+                           <th>Fee</th> 
+                           <th>Start Date</th> 
+                           <th>End Date</th> 
+                          
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </thead>
@@ -421,47 +514,90 @@ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))
                         <tr>
                           <th>No#</th>
                           <th>Name</th>
-                          <!-- <th>Father Name</th> -->
+                          <th>CNIC</th>
                           <th>Batch</th>
-                          <th>CNIC</th> 
-                          <th>Contact No</th>
+                           <th>Course Name</th> 
+                           <th>Fee</th> 
+                           <th>Start Date</th> 
+                           <th>End Date</th> 
+                          
                           <th class="text-nowrap">Action</th>
                         </tr>
                       </tfoot>
                       <tbody>
                          <?php
-                            $letter=$st->getAllStudentsByStatus('students','0');
+                            $letter=$st->getAllUniqueCourseCompleted();
                             if($letter)
                             {
                               $i=1;
                                 while ($getAll=$letter->fetch_assoc())
-                                {
-                        ?>
-                        <tr>
+                                { ?>
+
+                                  <tr>
                           <td style="text-align: center;"><?php echo $i; $i++?></td>
-                          <td>
+                          <td><?php 
+                          $s_id = $getAll['student_id'];
+                          $batch=$st->getAllRecord($s_id,'students');
+                          $data=$batch->fetch_assoc(); ?>
                             <a                              
-                              href="completed.php?view=<?php echo $getAll['id']; ?>">
-                              <?php echo $getAll['name']; ?>
+                              href="completed.php?view=<?php echo $s_id; ?>">
+                              <?php echo $data['name']; ?>
                             </a>
                           </td>
-                          <!-- <td><?php echo $getAll['fname']; ?></td> -->
-                          <td style="width: 20px !important;"><?php 
-                          $b_id = $getAll['batch_id'];
-                          $batch=$st->getAllRecord($b_id,'batch');
-                          $data=$batch->fetch_assoc();
-
-
-                          echo $data['batch_name']; ?></td>
-                          <td><?php echo $getAll['cnic']; ?></td>
                           <td>
-                            <a target="blank"
-                                    href="https://api.whatsapp.com/send?phone=<?php echo $getAll['contact']; ?>"><?php echo $getAll['contact']; ?>
-                                  </a>
+                              <?php echo $data['cnic']; ?>
                           </td>
+                            <td>
+                                <?php  $s_id = $getAll['student_id'];
+                                  $bt=$st->getAllCourseCompletedByIs($s_id);
+                                  while ($get=$bt->fetch_assoc())
+                                {
+                                  $b_id = $get['batch_id'];
+                                  $batch=$st->getAllRecord($b_id,'batch');
+                                  $data=$batch->fetch_assoc();
+                                  echo $data['batch_name']."<br>"; 
+                                }
+                          ?>
+                          </td> 
+                          <td>
+                                <?php  $s_id = $getAll['student_id'];
+                                  $bt=$st->getAllCourseCompletedByIs($s_id);
+                                  while ($get=$bt->fetch_assoc())
+                                {
+                                  echo $get['name']."<br>"; 
+                                }
+                          ?>
+                          </td>
+                          <td>
+                                <?php  $s_id = $getAll['student_id'];
+                                  $bt=$st->getAllCourseCompletedByIs($s_id);
+                                  while ($get=$bt->fetch_assoc())
+                                {
+                                  echo $get['fee']."<br>"; 
+                                }
+                          ?>
+                          </td> 
+                          <td>
+                                <?php  $s_id = $getAll['student_id'];
+                                  $bt=$st->getAllCourseCompletedByIs($s_id);
+                                  while ($get=$bt->fetch_assoc())
+                                {
+                                  echo $get['start_date']."<br>"; 
+                                }
+                          ?>
+                          </td> 
+                          <td>
+                                <?php  $s_id = $getAll['student_id'];
+                                  $bt=$st->getAllCourseCompletedByIs($s_id);
+                                  while ($get=$bt->fetch_assoc())
+                                {
+                                  echo $get['end_date']."<br>"; 
+                                }
+                          ?>
+                          </td>  
                           <td class="text-nowrap">
                             <a
-                              href="students.php?edit=<?php echo $getAll['id']; ?>"
+                              href="completed.php?edit=<?php echo $s_id; ?>"
                               data-original-title="Edit"
                               data-toggle="tooltip"
                               data-target="#editOrder"
@@ -469,12 +605,20 @@ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))
                               <i class="fa fa-pencil text-inverse m-r-10"></i>
                             </a>
                             <a
-                              onclick="return confirm('Are you sure to delete!')" href="students.php?del=<?php echo $getAll['id'];?>"
+                              onclick="return confirm('Are you sure to delete!')" href="completed.php?del=<?php echo $s_id;?>"
                               data-toggle="tooltip"
                               data-original-title="Delete Student"
                             >
                               <i class="fa fa-close text-danger"></i>
                             </a>
+                            <a style="font-size: 14px; margin-left: 5px;"
+                                class="label label-table label-primary" 
+                                data-toggle="tooltip"
+                                data-original-title="Join Again"
+                                href='completed.php?again=<?php echo $s_id; ?>'
+                                  >
+                                  Join Again 
+                                </a>
                           </td>
                         </tr>
                         <?php }} ?>

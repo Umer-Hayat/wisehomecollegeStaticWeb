@@ -154,7 +154,18 @@ class StudentManagement
         return $result;
     }
 
-
+    public function getAllUniqueCourseCompleted()
+    {
+        $query="select DISTINCT(student_id) from course_completed";
+        $result=$this->db->select($query);
+        return $result;
+    }
+    public function getAllCourseCompletedByIs($id)
+    {
+        $query="select * from course_completed where student_id='$id'";
+        $result=$this->db->select($query);
+        return $result;
+    }
 
     public function deleteitem($id,$table)
     {
@@ -183,7 +194,31 @@ class StudentManagement
         $query="UPDATE students SET status='0',end_date='$date' WHERE id='$id'";
         $result=$this->db->update($query);
         if ($result) {
+
+            $query1="select * from students where id='$id'";
+            $result1=$this->db->select($query1);
+            $data=$result1->fetch_assoc();
+            $name = $data['course'];
+            $batch_id = $data['batch_id'];
+            $start_date = $data['start_date'];
+            $end_date = $data['end_date'];
+            $fee = $data['fee'];
+            $query2 = "INSERT INTO course_completed(student_id,batch_id,name,start_date,end_date,fee) VALUES('$id','$batch_id','$name','$start_date','$end_date','$fee')";
+            $result2 = $this->db->insert($query2);
             $msg = "Data Updated";
+            return $msg;
+        } else {
+            $msg = "Data Not Updated";
+            return $msg;
+        }
+    }
+
+
+    public function joinAgainStudent($batch_id,$fee,$course,$start_date,$id){
+        $query="UPDATE students SET status='1',batch_id='$batch_id',fee='$fee',course='$course',start_date='$start_date',fee_status='unpaid',end_date=NULL WHERE id='$id'";
+        $result=$this->db->update($query);
+        if ($result) {
+         $msg = "Data Updated";
             return $msg;
         } else {
             $msg = "Data Not Updated";
@@ -461,13 +496,13 @@ class StudentManagement
         return false;
     }
 
-    public function addExpense($title,$amount)
+    public function addExpense($title,$amount,$date)
     {
         $title=$this->fm->validation($title);
         $amount=$this->fm->validation($amount);
 
         // $date = date("y-m-d");
-        $query = "INSERT INTO expense(title,amount,date) VALUES('$title','$amount',now())";
+        $query = "INSERT INTO expense(title,amount,date) VALUES('$title','$amount','$date')";
         $result = $this->db->insert($query);
             if ($result) {
                 $msg = "Data Inserted";

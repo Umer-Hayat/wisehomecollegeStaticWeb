@@ -1,7 +1,6 @@
+<?php include("includes/header.php");
 
-<?php include("includes/header.php"); ?>
-
-<?php include_once 'classes/StudentManagement.php';
+include_once 'classes/StudentManagement.php';
 $st=new StudentManagement();
 if(isset($_GET['del']))
 {
@@ -23,7 +22,12 @@ if(isset($_GET['del']))
           if(isset($_POST['submit'])){
             $title = $_POST['title'];
             $amount = $_POST['amount'];
-            $check = $st->addExpense($title,$amount);
+            if ($_POST['date']) {
+              $date = $_POST['date'];
+            }else{
+              $date = date("y-m-d");;
+            }
+            $check = $st->addExpense($title,$amount,$date);
             if ($check == "Data Inserted") {
                 echo '<script>window.location.replace("expense.php")</script>';
             }
@@ -45,12 +49,16 @@ if(isset($_GET['del']))
                                     </div>
                                    </div>
                                     <div class="form-group col-md-3 m-t-10">
-                                      <label><b>Expense Title:</b></label>
+                                      <label><b>Expense Title:*</b></label>
                                         <input type="text" required name="title" class="form-control form-control-line" placeholder="Enter Title"> 
                                     </div>
                                     <div class="form-group col-md-3 m-t-10">
-                                      <label><b>Expense Amount:</b></label>
+                                      <label><b>Expense Amount:*</b></label>
                                         <input type="number" required name="amount" class="form-control form-control-line" placeholder="Enter Amount"> 
+                                    </div>
+                                    <div class="form-group col-md-3 m-t-10">
+                                      <label><b>Date:</b></label>
+                                        <input type="date" name="date" class="form-control form-control-line"> 
                                     </div>
                                     <div class="col-md-12 m-t-10 text-center">
                                         <input type="reset" class="btn btn-secondary" >
