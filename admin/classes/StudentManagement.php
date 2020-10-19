@@ -230,23 +230,43 @@ class StudentManagement
 
     public function getAllRecordofFees(){
 
-        $date = date("y-m-d", strtotime("-1 Month"));
-        $date2 = date("y-m-d", strtotime("-2 Months"));
-        $prev_day = date('Y-m-d', strtotime('-1 Month -1 day'));
-        $prev_day2 = date('Y-m-d', strtotime('-1 Month -2 day'));
+        $month1 = date("y-m-d", strtotime("-1 Month"));
+        $month2 = date("y-m-d", strtotime("-2 Months"));
+        $month3 = date("y-m-d", strtotime("-3 Months"));
+        $month4 = date("y-m-d", strtotime("-4 Months"));
+        $month5 = date("y-m-d", strtotime("-5 Months"));
+        $month6 = date("y-m-d", strtotime("-6 Months"));
+        $month7 = date("y-m-d", strtotime("-7 Months"));
+        $prev_day = date('Y-m-d', strtotime('-1 day'));
+        $prev_day2 = date('Y-m-d', strtotime('-2 day'));
 
         $weekDay = date('w', strtotime($prev_day));
         $weekDay2 = date('w', strtotime($prev_day2));
-        if($weekDay == 0 || $weekDay == 6 || $weekDay2 == 0 || $weekDay2 == 6)
+        if($weekDay == 0 || $weekDay == 6)
         {
-            $query="select * from students where start_date='$date' or start_date='$prev_day' or start_date='$prev_day2' or start_date='$date2' and status='1'";
+            $date1 = date("y-m-d", strtotime("-1 Month -1 day"));
+            $date12 = date("y-m-d", strtotime("-1 Month -2 day"));
+            $date2 = date("y-m-d", strtotime("-2 Months -1 day"));
+            $date21 = date("y-m-d", strtotime("-2 Months -2 day"));
+            $date3 = date("y-m-d", strtotime("-3 Months -1 day"));
+            $date31 = date("y-m-d", strtotime("-3 Months -2 day"));
+            $date4 = date("y-m-d", strtotime("-4 Months -1 day"));
+            $date41 = date("y-m-d", strtotime("-4 Months -2 day"));
+            $date5 = date("y-m-d", strtotime("-5 Months -1 day"));
+            $date51 = date("y-m-d", strtotime("-5 Months -2 day"));
+            $date6 = date("y-m-d", strtotime("-6 Months -1 day"));
+            $date61 = date("y-m-d", strtotime("-6 Months -2 day"));
+            $date7 = date("y-m-d", strtotime("-7 Months -1 day"));
+            $date71 = date("y-m-d", strtotime("-7 Months -2 day"));
+
+            $query="select * from students where start_date='$month1' or start_date='$month2' or start_date='$month3' or start_date='$month4' or start_date='$month5' or start_date='$month6' or start_date='$month7' or start_date='$date1' or start_date='$date12' or start_date='$date2' or start_date='$date21' or start_date='$date3' or start_date='$date31' or start_date='$date4' or start_date='$date41' or start_date='$date5' or start_date='$date51' or start_date='$date6' or start_date='$date61' or start_date='$date7' or start_date='$date71' and status='1'";
             $result=$this->db->select($query);
             if($result){
                 return $result;
             }
         }
         else{
-            $query="select * from students where start_date='$date' or start_date='$date2'";
+            $query="select * from students where start_date='$month1' or start_date='$month2' or start_date='$month3' or start_date='$month4' or start_date='$month5' or start_date='$month6' or start_date='$month7' and status='1'";
             $result=$this->db->select($query);
             if($result){
                 return $result;
