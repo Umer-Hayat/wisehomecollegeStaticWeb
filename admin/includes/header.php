@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php include("classes/sessionstart.php"); ?>
+
+<!-- <?php session_start(); ?> -->
 <?php
 if (!isset($_SESSION['login'])) {
   header("Location:index.php");

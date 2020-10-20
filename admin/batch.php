@@ -1,4 +1,3 @@
-
 <?php include("includes/header.php"); ?>
 
 <?php include_once 'classes/StudentManagement.php';

@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php include("sessionstart.php"); ?>
 <?php
 $filepath=realpath(dirname(__FILE__)); 
 include_once ($filepath.'/database.php');
